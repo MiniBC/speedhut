@@ -1,0 +1,14 @@
+{
+  "normalStoreUrl": "http://www.speed-hut2.mybigcommerce.com",
+  "port": 3000,
+  "username": "speedhut",
+  "token": "f15e26f47c9e0b6b688cfd14e7a17c42004854a1",
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {
+	  	"product-size-chart.html":"/all/customizerapp/"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{{#if banners.bottom}}
+<div class="banners" data-banner-location="bottom">
+    <div class="banner">
+        {{{limit banners.bottom 1}}}
+    </div>
+</div>
+{{/if}}
+
+
+<div class="subscribe">
+	<div class="container">
+		
+	<div class="col-sm-12 col-md-6 col-lg-6 footer-socials">
+		{{> components/common/social-links}}
+	</div>
+		
+	 <div class="col-sm-12 col-md-6 col-lg-6 subscription-form">	
+	 {{#if settings.show_newsletter_box}}
+        {{> components/common/subscription-form}}
+     {{/if}}
+	 </div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <section class="footer-info">
+            
+            <article class="footer-info-col col-sm-12 col-md-2 col-lg-2" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">{{lang 'footer.navigate'}}</h5>
+                <ul class="footer-info-list">
+                    {{#each pages}}
+                    <li>
+                        <a href="{{url}}">{{name}}</a>
+                    </li>
+                    {{/each}}
+                    <li>
+                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col col-sm-12 col-md-2 col-lg-2" data-section-type="footer-categories">
+                <h5 class="footer-info-heading">{{lang 'footer.categories'}}</h5>
+                <ul class="footer-info-list">
+                    {{#each categories}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </article>
+
+            <article class="footer-info-col col-sm-12 col-md-2 col-lg-2" data-section-type="footer-brands">
+                <h5 class="footer-info-heading">{{lang 'footer.brands'}}</h5>
+                <ul class="footer-info-list">
+                    {{#each shop_by_brand}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                    <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                </ul>
+            </article>
+
+			<article class="footer-info-col col-sm-12 col-md-2 col-lg-2" data-section-type="newsletterSubscription">
+	            <h5 class="footer-info-heading">Latest News</h5>   
+				
+				<div class="blog-section"></div>	
+				
+				
+                
+                {{> components/common/payment-icons}}
+            </article>
+
+
+            <article class="footer-info-col col-sm-12 col-md-4 col-lg-4 store-info" data-section-type="storeInfo">
+                <!--<h5 class="footer-info-heading">{{lang 'footer.info'}}</h5>-->
+               
+               	<img src="{{cdn '/assets/img/footer-logo.png'}}" class="footer-logo" />
+			   	<p class="slogan">A Revolution In Custom Gauges</p>
+                <address>{{nl2br settings.address}}</address>
+                {{#if settings.phone_number}}
+                    <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
+                {{/if}}
+            </article>
+
+
+                   </section>
+    </div>
+</footer>
+
+{{#if theme_settings.show_powered_by}}
+    <div class="footer-copyright">
+        <p class="powered-by">Copyright &copy; Speedhut. All rights reserved. </p>
+    </div>
+{{/if}}

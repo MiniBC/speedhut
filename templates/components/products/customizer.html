@@ -1,0 +1,139 @@
+
+
+{{> components/common/lightbox-styles}}
+{{> components/common/lightbox-attributes}}
+
+<div id="CustomizerContainer">
+
+
+
+	<div class="stepper">
+<!-- 	 <ul data-tab="" class="tabs" > -->
+	<ul>
+        <li class="tab is-active" id="step-1"><a class="Step One" aria-selected="true" tabindex="0" id="first-step" >1<span>. Select by application, style or car</span></a></li>
+        <li class="tab sub" id="step-2"><a class="Step Two" tabindex="0" id="second-step" >2<span>. Select the gauges & attributes</span></a></li>
+        <li class="tab sub" id="step-3"><a class="Step Three" tabindex="0" id="third-step">3<span>. Customize the gauge</span></a></li>
+     </ul>
+	</div>
+        
+	<div class="container">
+	
+    <div class="tabs-contents">
+        <div id="step-one" class="tab-content is-active" aria-hidden="false">
+			<h1>Get Started</h1>
+			<p>Please select by application, style or car models</p>
+			
+			<ul class="cards" id="customize-started">
+				
+
+			</ul>
+			
+        </div>
+            
+        <div id="step-two" class="tab-content">
+			<h1 id="style-page-title"></h1>
+			<p>Please select a gauge below to edit and add to your basket for customizing</p>
+			
+			
+			<div class="col-md-9 col-lg-9">
+			
+			<ul class="cards" id="allAvaiable">
+
+<!-- 				<li class="card-item">
+					<div class="img style-img"><img src="{{cdn '/assets/img/style-demo.jpg'}}" /></div>
+					<div class="card-content">
+						<div class="title">Speedometer</div>
+						<div class="description">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is text is just text.</div>
+						<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>
+					</div>
+				</li>
+
+				<li class="card-item">
+					<div class="img style-img"><img src="{{cdn '/assets/img/style-demo.jpg'}}" /></div>
+					<div class="card-content">
+						<div class="title">Tacometer</div>
+						<div class="description">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is text is just text.</div>
+						<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>
+					</div>
+				</li>
+				
+				<li class="card-item">
+					<div class="img style-img"><img src="{{cdn '/assets/img/style-demo.jpg'}}" /></div>
+					<div class="card-content">
+						<div class="title">Dual GPS</div>
+						<div class="description">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is text is just text.</div>
+						<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>
+					</div>
+				</li>
+
+				<li class="card-item">
+					<div class="img style-img"><img src="{{cdn '/assets/img/style-demo.jpg'}}" /></div>
+					<div class="card-content">
+						<div class="title">Quad</div>
+						<div class="description">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is text is just text.</div>
+						<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>
+					</div>
+				</li>								
+
+				<li class="card-item">
+					<div class="img style-img"><img src="{{cdn '/assets/img/style-demo.jpg'}}" /></div>
+					<div class="card-content">
+						<div class="title">Fuel Level</div>
+						<div class="description">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is text is just text.</div>
+						<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>
+					</div>
+				</li>
+
+				<li class="card-item">
+					<div class="img style-img"><img src="{{cdn '/assets/img/style-demo.jpg'}}" /></div>
+					<div class="card-content">
+						<div class="title">Pressure</div>
+						<div class="description">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum is text is just text.</div>
+						<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>
+					</div>
+				</li> -->
+
+				
+			</ul>
+
+			</div>
+			
+			
+			<div class="col-md-3 col-lg-3 gauges-selected">
+				<h2>Gauges You Selected</h2>
+				
+				<ul id="gaugeSelected"></ul>
+				
+				
+				<div class="action-btn">
+					<a class="customizeNow">Start Customizing Now</a>
+				</div>
+				
+			</div>
+			
+			
+        </div>
+             
+<!--         id="step-three"
+ -->             
+        <div id="step-three" class="tab-content">
+			<h1>Customizer</h1>
+			<p>Please start customizer your gauges here...</p>
+
+			<div id="allThemes">
+
+
+				{{> components/products/stepthree}}
+				
+
+			</div>
+
+<!-- 			<a id="saveSettings" class="navPages-action" >save theme settings</a> -->
+
+        </div>
+    </div> <!-- tabs content -->
+
+
+
+</div>
+

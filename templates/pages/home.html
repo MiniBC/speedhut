@@ -1,0 +1,223 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    {{#if carousel}}
+        {{> components/carousel}}
+    {{/if}}
+    {{{snippet 'home_content'}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+<div class="row">
+<div class="main full">
+
+	<div class="homepage-banners">
+		
+		<div class="col-sm-4 col-md-4 col-lg-4">
+			<a href="#"><img src="{{cdn '/assets/img/made-in-usa.jpg'}}" /></a>
+		</div>
+
+		<div class="col-sm-4 col-md-4 col-lg-4">
+			<a href="#"><img src="{{cdn '/assets/img/custom-gauges.jpg'}}" /></a>
+		</div>
+		
+		<div class="col-sm-4 col-md-4 col-lg-4">
+			<a href="#"><img src="{{cdn '/assets/img/last-gauges.jpg'}}" /></a>
+		</div>		
+				
+	</div>
+
+    <!--{{#if products.featured}}
+        {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+    {{/if}}
+
+    {{#if products.top_sellers}}
+        {{> components/products/top products=products.top_sellers columns=theme_settings.homepage_top_products_column_count}}
+    {{/if}}
+
+    {{#if products.new}}
+        {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
+    {{/if}}-->
+    
+    
+<div class="about-section">
+	      
+
+	<div class="col-sm-12 col-md-3 col-lg-3 tabs-section">
+		
+		
+		<ul data-tab="" class="tabs">
+        
+            <li class="tab is-active"><a href="#about-us" class="tab-title" aria-selected="true" tabindex="0">About Us</a></li>
+             <li class="tab sub"><a href="#history" class="tab-title" tabindex="0">Our History</a></li>
+             <li class="tab sub"><a href="#technology" class="tab-title" tabindex="0">Our Technology</a></li>
+             <li class="tab sub"><a href="#products" class="tab-title" tabindex="0">Our Products</a></li>
+             <li class="tab sub"><a href="#guarantee" class="tab-title" tabindex="0">Our Guarantee</a></li>
+            <li class="tab"><a href="#competitors" class="tab-title" tabindex="0">Speedhut vs Competitors</a></li>
+            <li class="tab"><a href="#news" class="tab-title" tabindex="0">Latest News</a></li>
+            <li class="tab"><a href="#testimonials" class="tab-title" tabindex="0">Testimonials</a></li>
+            <li class="tab"><a href="#instructions" class="tab-title" tabindex="0">Instructions</a></li>
+            <li class="tab"><a href="#faq" class="tab-title" tabindex="0">Faq</a></li>
+
+            
+        </ul>
+		
+		
+	</div>	    
+		    
+	
+	<div class="col-sm-8 col-md-8 col-lg-9 about-content">
+		        
+        <div class="tabs-contents">
+	            
+            <div id="about-us" class="tab-content is-active" aria-hidden="false">
+				<p>Speedhut manufactures a complete line of gauges, speedometers, tachometers, and shift lights.</p>
+		
+	<p>With over 10 years of success and growth in the extremely competitive international gauge market, we continually strive to stay ahead of the competition with innovative design, solid engineering, while manufacturing all of our products in the USA.</p>
+	
+	<p>In a global economy where many companies are outsourcing their manufacturing offshore, we take great pride in designing and developing everything in-house. There's no outsourcing of any gauges to contract manufacturers, and all assembly, calibration and final testing is done in-house. Each Revolution gauge is meticulously built at our production facility in northern Utah. The result is a higher quality product that is still affordable to price-conscious customers.</p>
+	
+	<p>All of our gauges utilize the latest in surface mount technology and microprocessor-controlled stepper-gauge movement that isn't fazed by temperature or vibration extremes. Each gauge is assembled in an extremely shallow instrument case, allowing easy-on-the-knuckles mounting in your instrument panel, and every gauge is rigorously tested before being sold, which allows us to confidently offer a lifetime guarantee on each gauge.</p>
+	
+	<p>Do you have a need for a custom-engineered product? Our engineering department specializes in OEM engineering. We can bring your OEM gauge idea from concept to production quickly and economically at a fraction of the time and cost normally associated with custom products.
+	Be sure to check out our entire line on our web site of Speedometers, Tachometers, Boost Gauges, Hot Rod Gauges, and our Cobra gauges. All of our gauges can be customized with your graphics and logos.</p>
+	
+	<p>Please <a href="/support">contact us</a> if you have any questions or comments.</p>
+
+            </div>
+            
+             <div id="history" class="tab-content">
+			 	<p>In 2001 Speedhut® was founded with a simple mission: build the gauge we’d use in our cars if it existed. One that was built for going head to head with pro racers. One that we could customize from the ground up. One that could take the abuse we’d put it through out on the road and on the race track. One that would last us forever.</p>
+				<p>That’s why we created a whole new category of the most accurate, most durable and most dependable custom-built gauges around. And by “custom-built” we mean everything from the pointer style and dial color to the tick marks and bezel. You custom-build the finest instruments in the world, in exactly the style you want.</p>
+				<p>Now, over 15 years later, we’re the go-to gauge manufacturer for every racer and hot rodder, street outlaw and off-roader demanding the very best in performance instrumentation.</p>
+				<p>And that gets us revved up - because we're racers at heart. That's why behind every Speedhut gauge lies a passion for innovation and dependability you won’t find anywhere else.</p>
+             </div>
+             
+             <div id="technology" class="tab-content">
+			 	<p>Packed full of technologies and features you won’t find in any other gauge, and built with the same type of heavy-duty materials in things like race cars - the Speedhut® gauge is perfect for roads and race tracks, dragstrips and rough terrain, or any wild ride you take.</p>
+				<p>With our precise GPS technology, advanced surface mount systems and microprocessor-controlled pointer movement that doesn’t bounce or vibrate—no gauge is built to be more accurate, more durable and more dependable.</p>
+             </div>
+             
+             <div id="products" class="tab-content">
+			 	<p>Whether it’s a GPS Speedometer nestled inside the dash of your hot rod, a Revolution™ Tachometer mounted behind the wheel of your performance car, or a set of 2-inch gauges in the pod of your daily driver, we’ve got every gauge—in every size and dimension—that’s just right for you.</p>
+				<p>Each is hand-built using a durable injection molded nylon case, secured down with a stunning, non-corrosive solid aluminum bezel, and a scratch-proof, UV-resistant window made of high quality acrylic or tempered glass.</p>
+             </div>
+             
+             <div id="guarantee" class="tab-content">
+			 	<p>With the finest custom-built gauges around—each carefully hand-crafted and made of hardwearing components, built to perform in the harshest conditions and designed to last forever—there is no better solution for your dash than a Speedhut® gauge.</p>
+				<p>Even more - Lifetime Warranty, Made in America, and outstanding Customer Service set Speedhut apart.</p>
+				<p>So next time you head out on the road, dragstrip or racetrack, ride with confidence by equipping your dash with the gauges you’ve always wanted, and the last you’ll ever need - Speedhut® gauges.</p>
+             </div>
+
+            
+        </div>
+
+		
+		
+		
+		
+	
+		
+	</div>
+
+	    
+</div> <!-- about section ends -->
+    
+    
+
+    
+    
+    	<div class="homepage-blog-posts" style="display: none;">
+    		<ul>
+		     {{#each blog.recent_posts}}
+		      <li><a href="{{url}}">{{title}}</a></li>
+			 {{/each}}
+			</ul>
+    	</div>
+    
+    
+</div>
+
+
+</div>
+
+
+ <div class="homepage-bottom-slider" style="float: left; width: 100%;">
+	 
+	 
+	 <section class="heroCarousel_"
+    data-slick='{
+        "dots": false,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+	    "infinite": true,
+		"fade": true,
+        "autoplay": false
+    }'
+>
+
+    <div class="heroCarousel-slide" style="background-image: url('{{cdn '/assets/img/banner1.jpg'}}')">
+        <a href="#">
+            <img class="heroCarousel-image" src="{{cdn '/assets/img/banner1.jpg'}}"/>
+                    </a>
+    </div>
+    
+    
+    <div class="heroCarousel-slide" style="background-image: url('{{cdn '/assets/img/banner3.jpg'}}')">
+        <a href="#">
+            <img class="heroCarousel-image" src="{{cdn '/assets/img/banner3.jpg'}}"/>
+                    </a>
+    </div>
+    
+
+
+    
+</section>
+</div>
+
+
+ <div class="oem-partners">
+	  <div class="container">
+		  
+			
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<h3>OEM Partners</h3>
+			</div>
+			
+			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 col-lg-offset-3">
+				<img src="{{cdn '/assets/img/brand-msd.jpg'}}" />
+			</div>
+			
+			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+				<img src="{{cdn '/assets/img/brand-holley-efi.jpg'}}" />
+			</div>
+			
+			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+				<img src="{{cdn '/assets/img/brand-bosch.jpg'}}" />
+			</div>
+				
+		
+	  </div>
+	 </div>
+
+</div>
+
+{{/partial}}
+{{> layout/base}}

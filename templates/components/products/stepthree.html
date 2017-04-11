@@ -1,0 +1,393 @@
+<!-- <div id="ProductCustomizerSectionLoad" style="text-align:center;">
+	<div class="loader">Loading...</div>
+</div> -->
+<div id="ProductCustomizerSection" >
+
+
+ <div class="col-sm-12 col-md-8 col-lg-8 preview-window">
+
+
+
+
+<div class="productView">
+
+    <section class="productView-details">
+        <div class="productView-product">
+	        
+            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+                    <dt class="productView-info-name">{{lang 'products.sku'}}</dt>
+                    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+            
+            
+            <!--<dl class="productView-info">
+                
+                {{#if product.upc}}
+                    <dt class="productView-info-name">{{lang 'products.upc'}}</dt>
+                    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+                {{/if}}
+                {{#if product.condition}}
+                    <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+                    <dd class="productView-info-value">{{product.condition}}</dd>
+                {{/if}}
+                {{#if product.availability}}
+                    <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
+                    <dd class="productView-info-value">{{product.availability}}</dd>
+                {{/if}}
+                {{#if product.weight}}
+                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+                {{/if}}
+                {{#if product.min_purchase_quantity}}
+                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+                {{/if}}
+                {{#if product.max_purchase_quantity}}
+                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+                {{/if}}
+                {{#if product.gift_wrapping_available}}
+                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
+                {{/if}}
+                {{#if product.shipping}}
+                    {{#if product.shipping.calculated}}
+                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
+                    {{else}}
+                        {{#if product.shipping.price.value '===' 0}}
+                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                            <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                        {{else}}
+                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                            <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+                {{#if product.bulk_discount_rates.length}}
+                    <dt class="productView-info-name">{{lang 'products.bulk_pricing.title'}}</dt>
+                    <dd class="productView-info-value">
+                        <a href="{{product.url}}"
+                            {{#unless is_ajax }}data-reveal-id="bulkPricingModal" {{/unless}}>
+                            {{lang 'products.bulk_pricing.view'}}
+                        </a>
+                    </dd>
+
+                    <div id="bulkPricingModal" class="modal modal--small" data-reveal>
+                        <div class="modal-header">
+                            <h2 class="modal-header-title">{{lang 'products.bulk_pricing.modal_title'}}</h2>
+                            <a href="#" class="modal-close" aria-label="Close"><span aria-hidden="true">&#215;</span></a>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{lang 'products.bulk_pricing.instructions'}}</p>
+                            <ul>
+                            {{#each product.bulk_discount_rates}}
+                                <li>
+                                    {{lang 'products.bulk_pricing.range' min=min max=max}}
+                                    {{#if type '===' 'percent'}}
+                                        {{lang 'products.bulk_pricing.percent' discount=discount.formatted}}
+                                    {{/if}}
+                                    {{#if type '===' 'fixed'}}
+                                        {{lang 'products.bulk_pricing.fixed' discount=discount.formatted}}
+                                    {{/if}}
+                                    {{#if type '===' 'price'}}
+                                        {{lang 'products.bulk_pricing.price' discount=discount.formatted}}
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#each product.custom_fields}}
+                    <dt class="productView-info-name">{{name}}:</dt>
+                    <dd class="productView-info-value">{{{value}}}</dd>
+                {{/each}}
+            </dl> -->
+        </div>
+    </section>
+
+    <div class="productView-canvas" id="cloneclass" >
+        
+    </div>
+
+
+
+<!--     <section class="productView-images" data-image-gallery>
+        <figure class="productView-image"
+                data-image-gallery-main
+                data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
+                >
+            <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
+                <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" data-main-image>
+            </a>
+        </figure>
+
+        <ul class="productView-thumbnails">
+               <li class="productView-thumbnail">
+                    <a
+                        class="productView-thumbnail-link"
+                        href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-item
+                        data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
+                        <img src="{{getImage this 'productthumb_size' (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}">
+                    </a>
+                </li>
+       </ul>
+        
+        <p class="note">Click on individual gauges below to edit and learn more about each one</p>
+        
+
+
+    </section> -->
+
+    <section class="productView-details">
+        <div class="productView-options">
+            {{#if product.release_date }}
+                <p>{{product.release_date}}</p>
+            {{/if}}
+
+
+
+        </div>
+
+        {{{snippet 'product_details'}}}
+    </section>
+
+    </div>
+
+<div id="previewModal" class="modal modal--large" data-reveal>
+    <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+        <span aria-hidden="true">&#215;</span>
+    </a>
+    <div class="modal-content"></div>
+    <div class="loadingOverlay"></div>
+</div>
+	 
+
+
+	 
+	 
+ </div>
+ 
+ 
+ <div class="col-sm-12 col-md-4 col-lg-4 sidebar">
+
+    <div class="productView-price">
+        <p class="kit-price-txt">Total Kit Price</p> {{> components/products/price price=product.price schema_org=schema}}
+    </div>
+	 
+	 <div class="gauge-specs" >
+		 <div class="title">Gauge Specs</div>
+		 <ul>
+            {{login.heading}}
+			 <li><b>Type:</b> GPS</li>
+			 <li><b>Size:</b> 4 - 1/2"</li>
+			 <li><b>Sweep:</b> 4 - 1/2"</li>
+			 <li><b>Turn Signals:</b> No</li>
+			 <li><b>High Beam:</b> Yes</li>
+		 </ul>
+	 </div>
+	 
+	 	 
+	 <div class="customize-your-gauge">
+
+<!--         <div id="customizeGaugePreview">
+        </div> -->
+
+		 <div class="title">Customize Your Gauge</div>
+		 
+         <ul>
+<!--              <li class="listOptions" > 
+                <p class="listOptions-title"></p>
+             </li> -->
+
+			<!--  <li class="color "> <i class="fa fa-eyedropper"></i> <b>Color</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="font-style "> <i class="fa fa-font"></i> <b>Font Style</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="tick-style "> <i class="fa fa-tachometer"></i> <b>Tick Style</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="graphic "> <i class="fa fa-paint-brush"></i> <b>Graphic</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="logo "> <i class="fa fa-picture-o"></i> <b>Logo</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="text "> <i class="fa fa-text-width" aria-hidden="true"></i> <b>Text</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="pointer "> <img src="{{cdn '/assets/img/customicon-pointer.png'}}" /> <b>Pointer</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="bezel "> <img src="{{cdn '/assets/img/customicon-bezel.png'}}" /> <b>Bezel</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="window "> <img src="{{cdn '/assets/img/customicon-window.png'}}" /> <b>Window</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="disc "> <img src="{{cdn '/assets/img/customicon-disc.png'}}" /> <b>Disc</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+			 <li class="gauge-note "> <i class="fa fa-pencil-square-o"></i> <b>Gauge Note:</b> <span class="info">Add a note</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li> -->
+		 </ul>
+		 
+		 
+		 <div class="options-overlay">
+
+
+			 
+			 <div class="heading-title">
+				<span> <i class="fa fa-paint-brush"></i> <b>Graphic</b> <span class="info">Choose</span> </span>
+			 </div>
+			 
+			 <div class="content">
+				 			 
+			    <div class="actions">
+				 <a class="cancel">Cancel</a>
+				 <a class="apply-to-kit">Apply to Kit</a>
+				 <a class="apply-to-gauge">Apply to Gauge</a>
+			    </div>
+			 
+			 </div>
+			 
+			 
+			 
+			 
+		 </div> <!-- end of options overlay -->
+		 
+		 
+	 </div>
+	 
+	 <p class="note">* Current handling time is 10-15 business days.</p>
+	 
+ </div> <!-- end of sidebar -->
+
+ </div> <!-- end product customizer section -->
+
+    <div id="customizeGaugePreview">
+
+    </div>
+
+
+<div class="add-to-cart-sticky">
+    
+            
+            {{#if product.call_for_price}}
+                <p class="productView-price">
+                    <span>{{product.call_for_price}}</span>
+                </p>
+            {{/if}}
+            {{#if product.price}}
+<!--                 <div class="productView-price">
+                   <p class="kit-price-txt">Total Kit Price</p> {{> components/products/price price=product.price schema_org=schema}}
+                </div> -->
+            {{/if}}
+
+    
+    
+    <!-- <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="product_id" value="{{product.id}}"/>
+
+
+                    {{#each product.customizations}}
+                        {{{dynamicComponent 'components/products/customizations'}}}
+                    {{/each}}
+                <div data-product-option-change>
+                    {{#each product.options}}
+                        {{{dynamicComponent 'components/products/options'}}}
+                    {{/each}}
+                </div> 
+
+                {{#if product.event_date}}
+                    <div class="form-field">
+                        <label class="form-label form-label--alternate form-label--inlineSmall">
+                        {{product.event_date.name}}:
+                        <small>{{lang 'common.required'}}</small>
+                        </label>
+                        <select class="form-select form-select--date" name="EventDate[Mth]" required>
+                            <option value="">{{lang 'common.month'}}</option>
+                            {{#enumerate 1 12}}
+                                <option value="{{this}}">{{getShortMonth this}}</option>
+                            {{/enumerate}}
+                        </select>
+                        <select class="form-select form-select--date" name="EventDate[Day]" required>
+                            <option value="">{{lang 'common.day'}}</option>
+                            {{#enumerate 1 31}}
+                                <option value="{{this}}">{{this}}</option>
+                            {{/enumerate}}
+                        </select>
+                        <select class="form-select form-select--date" name="EventDate[Yr]" required>
+                            <option value="">{{lang 'common.year'}}</option>
+                            {{#enumerate product.event_date.earliest_year product.event_date.latest_year}}
+                                <option value="{{this}}" >{{this}}</option>
+                            {{/enumerate}}
+                        </select>
+                    </div>
+                {{/if}}
+
+                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+                    <label class="form-label form-label--alternate">
+                        {{lang 'products.current_stock'}}
+                        <span data-product-stock>{{product.stock_level}}</span>
+                    </label>
+
+                </div>
+                -->
+                {{#if product.can_purchase}}
+
+                    <div class="form-field form-field--increments">
+                        <label class="form-label form-label--alternate"
+                               for="qty[]">{{lang 'products.quantity'}}</label>
+
+                        <div class="form-increment" data-quantity-change>
+
+
+                            <button class="button button--icon" data-action="inc">
+                                <span class="u-hiddenVisually">{{lang 'products.quantity_increase'}}</span>
+                                <i class="icon" aria-hidden="true">
+                                    <svg>
+                                        <use xlink:href="#icon-keyboard-arrow-up"/>
+                                    </svg>
+                                </i>
+                            </button>
+
+
+                        
+
+                            <input class="form-input form-input--incrementTotal"
+                                   id="qty[]"
+                                   name="qty[]"
+                                   type="tel"
+                                   value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                   data-quantity-min="{{product.min_purchase_quantity}}"
+                                   data-quantity-max="{{product.max_purchase_quantity}}"
+                                   min="1"
+                                   pattern="[0-9]*"
+                                   aria-live="polite">
+
+                            <button class="button button--icon" data-action="dec">
+                                <span class="u-hiddenVisually">{{lang 'products.quantity_decrease'}}</span>
+                                <i class="icon" aria-hidden="true">
+                                    <svg>
+                                        <use xlink:href="#icon-keyboard-arrow-down"/>
+                                    </svg>
+                                </i>
+                            </button>
+                            
+                        </div>
+                    </div>
+
+                    <div class="alertBox productAttributes-message" >
+                        <div class="alertBox-column alertBox-icon">
+                            <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+                        </div>
+                        <p class="alertBox-column alertBox-message"></p>
+                    </div>
+
+                    <div class="form-action">
+                        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit" value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+                    </div>
+                    {{{snippet 'product_addtocart'}}}
+                {{/if}}
+                {{#if product.out_of_stock}}
+                    {{#if product.out_of_stock_message}}
+                        {{>components/common/alert-error product.out_of_stock_message}}
+                    {{else}}
+                        {{>components/common/alert-error (lang 'products.sold_out')}}
+                    {{/if}}
+                {{/if}}
+
+            </form> 
+
+    
+    
+</div>
+
+
+</div> 
