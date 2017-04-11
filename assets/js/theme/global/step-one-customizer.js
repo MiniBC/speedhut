@@ -13,7 +13,7 @@ var CustomizerStepOneObject = {
 			card += ' <div class="img"><img src=https://store-ta980ko58k.mybigcommerce.com/product_images/' + this.parseImg( gaugeKit[i].image_file  ) + ' /></div> ';
 			card += ' <div class="card-content"> ';
 			card += ' <div class="title"> ' + gaugeKit[i].name + '</div> ';
-			card += ' <div class="description">' + this.parseShortDescription(gaugeKit[i].description) + '</div> ';
+			card += ' <div class="description">' + gaugeKit[i].description + '</div> ';
 			card += ' <div class="longDescription" style="display:none">' + gaugeKit[i].description + '</div> ';
 			card += ' <i class="material-icons kitInfo"><a href="javascript:void(0);">info_outline</a></i> ';
 			card += ' <span class="kitid" style="visibility:hidden" >' + gaugeKit[i].id + '</span>';
