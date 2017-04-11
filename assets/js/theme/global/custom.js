@@ -1,8 +1,24 @@
 import $ from 'jquery';
 /* eslint-disable */
 
-//Global Customizer Object that needs to share data and functions across all customizer steps
 
+function resizeSidebarOnScroll() {
+  const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+  shrinkOn = 245,
+  headerEl = document.body;
+  
+  if (distanceY > shrinkOn) {
+    headerEl.classList.add("fixed-items");
+  } else {
+    headerEl.classList.remove("fixed-items");
+  }
+}
+
+window.addEventListener('scroll', resizeSidebarOnScroll);
+
+
+
+//Global Customizer Object that needs to share data and functions across all customizer steps
 var customGaugeObject = {
     gauges: [],
 }

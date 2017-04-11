@@ -685,9 +685,6 @@ ul.cards {
 }
 
 .gauges-selected {
-	background: #fff;
-	padding: 16px;
-	box-shadow: 0 0 3px #999999;
 }
 
 .gauges-selected h2 {
@@ -793,6 +790,20 @@ ul.cards {
 .gauges-selected .delete a:hover {
 	color: #000;
 } 
+
+.gauges-selected .wrapper {
+	background: #fff;
+	padding: 10px;
+	box-shadow: 0 0 3px #999999;
+	display: inline-block;
+	width: 100%;
+}
+
+body.fixed-items .gauges-selected .wrapper {
+	position: fixed;
+	top: 12px;
+	max-width: 320px;
+}
 
 
 .select-style {

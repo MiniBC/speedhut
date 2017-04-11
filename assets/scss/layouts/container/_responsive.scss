@@ -128,20 +128,20 @@ body {overflow-x: hidden;}
 	body.Customizer .sidebar {width: 100%; max-width: 100%;}
 	.customize-your-gauge li b {width: 100px; margin-right: 15px;}
 	.customize-your-gauge li .info {margin-top: 0; width: 100px;}
-	body.Customizable .body {margin-top: 1px !important;}
-	body.Customizable .mobileMenu-toggle {display: none;}
+	body.CustomizerApp .body {margin-top: 1px !important;}
+	body.CustomizerApp .mobileMenu-toggle {display: none;}
 	.preview-window .productView-images {margin-top: 20px;}
-	body.Customizable .header-logo {}
+	body.CustomizerApp .header-logo {}
 	.productView-info-name, .productView-info-value {float: none;}
-	body.Customizable #form-action-addToCart {font-size: 16px; height: 45px; line-height: 45px;}
-	body.Customizable .add-to-cart-sticky .price {font-size: 19px;}
-	body.Customizable .add-to-cart-sticky .kit-price-txt {display: none;}
-	body.Customizable .add-to-cart-sticky {height: 80px; line-height: 89px;}
-	body.Customizable #form-action-addToCart {padding: 0 25px;}
+	body.CustomizerApp #form-action-addToCart {font-size: 16px; height: 45px; line-height: 45px;}
+	body.CustomizerApp .add-to-cart-sticky .price {font-size: 19px;}
+	body.CustomizerApp .add-to-cart-sticky .kit-price-txt {display: none;}
+	body.CustomizerApp .add-to-cart-sticky {height: 80px; line-height: 89px;}
+	body.CustomizerApp #form-action-addToCart {padding: 0 25px;}
 	
-	body.Customizable {padding-top: 0;}
-	body.Customizable .header {position: relative !important;}
-	body.Customizable .header-logo > a {padding: 0;}
+	body.CustomizerApp {padding-top: 0;}
+	body.CustomizerApp .header {position: relative !important;}
+	body.CustomizerApp .header-logo > a {padding: 0;}
 	
 	
 	}
@@ -162,8 +162,8 @@ body {overflow-x: hidden;}
 	.productGrid .product {width: 50% !important;}
 	
 	.stepper ul li a span {display: none;}
-	body.Customizable .call-us-at {display: none !important;}
-	body.Customizable .back-to-home {display: none !important;}
+	body.CustomizerApp .call-us-at {display: none !important;}
+	body.CustomizerApp .back-to-home {display: none !important;}
 	
 	ul.cards {margin: 0;}
 	#CustomizerContainer .tab-content h1 {font-size: 2rem;}
@@ -175,6 +175,7 @@ body {overflow-x: hidden;}
 	.stepper ul li a {width: 35px; height: 35px; line-height: 35px; padding: 0;}
 	.stepper ul li.is-active a {background: #000; color: #fff; width: 35px; height: 35px; line-height: 35px; padding: 0; border-radius: 100px;}	
 	#step-two .card-item { margin: 0 0 30px; }
+
 
 }
 
