@@ -250,7 +250,7 @@ function displaySelectedGauges() {
         selectedGaugeSideBar += '<div class="col-xs-6 col-lg-7">';
         selectedGaugeSideBar += '<div class="gaugeid" style="display:none;">'+ customGaugeObject.gauges[i].gaugeProductId +'</div>';
         selectedGaugeSideBar += ' <div class="title">' + customGaugeObject.gauges[i].gaugeName + '</div> ';
-        selectedGaugeSideBar += ' <div class="price">$108.57</div> ';
+        selectedGaugeSideBar += ' <div class="price">'+ parseFloat(customGaugeObject.gauges[i].gaugePrice).toFixed(2) + '</div> ';
         selectedGaugeSideBar += ' </div> ';
          selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
         selectedGaugeSideBar += " <div class='delete'><a class='removeAttributes' href='#''><i class='material-icons'>delete</i></a></div> ";
@@ -542,7 +542,7 @@ $( "body" ).on("click", ".lightbox-attributes .action-btn .editGauge", function(
 
 });
 
-//-- This function is called when a gague is added --//
+//-- This function is called when a gauge is added --//
 $( "body" ).on("click", ".lightbox-attributes .action-btn .addGauge", function() {
 
     /*
@@ -569,7 +569,8 @@ $( "body" ).on("click", ".lightbox-attributes .action-btn .addGauge", function()
                                     "gaugeName" :  currentGauge, 
                                     "gaugeAttribute" : gaugeProperties, 
                                     "gaugeLayers" : $("#pcCanvas").html(),
-                                    "gaugeProductId" : selectedGaugeId
+                                    "gaugeProductId" : selectedGaugeId,
+                                    "gaugePrice" : window.customizerObject
                                 }); 
 
     displaySelectedGauges();
@@ -582,11 +583,24 @@ $( "body" ).on("click", ".lightbox-attributes .action-btn .addGauge", function()
 // -- The remove button has been clicked -- // 
 $( "body" ).on( "click", ".removeAttributes", function() {
 
-    var removedIndex = $(this).parent().parent().index();
+    console.log("inside remove attributes");
+
+    // var removedIndex = $(this).parent().parent().index();
+
+    // console.log(removedIndex);
+
+    var removedIndex = $(this).parent().parent().parent().index();
 
     customGaugeObject.gauges.splice(removedIndex, 1);
 
-    $(this).parent().parent().remove();
+    // $(this).parent().parent().parent().parent().remove();
+
+
+    //console.log( $(this).parent().parent().parent().index() );
+
+    $(this).parent().parent().parent().remove();
+
+    //console.log();
 
 });
 

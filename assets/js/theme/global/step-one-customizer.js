@@ -15,7 +15,7 @@ var CustomizerStepOneObject = {
 			card += ' <div class="title"> ' + gaugeKit[i].name + '</div> ';
 			card += ' <div class="description">' + this.parseShortDescription(gaugeKit[i].description) + '</div> ';
 			card += ' <div class="longDescription" style="display:none">' + gaugeKit[i].description + '</div> ';
-			card += ' <i class="material-icons kitInfo"><a href="javascript:void(0);">info_outline</a></i> ';
+			card += ' <i class="material-icons kitInfo"><a class="kitmodal" href="#openModal">info_outline</a></i> ';
 			card += ' <span class="kitid" style="visibility:hidden" >' + gaugeKit[i].id + '</span>';
 			card += ' <span class="kitname" style="visibility:hidden" >' + gaugeKit[i].name + '</span>';
 			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">START WITH ' + gaugeKit[i].name + '</a></div> ';
@@ -59,8 +59,27 @@ var CustomizerStepOneObject = {
 
 		})
 	},
+	populateModal: function( ) {
+
+
+
+	}
 	
 }
+
+$("body").on("click", ".kitmodal", function() {
+
+
+	//$("#modaltitle").text("modal title");
+	//$("#modaldescription").text("modal description");
+
+	var kittitle = $(this).parent().siblings(".kitname").text();
+	var kitdescription = $(this).parent().siblings(".longDescription").text();
+
+	$("#modaltitle").text( kittitle );
+	$("#modaldescription").text( kitdescription );
+
+});
 
 //Step one : A Kit Was Selected
 $( "body" ).on( "click", ".startsteptwo", function(  ) {

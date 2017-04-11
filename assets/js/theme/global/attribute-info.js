@@ -39,24 +39,24 @@ function buildAttributeKitDetails( self ) {
 
 }
 
-function displayPopupWindow( popuptype ) {
+// function displayPopupWindow( popuptype ) {
 
- 	switch (popuptype) {
-            case "gaugeAttribute":  
-				var finalwindow = popupTemplateDetails + popupTemplateAttributeOptionsDetails;
-            	break;
-            case "kits":  
-				var finalwindow = popupTemplateKitDetails;
-                break;
-            default: 
-				var finalwindow = "An error has occured, please try again.";
-                break;
-        }
+//  	switch (popuptype) {
+//             case "gaugeAttribute":  
+// 				var finalwindow = popupTemplateDetails + popupTemplateAttributeOptionsDetails;
+//             	break;
+//             case "kits":  
+// 				var finalwindow = popupTemplateKitDetails;
+//                 break;
+//             default: 
+// 				var finalwindow = "An error has occured, please try again.";
+//                 break;
+//         }
 
-	var x = window.open('', '', 'width=600,height=300');
-    x.document.body.innerHTML = finalwindow;
+// 	var x = window.open('', '', 'width=600,height=300');
+//     x.document.body.innerHTML = finalwindow;
 
-}
+// }
 
 
 module.exports = function() {

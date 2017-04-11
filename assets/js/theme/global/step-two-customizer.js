@@ -180,18 +180,11 @@ var CustomizerStepTwoObject = {
 
     	for(var i = 0; i < attributes.length; i++) {
 
-    		//var currentAttributesIndex = attributes[i];
-
     	    attributes[i].forEach(function(item, index, array) {
 
-    	    	console.log(item);
-
-    	    	console.log(typeof item.text );
 
 	        	customfieldsGaugeAttributes += "<div class='attribute'>";
                 customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'>info_outline</i></label>";
-                //customfieldsGaugeAttributes += "<div class='select-style'>";
-                //customfieldsGaugeAttributes += "<select class='attributeOption' >";
 
             	if( typeof item.text === 'object' ) {
 
@@ -321,9 +314,20 @@ module.exports = function() {
 		//-- Select gauge attribute has been selected --//
 		$( "body" ).on( "click", "#step-two .card-item .action-btn a", function() { //gauge selected function called
 
+            //alert("hello world!!!!");
+
 		    var customFieldsObject = {}; //Empty object for custom fields
 		    //var selectedGaugeId = $(this).parent().siblings(".gaugeid").text(); //get AttributesId
-		    var productTitle = $(this).parent().siblings(".title").text();; //Get the title of the gauge that was clicked.
+		    var productTitle = $(this).parent().siblings(".title").text(); //Get the title of the gauge that was clicked.
+            //var guagePrice = $(this).parent().siblings(".price").text();
+
+            var priceindex = $(this).parent().parent().parent().index();
+
+            //console.log(guagePrice);
+
+            window.customizerObject = CustomizerStepTwoObject.productsFromKit[priceindex].price;
+
+            //console.log( CustomizerStepTwoObject.productsFromKit[priceindex].price );
 
 		    CustomizerStepTwoObject.findSelectedAttributes( productTitle );
 		    
@@ -339,7 +343,4 @@ module.exports = function() {
 	});
 
 };
-
-
-
 

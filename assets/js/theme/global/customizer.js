@@ -5,6 +5,7 @@ import $ from 'jquery';
 window.customizerObject = {
 
 	currentStep: 1,
+    priceset: 0,
 
     loadStepOne: function() {
 
