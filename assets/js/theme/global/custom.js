@@ -229,14 +229,18 @@ function displaySelectedGauges() {
 
     for(var i = 0; i < customGaugeObject.gauges.length; i++) {
 
-        selectedGaugeSideBar += '<li>';
-        selectedGaugeSideBar += "<div class='col-xs-3 col-lg-3 img'><img src=https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/gauge-thumbnail.png?t=1491341476&_ga=1.143031165.995689909.1490710177/></div>";
-        selectedGaugeSideBar += '<div class="col-xs-7 col-lg-7">';
+        selectedGaugeSideBar += '<li class="animated fadeIn">';
+        selectedGaugeSideBar += "<div class='col-xs-2 col-lg-2 img'><img src=https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/gauge-thumbnail.png?t=1491341476&_ga=1.143031165.995689909.1490710177/></div>";
+        selectedGaugeSideBar += '<div class="col-xs-6 col-lg-7">';
         selectedGaugeSideBar += '<div class="gaugeid" style="display:none;">'+ customGaugeObject.gauges[i].gaugeProductId +'</div>';
         selectedGaugeSideBar += ' <div class="title">' + customGaugeObject.gauges[i].gaugeName + '</div> ';
-        selectedGaugeSideBar += ' <div class="edit"><a href="#" class="editAttributes" >Edit Attributes</a></div> ';
+        selectedGaugeSideBar += ' <div class="price">$108.57</div> ';
         selectedGaugeSideBar += ' </div> ';
-        selectedGaugeSideBar += " <div class='col-xs-2 col-lg-2 delete'><a class='removeAttributes' href='#''><img src=http://cdn3.bigcommerce.com/s-ta980ko58k/stencil/e5183800-cba6-0134-e23c-525400970412/1400e060-cba7-0134-e230-525400970412/img/delete-gauge.png /></a></div> ";
+         selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
+        selectedGaugeSideBar += " <div class='delete'><a class='removeAttributes' href='#''><i class='material-icons'>delete</i></a></div> ";
+        selectedGaugeSideBar += ' <div class="edit"><a href="#" class="editAttributes" ><i class="material-icons">mode_edit</i></a></div> ';
+        selectedGaugeSideBar += ' </div> ';
+        
         selectedGaugeSideBar += '</li>';
 
     }
@@ -256,13 +260,16 @@ function addSingleGaugeToSideBar( gaugeName ) {
     var selectedGaugeSideBar = "";
 
     selectedGaugeSideBar += '<li>';
-    selectedGaugeSideBar += "<div class='col-xs-3 col-lg-3 img'><img src=http://cdn3.bigcommerce.com/s-ta980ko58k/stencil/e5183800-cba6-0134-e23c-525400970412/1400e060-cba7-0134-e230-525400970412/img/style-demo.jpg /></div>";
+    selectedGaugeSideBar += "<div class='col-xs-3 col-lg2 img'><img src=http://cdn3.bigcommerce.com/s-ta980ko58k/stencil/e5183800-cba6-0134-e23c-525400970412/1400e060-cba7-0134-e230-525400970412/img/style-demo.jpg /></div>";
     selectedGaugeSideBar += '<div class="col-xs-7 col-lg-7">';
     selectedGaugeSideBar += '<div class="gaugeid" style="display:none;">'+ getGaugeIdByName(gaugeName) +'</div>';
     selectedGaugeSideBar += ' <div class="title">' + gaugeName + '</div> ';
     selectedGaugeSideBar += ' <div class="edit"><a href="#" class="editAttributes" >Edit Attributes</a></div> ';
     selectedGaugeSideBar += ' </div> ';
-    selectedGaugeSideBar += " <div class='col-xs-2 col-lg-2 delete'><a class='removeAttributes' href='#''><img src=http://cdn3.bigcommerce.com/s-ta980ko58k/stencil/e5183800-cba6-0134-e23c-525400970412/1400e060-cba7-0134-e230-525400970412/img/delete-gauge.png /></a></div> ";
+	selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
+	selectedGaugeSideBar += " <div class='delete'><a class='removeAttributes' href='#''><i class='material-icons'>delete</i></a></div> ";
+	selectedGaugeSideBar += ' <div class="edit"><a href="#" class="editAttributes" ><i class="material-icons">mode_edit</i></a></div> ';
+	selectedGaugeSideBar += ' </div> ';
     selectedGaugeSideBar += '</li>';
 
     $("#gaugeSelected").html(selectedGaugeSideBar);

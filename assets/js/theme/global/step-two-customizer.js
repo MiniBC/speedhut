@@ -48,14 +48,14 @@ var CustomizerStepTwoObject = {
 
     		var selectedKitGauges = "";
 
-		    selectedKitGauges += '<li class="card-item">';
+		    selectedKitGauges += '<li class="card-item animated fadeIn">';
 		    selectedKitGauges += '<div class="img style-img"><img src="https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177" /></div>';
 		    selectedKitGauges += '<div class="card-content">';
 		    selectedKitGauges += '<div class="title"> ' + this.productsFromKit[i].title + ' </div>';
+		   	selectedKitGauges += '<div class="price"><span>Starting From:</span> ' + parseFloat(this.productsFromKit[i].price).toFixed(2) + ' </div>';
 		    // selectedKitGauges += '<div class="description"> ' + item.description + ' </div>';
 		    //selectedKitGauges += '<div class="gaugeid" style="display:none"> ' + item.id + ' </div>';
 		    selectedKitGauges += '<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>';
-		   	selectedKitGauges += '<div class="price"> Starting From: ' + parseFloat(this.productsFromKit[i].price).toFixed(2) + ' </div>';
 		    selectedKitGauges += "</div>";
 		    selectedKitGauges += '</li>';
 
