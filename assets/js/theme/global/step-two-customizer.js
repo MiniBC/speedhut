@@ -24,6 +24,84 @@ var CustomizerStepTwoObject = {
         });
 
     },
+        buildAttributeDropdown: function( attributes ) {
+
+        $("#customFieldAttribute").html("");
+        var customfieldsGaugeAttributes = "";
+
+        //for(var i = 0; i < attributes.length; i++) {
+
+            attributes.forEach(function(item, index, array) {
+
+                //console.log( item.name );
+
+
+                customfieldsGaugeAttributes += "<div class='attribute'>";
+                customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'>info_outline</i></label>";
+
+                //console.log( item.text.length );
+
+                if(item.text.length == 1) {
+
+                    customfieldsGaugeAttributes += "<p> "+ item.text +" </p>";
+
+                } else if( item.text.length > 1 ) {
+
+                    customfieldsGaugeAttributes += "<div class='select-style'>";
+                    customfieldsGaugeAttributes += "<select class='attributeOption' >";
+
+                    for(var i = 0; i < item.text.length; i++) { 
+
+                        customfieldsGaugeAttributes += "<option value=" + item.text[i] + "> "+ item.text[i] +" </option>";            
+
+                    }
+
+                    customfieldsGaugeAttributes += "</select>";
+                    customfieldsGaugeAttributes += "</div>";
+
+                }
+
+                // if( typeof item.text === 'object' ) {
+
+                //     if( item.text.length === 1  ) {
+
+                //         customfieldsGaugeAttributes += "<p> "+ item.text +" </p>";
+
+                //     } else {
+
+                //         customfieldsGaugeAttributes += "<div class='select-style'>";
+                //         customfieldsGaugeAttributes += "<select class='attributeOption' >";
+
+                //             for(var i = 0; i < item.text.length; i++) { 
+
+                //                 customfieldsGaugeAttributes += "<option value=" + item.text[i] + "> "+ item.text[i] +" </option>";            
+
+                //             }
+
+                //         customfieldsGaugeAttributes += "</select>";
+                //         customfieldsGaugeAttributes += "</div>";
+
+                //     }
+                
+                // } else {
+                
+                //     //customfieldsGaugeAttributes += "<option value=" + item.text + "> "+ item.text +" </option>";
+                //     customfieldsGaugeAttributes += "<p> "+ item.text +" </p>";            
+
+  
+                
+                // }
+
+                customfieldsGaugeAttributes += "</div>";
+
+            });
+        //}
+
+        $("#customFieldAttribute").prepend(customfieldsGaugeAttributes);
+
+        
+
+    },
     getGaugeTypeCategories: function( categories ) {
 
     	for(var i = 0; i < categories.length; i++) {
@@ -42,12 +120,12 @@ var CustomizerStepTwoObject = {
     },
     findStartingPrice: function( attributesData ) {
 
-        console.log("inside function find starting..");
+        //console.log("inside function find starting..");
         //console.log( attributesData.length );
 
         var lowestPrice = attributesData[attributesData.length - 1][ attributesData[attributesData.length - 1].length - 1 ];
 
-        console.log( lowestPrice );
+        //console.log( lowestPrice );
 
         for( var i = 0; i < attributesData.length; i++ ) {
 
@@ -59,17 +137,11 @@ var CustomizerStepTwoObject = {
 
                 }
 
-                //console.log( lowestPrice );
-                //console.log( attributesData[i][ attributesData[i].length - 1 ].price );
-                //console.log( attributesData[i][k] );
-                //console.log( attributesData[i][0] );
             }
 
         }
 
         return lowestPrice;
-        //console.log( lowestPrice );
-        //console.log("---------------------------------------");
 
     },
     buildGaugeTypeCards: function() {
@@ -78,7 +150,7 @@ var CustomizerStepTwoObject = {
 
     	for(var i = 0; i < CustomizerStepTwoObject.cacheKitProducts.length; i++) {
 
-            console.log( CustomizerStepTwoObject.cacheKitProducts[i] );
+            //console.log( CustomizerStepTwoObject.cacheKitProducts[i] );
 
     		var selectedKitGauges = "";
 
@@ -98,40 +170,78 @@ var CustomizerStepTwoObject = {
 		}
 
     },
-    checkIfGaugeTypeExist: function( currentTitle, itemtest ) { //this function prevents repeted gauge types from showing up. 
+    buildAttributesPage: function(attributes) {
 
-    	//console.log(itemtest.custom_fields.customFieldData);
+        //console.log("build page");
+        console.log(attributes);
 
-    	for(var i = 0; i < this.productsFromKit.length; i++) {
+        var selectGaugeAttributes = [];
 
-    		if( this.productsFromKit[i].title === currentTitle ) { 
+        for(var i = 0; i < attributes.length; i++) {
 
-    			return false;
+            console.log(attributes.length);
 
+            for(var k = 0; k < attributes[i].length-1; k++) {
+
+                //console.log(attributes[i].length);
+                console.log(attributes[i][k].name);
+                console.log(attributes[i][k].text);
+
+                var attributeExist = this.checkIfCustomFieldsAttributeExist(selectGaugeAttributes, attributes[i][k].name);
+
+                console.log(attributeExist);
+
+                if(attributeExist === true) {
+
+                    var attribute = { "name": attributes[i][k].name, "text" : [ attributes[i][k].text ] };
+
+                    selectGaugeAttributes.push( attribute );
+
+                } else {
+
+                    if( selectGaugeAttributes[attributeExist].text.indexOf( attributes[i][k].text ) == -1 ) {
+
+                        selectGaugeAttributes[attributeExist].text.push( attributes[i][k].text );
+
+                    }
+
+                }
+
+
+            }
+
+        }
+
+
+        this.buildAttributeDropdown( selectGaugeAttributes );
+
+    },
+    buildpagewithAttributes() {
+
+    },
+    checkIfCustomFieldsAttributeExist: function(customFieldsObject, customFieldName) {
+
+        //console.log(customFieldsObject);
+        //console.log(customFieldName);
+
+    	//within this function we will loop the customFieldObject and check if for a custom field name this will determine if the function
+    	//Format gauge type attribute needs to add a new object to an array or add to an exisiting objects property
+    	// console.log("inside checkIfCustomFieldsAttributeExist");
+
+    	for(var i = 0; i < customFieldsObject.length; i++) {
+
+            console.log( customFieldsObject[i].name );
+
+    		if( customFieldsObject[i].name == customFieldName  ) {
+    		
+    			return i;
+    	
     		}
 
     	}
 
         return true;
 
-    },
-    checkIfCustomFieldsAttributeExist: function(customFieldsObject, customFieldName) {
-
-    	//within this function we will loop the customFieldObject and check if for a custom field name this will determine if the function
-    	//Format gauge type attribute needs to add a new object to an array or add to an exisiting objects property
-    	console.log("inside checkIfCustomFieldsAttributeExist");
-
-    	for(var i = 0; i < customFieldsObject.length; i++) {
-
-    		if( customFieldsObject[i].name === customFieldName  ) {
-    		
-    			return customFieldsObject[i];
-    	
-    		}
-
-    	}
-
-    	return true;
 
     },
     addCustomFields: function( item ) {
@@ -205,60 +315,6 @@ var CustomizerStepTwoObject = {
 
     },
     doesAttributeExist: function(){
-
-    },
-    buildAttributeDropdown: function( attributes ) {
-
-    	$("#customFieldAttribute").html("");
-    	var customfieldsGaugeAttributes = "";
-
-    	for(var i = 0; i < attributes.length; i++) {
-
-    	    attributes[i].forEach(function(item, index, array) {
-
-
-	        	customfieldsGaugeAttributes += "<div class='attribute'>";
-                customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'>info_outline</i></label>";
-
-            	if( typeof item.text === 'object' ) {
-
-           			if( item.text.length === 1  ) {
-
-           				customfieldsGaugeAttributes += "<p> "+ item.text +" </p>";
-
-           			} else {
-
-		            	customfieldsGaugeAttributes += "<div class='select-style'>";
-		                customfieldsGaugeAttributes += "<select class='attributeOption' >";
-
-			         	   	for(var i = 0; i < item.text.length; i++) { 
-
-			               		customfieldsGaugeAttributes += "<option value=" + item.text[i] + "> "+ item.text[i] +" </option>";            
-
-			                }
-
-			            customfieldsGaugeAttributes += "</select>";
-		                customfieldsGaugeAttributes += "</div>";
-
-           			}
-                
-                } else {
-                
-              		//customfieldsGaugeAttributes += "<option value=" + item.text + "> "+ item.text +" </option>";
-              		customfieldsGaugeAttributes += "<p> "+ item.text +" </p>";            
-
-  
-                
-                }
-
-                customfieldsGaugeAttributes += "</div>";
-
-    		});
-    	}
-
-    	$("#customFieldAttribute").prepend(customfieldsGaugeAttributes);
-
-    	
 
     },
     findSelectedAttributes: function( selectedGagueType ) {
@@ -371,9 +427,15 @@ module.exports = function() {
 
             var priceindex = $(this).parent().parent().parent().index();
 
+            //console.log(priceindex);
+
+            CustomizerStepTwoObject.buildAttributesPage( CustomizerStepTwoObject.cacheKitProducts[priceindex].attributes );
+            //console.log(  );
+
+
             //console.log(guagePrice);
 
-            window.customizerObject = CustomizerStepTwoObject.productsFromKit[priceindex].price;
+            //window.customizerObject = CustomizerStepTwoObject.productsFromKit[priceindex].price;
 
             //console.log( CustomizerStepTwoObject.productsFromKit[priceindex].price );
 
