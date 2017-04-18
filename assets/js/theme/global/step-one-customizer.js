@@ -49,6 +49,8 @@ var CustomizerStepOneObject = {
 			method: "GET",
 	        data: {gaugeKits: true},
 	        url: "http://schurton.com/speedhutcache/styles.php" 
+	        //url: "http://schurton.com/speedhutcache/styles.php" 
+
 
 		}).done(function( response ) {
 

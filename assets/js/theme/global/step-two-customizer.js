@@ -40,19 +40,53 @@ var CustomizerStepTwoObject = {
 
 
     },
+    findStartingPrice: function( attributesData ) {
+
+        console.log("inside function find starting..");
+        //console.log( attributesData.length );
+
+        var lowestPrice = attributesData[attributesData.length - 1][ attributesData[attributesData.length - 1].length - 1 ];
+
+        console.log( lowestPrice );
+
+        for( var i = 0; i < attributesData.length; i++ ) {
+
+            for( var k = 0; k < attributesData[i].length; k++ ) {
+
+                if( attributesData[i][ attributesData[i].length - 1 ].price < lowestPrice ) {
+
+                    lowestPrice = attributesData[i][ attributesData[i].length - 1 ].price;
+
+                }
+
+                //console.log( lowestPrice );
+                //console.log( attributesData[i][ attributesData[i].length - 1 ].price );
+                //console.log( attributesData[i][k] );
+                //console.log( attributesData[i][0] );
+            }
+
+        }
+
+        return lowestPrice;
+        //console.log( lowestPrice );
+        //console.log("---------------------------------------");
+
+    },
     buildGaugeTypeCards: function() {
 
     	$("#allAvaiable").html("");
 
-    	for(var i = 0; i < this.productsFromKit.length; i++) {
+    	for(var i = 0; i < CustomizerStepTwoObject.cacheKitProducts.length; i++) {
+
+            console.log( CustomizerStepTwoObject.cacheKitProducts[i] );
 
     		var selectedKitGauges = "";
 
 		    selectedKitGauges += '<li class="card-item animated fadeIn">';
 		    selectedKitGauges += '<div class="img style-img"><img src="https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177" /></div>';
 		    selectedKitGauges += '<div class="card-content">';
-		    selectedKitGauges += '<div class="title"> ' + this.productsFromKit[i].title + ' </div>';
-		   	selectedKitGauges += '<div class="price"><span>Starting From:</span> ' + parseFloat(this.productsFromKit[i].price).toFixed(2) + ' </div>';
+		    selectedKitGauges += '<div class="title"> ' + CustomizerStepTwoObject.cacheKitProducts[i].title + ' </div>';
+		   	selectedKitGauges += '<div class="price"><span>Starting From:</span> ' + parseFloat( this.findStartingPrice( CustomizerStepTwoObject.cacheKitProducts[i].attributes ) ).toFixed(2) + ' </div>';
 		    // selectedKitGauges += '<div class="description"> ' + item.description + ' </div>';
 		    //selectedKitGauges += '<div class="gaugeid" style="display:none"> ' + item.id + ' </div>';
 		    selectedKitGauges += '<div class="action-btn"><a class="gaugeType">Select Gauge Attributes</a></div>';
@@ -253,59 +287,73 @@ module.exports = function() {
 
 			CustomizerStepTwoObject.cacheKitProducts = {};
             $("#allAvaiable").html("");
+
+            console.log(window.customGaugeObject.kitname);
+
+            window.customizerObject.getBcKitData(window.customGaugeObject.kitname).then(function(data) {
+
+                CustomizerStepTwoObject.cacheKitProducts = JSON.parse(data);
+
+                console.log( CustomizerStepTwoObject.cacheKitProducts );
+
+            }).then(function() {
+
+                CustomizerStepTwoObject.buildGaugeTypeCards();
+
+            });
 			
-			window.customizerObject.getBcKitData(window.customGaugeObject.kitname).then(function( data ) { //Call function to get product data depending on the choosen kit. 
+			// window.customizerObject.getBcKitData(window.customGaugeObject.kitname).then(function( data ) { //Call function to get product data depending on the choosen kit. 
 
-				CustomizerStepTwoObject.cacheKitProducts = JSON.parse(data);
+			// 	CustomizerStepTwoObject.cacheKitProducts = JSON.parse(data);
 
-				console.log( CustomizerStepTwoObject.cacheKitProducts );
+			// 	console.log( CustomizerStepTwoObject.cacheKitProducts );
 
-	    	}).then(function() { //Find all gaugetypes
+	  //   	}).then(function() { //Find all gaugetypes
 	        	
-	        	var selectedKitGauges = '';
-	        	CustomizerStepTwoObject.productsFromKit = [];
+	  //       	var selectedKitGauges = '';
+	  //       	CustomizerStepTwoObject.productsFromKit = [];
 
-	        	//Now call function to set card Data.
-		    	CustomizerStepTwoObject.cacheKitProducts.forEach( function( item, index, array ) {
+	  //       	//Now call function to set card Data.
+		 //    	CustomizerStepTwoObject.cacheKitProducts.forEach( function( item, index, array ) {
 	            	
-		    		for(var i = 0; i < item.custom_fields.customFieldData.length; i++) {
+		 //    		for(var i = 0; i < item.custom_fields.customFieldData.length; i++) {
 
-		    			if( item.custom_fields.customFieldData[i].name == "Gauge Type" ) {
+		 //    			if( item.custom_fields.customFieldData[i].name == "Gauge Type" ) {
 
-		    				console.log( item.custom_fields.customFieldData[i] );
+		 //    				console.log( item.custom_fields.customFieldData[i] );
 
-		    				//check if title is already in gauge object 
-		    				var inObject  = CustomizerStepTwoObject.checkIfGaugeTypeExist( item.custom_fields.customFieldData[i].text, item );
+		 //    				//check if title is already in gauge object 
+		 //    				var inObject  = CustomizerStepTwoObject.checkIfGaugeTypeExist( item.custom_fields.customFieldData[i].text, item );
 
-		    				if( inObject ) {
+		 //    				if( inObject ) {
 
-		    					var gaugeTypeObject = { 
-		    											"title" : item.custom_fields.customFieldData[i].text, 
-		    											"attributes": [],
-		    											"price": item.price						
-		    										};
-		    					CustomizerStepTwoObject.productsFromKit.push( gaugeTypeObject );
+		 //    					var gaugeTypeObject = { 
+		 //    											"title" : item.custom_fields.customFieldData[i].text, 
+		 //    											"attributes": [],
+		 //    											"price": item.price						
+		 //    										};
+		 //    					CustomizerStepTwoObject.productsFromKit.push( gaugeTypeObject );
 
-		    				}
+		 //    				}
 
-		    				CustomizerStepTwoObject.addCustomFields( item );
+		 //    				CustomizerStepTwoObject.addCustomFields( item );
 
-		    			}
+		 //    			}
 
-		    		}
+		 //    		}
 
-	        	})
+	  //       	})
 
-	    	}).then(function() { //Now format customfields with multiple attributes
+	  //   	}).then(function() { //Now format customfields with multiple attributes
 
-	    		CustomizerStepTwoObject.formatGaugeTypeAttribute();
+	  //   		CustomizerStepTwoObject.formatGaugeTypeAttribute();
 
-	    	}).then(function() {
+	  //   	}).then(function() {
 
-	    		CustomizerStepTwoObject.buildGaugeTypeCards();
-	    		console.log(CustomizerStepTwoObject.productsFromKit);
+	  //   		CustomizerStepTwoObject.buildGaugeTypeCards();
+	  //   		console.log(CustomizerStepTwoObject.productsFromKit);
 
-	    	}); //object forEach closes;
+	  //   	}); //object forEach closes;
 
 		}
 
