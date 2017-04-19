@@ -100,6 +100,8 @@ var CustomizerStepTwoObject = {
         
         var selectedGaugeSideBar = "";
 
+        var gaugetotal = 0;
+
         for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
 
             selectedGaugeSideBar += '<li class="animated fadeIn">';
@@ -116,8 +118,14 @@ var CustomizerStepTwoObject = {
             
             selectedGaugeSideBar += '</li>';
 
+            var number = parseFloat(window.customizerObject.selectedGauges[i].gaugePrice).toFixed(2);
+            gaugetotal = parseFloat(number) + parseFloat(gaugetotal);
+
         }
 
+        console.log( gaugetotal );
+        //append total
+        $("#gaugetotal").html( gaugetotal.toFixed(2) );
         $("#gaugeSelected").html(selectedGaugeSideBar);
 
     },
@@ -147,22 +155,22 @@ var CustomizerStepTwoObject = {
     },
     buildAttributesPage: function(attributes) {
 
-        console.log(attributes);
+        //console.log(attributes);
 
         var selectGaugeAttributes = [];
 
         for(var i = 0; i < attributes.length; i++) {
 
-            console.log(attributes.length);
+            //console.log(attributes.length);
 
             for(var k = 0; k < attributes[i].length-1; k++) {
 
-                console.log(attributes[i][k].name);
-                console.log(attributes[i][k].text);
+                //console.log(attributes[i][k].name);
+                //console.log(attributes[i][k].text);
 
                 var attributeExist = this.checkIfCustomFieldsAttributeExist(selectGaugeAttributes, attributes[i][k].name);
 
-                console.log(attributeExist);
+                //console.log(attributeExist);
 
                 if(attributeExist === true) {
 
@@ -193,7 +201,7 @@ var CustomizerStepTwoObject = {
 
     	for(var i = 0; i < customFieldsObject.length; i++) {
 
-            console.log( customFieldsObject[i].name );
+           // console.log( customFieldsObject[i].name );
 
     		if( customFieldsObject[i].name == customFieldName  ) {
     		
@@ -235,7 +243,7 @@ var CustomizerStepTwoObject = {
     		if( CustomizerStepTwoObject.productsFromKit[i].attributes.length > 1) {
 
     			formatGaugeIndex = i;
-    			console.log( CustomizerStepTwoObject.productsFromKit[i].title );
+    			//console.log( CustomizerStepTwoObject.productsFromKit[i].title );
 
     			var newObject = [];
 
@@ -272,7 +280,7 @@ var CustomizerStepTwoObject = {
 
     	}
 
-    	console.log(this.productsFromKit);
+    	//console.log(this.productsFromKit);
 
     },
     findSelectedAttributes: function( selectedGagueType ) {
@@ -304,13 +312,13 @@ module.exports = function() {
 			CustomizerStepTwoObject.cacheKitProducts = {};
             $("#allAvaiable").html("");
 
-            console.log(window.customizerObject.kitname);
+           // console.log(window.customizerObject.kitname);
 
             window.customizerObject.getBcKitData(window.customizerObject.kitname).then(function(data) {
 
                 CustomizerStepTwoObject.cacheKitProducts = JSON.parse(data);
 
-                console.log( CustomizerStepTwoObject.cacheKitProducts );
+               // console.log( CustomizerStepTwoObject.cacheKitProducts );
 
             }).then(function() {
 
@@ -395,6 +403,9 @@ module.exports = function() {
             window.customizerObject.selectedGauges.splice(removedIndex, 1);
 
             $(this).parent().parent().parent().remove();
+
+            CustomizerStepTwoObject.displaySelectedGauges(); //redraw all gauges
+
 
         });
 
