@@ -6,7 +6,9 @@ window.customizerObject = {
 
 	currentStep: 1,
     priceset: 0,
-
+    kitname: "",
+    kitid: 0,
+    selectedGauges: [],
     loadStepOne: function() {
 
         $("#step-one").show();
@@ -22,13 +24,14 @@ window.customizerObject = {
 
         window.initsteptwo(); // call the global function within step 2 to load gauges
 
-   		$("#step-one").hide();
+    	$("#step-one").hide();
         $("#step-two").show();
     	$("#step-three").hide();
 
-   	    $("#first-step").css("color","#999");
+    	$("#first-step").css("color","#999");
         $("#second-step").css("color","black");
         $("#third-step").css("color","#999");
+
 
     },
     loadStepThree: function() {
@@ -79,26 +82,28 @@ window.customizerObject = {
      
 };
 
-//Create our global Gauge object that will remember all of the users selections 
-window.customGaugeObject = {
-	
-	kitname: "",
-    kitid: "",
-    selectedGauges: [],
-
-};
-
-
 //Step 1 in the header was clicked
 $("body").on("click", "#step-1", function() {
+
 	customizerObject.loadStepOne();
+
 })
+
 //Step 2 in the header was clicked
 $("body").on("click", "#step-2", function() {
 
-	customizerObject.loadStepTwo();
+    if( window.customizerObject.kitname !== "" ) {
+	
+       customizerObject.loadStepTwo();
+    
+    } else {
+
+        alert("select a kit to continue....");
+
+    }
 
 })
+
 //Step 3 in the header was clicked
 $("body").on("click", "#step-3", function() {
 	customizerObject.loadStepThree();

@@ -31,21 +31,6 @@ var cacheKitProducts = {};
 /* Global Function Start Here  */
 window.selectedKitObject = {}
 
-window.setCustomGaugeKit = function( kitname, gaugename ) {
-
-    customGaugeObject.productName = kitname;
-
-    var gauge = {
-
-        gaugeName: gaugename,
-        gaugeAttribute:[ {name:"name3"} ,{name:"3name"} ,{name:"name9"} ]
-
-    }
-
-    customGaugeObject.gauges.push(gauge); 
-
-}
-
 window.addtionalJsonNeeded = function( requesturl ) {
 
     return $.ajax({
@@ -71,8 +56,6 @@ var editIndex;
 function init() {
 
     $(".apply-to-kit").text("Apply to all Gauge");
-
-    window.testvar = "mynameisryan..";
 
 }
 
@@ -236,32 +219,6 @@ function stepThreeInit() {
         MINIBC.ProductCustomizer.customGauges[i] = [];
 
     }
-
-}
-
-function displaySelectedGauges() {
-
-    var selectedGaugeSideBar = "";
-
-    for(var i = 0; i < customGaugeObject.gauges.length; i++) {
-
-        selectedGaugeSideBar += '<li class="animated fadeIn">';
-        selectedGaugeSideBar += "<div class='col-xs-2 col-lg-2 img'><img src=https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/gauge-thumbnail.png?t=1491341476&_ga=1.143031165.995689909.1490710177/></div>";
-        selectedGaugeSideBar += '<div class="col-xs-6 col-lg-7">';
-        selectedGaugeSideBar += '<div class="gaugeid" style="display:none;">'+ customGaugeObject.gauges[i].gaugeProductId +'</div>';
-        selectedGaugeSideBar += ' <div class="title">' + customGaugeObject.gauges[i].gaugeName + '</div> ';
-        selectedGaugeSideBar += ' <div class="price">'+ parseFloat(customGaugeObject.gauges[i].gaugePrice).toFixed(2) + '</div> ';
-        selectedGaugeSideBar += ' </div> ';
-         selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
-        selectedGaugeSideBar += " <div class='delete'><a class='removeAttributes' href='#''><i class='material-icons'>delete</i></a></div> ";
-        selectedGaugeSideBar += ' <div class="edit"><a href="#" class="editAttributes" ><i class="material-icons">mode_edit</i></a></div> ';
-        selectedGaugeSideBar += ' </div> ';
-        
-        selectedGaugeSideBar += '</li>';
-
-    }
-
-    $("#gaugeSelected").html(selectedGaugeSideBar);
 
 }
 
@@ -496,113 +453,6 @@ $( "body" ).on( "click", "#customize-lightbox .card-item .action-btn a", functio
 
 });
 
-$( "body" ).on("click", ".editAttributes", function() { 
-    
-    /*
-    When the edit attributes button is clicked in the side bar
-    */
-
-    //hide add Gauge button
-    $(".addGauge").hide();
-    $(".editGauge").show();
-
-    editIndex = $(this).parent().parent().parent().index(); //this index will be used to grade and populate the select fields
-    var editSelectedGaugeId = $(this).parent().siblings(".gaugeid").text();
-
-    var gaugeAttributeTitle = customGaugeObject.gauges[editIndex].gaugeName;
-
-    buildAttributeDropdown(editSelectedGaugeId, customGaugeObject.gauges[editIndex]);
-
-    $("#attribute-title").html(gaugeAttributeTitle); //Set Attributes Title
-    $(".addGauge").hide();
-    $(".editGauge").show();
-    $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
-
-});
-
-//-- This function is called when a gague is edited --//
-$( "body" ).on("click", ".lightbox-attributes .action-btn .editGauge", function() {
-
-    /*
-    When the edit gauge button is clicked in the overlay
-    */
-
-    //Get the gaugeproduct id from the object and use it to find which properties in the gauge object to edit, afterwards 
-    for(var i = 0; i < customGaugeObject.gauges[ editIndex ].gaugeAttribute.length; i++) {
-
-        for(var property in customGaugeObject.gauges[ editIndex ].gaugeAttribute[i] ) {
-
-            customGaugeObject.gauges[ editIndex ].gaugeAttribute[i][property] = $(".attributeOption option:selected")[i].value;
-
-        }
-    
-    } 
-
-    $('.lightbox-attributes').fadeOut(200);
-
-});
-
-//-- This function is called when a gauge is added --//
-$( "body" ).on("click", ".lightbox-attributes .action-btn .addGauge", function() {
-
-    /*
-    when the add gauge button is clicked in the overlay
-    */
-
-    var currentGauge = $("#attribute-title").text();
-    var gaugeProperties = [ ];
-
-    var selectedGaugeId = $(this).parent().siblings("#customFieldAttribute").children("#selectedGaugeId").text().trim();
-
-    $( ".attributeOption" ).each(function( index, value ) {  //get each selected property and add to gaugeProperties array
-
-        var selectedName = $(this).val();
-
-        var labelName = $(this).parent().parent().children().children().first().text();
-        var selectedAttributeObject = {};
-        selectedAttributeObject[labelName] = selectedName;
-        gaugeProperties.push( selectedAttributeObject );
-    
-    });
-
-    customGaugeObject.gauges.push({
-                                    "gaugeName" :  currentGauge, 
-                                    "gaugeAttribute" : gaugeProperties, 
-                                    "gaugeLayers" : $("#pcCanvas").html(),
-                                    "gaugeProductId" : selectedGaugeId,
-                                    "gaugePrice" : window.customizerObject
-                                }); 
-
-    displaySelectedGauges();
-
-    $('.lightbox-attributes').fadeOut(200);
-
-});
-
-
-// -- The remove button has been clicked -- // 
-$( "body" ).on( "click", ".removeAttributes", function() {
-
-    console.log("inside remove attributes");
-
-    // var removedIndex = $(this).parent().parent().index();
-
-    // console.log(removedIndex);
-
-    var removedIndex = $(this).parent().parent().parent().index();
-
-    customGaugeObject.gauges.splice(removedIndex, 1);
-
-    // $(this).parent().parent().parent().parent().remove();
-
-
-    //console.log( $(this).parent().parent().parent().index() );
-
-    $(this).parent().parent().parent().remove();
-
-    //console.log();
-
-});
 
 //Increment Product Counter on click
 $("body").on("click", ".button--icon", function() {

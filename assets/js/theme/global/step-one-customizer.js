@@ -71,10 +71,6 @@ var CustomizerStepOneObject = {
 
 $("body").on("click", ".kitmodal", function() {
 
-
-	//$("#modaltitle").text("modal title");
-	//$("#modaldescription").text("modal description");
-
 	var kittitle = $(this).parent().siblings(".kitname").text();
 	var kitdescription = $(this).parent().siblings(".longDescription").text();
 
@@ -86,13 +82,14 @@ $("body").on("click", ".kitmodal", function() {
 //Step one : A Kit Was Selected
 $( "body" ).on( "click", ".startsteptwo", function(  ) {
 
-	window.customGaugeObject.kitname = $(this).siblings(".kitname").text();
+	window.customizerObject.selectedGauges = []; //empty array of selected gauges because a new kit has been selected.
+
+	window.customizerObject.kitname = $(this).siblings(".kitname").text();
 
 	window.customizerObject.currentStep = 2; //set the customizer stage
-	//window.customGaugeObject.kitname = $(this).parent().parent().parent().children(".title").text();
-	window.customGaugeObject.kitid = $(this).parent().parent().children(".kitid").text();
+	window.customizerObject.kitid = $(this).parent().parent().children(".kitid").text();
 
-    $("#style-page-title").html(window.customGaugeObject.kitname); //set name of header on step.2
+    $("#style-page-title").html(window.customizerObject.kitname); //set name of header on step.2
 
 	window.customizerObject.loadStepTwo(); //load stage 2 of the customizer
 
