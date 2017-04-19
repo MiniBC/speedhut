@@ -33,7 +33,7 @@ var CustomizerStepTwoObject = {
             attributes.forEach(function(item, index, array) {
 
                 customfieldsGaugeAttributes += "<div class='attribute'>";
-                customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'>info_outline</i></label>";
+                customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'><a class='attributeinfo' href='#openModal' >info_outline</a></i></label>";
 
                 if(item.text.length == 1) {
 
@@ -155,7 +155,6 @@ var CustomizerStepTwoObject = {
     },
     buildAttributesPage: function(attributes) {
 
-        //console.log(attributes);
 
         var selectGaugeAttributes = [];
 
@@ -425,24 +424,25 @@ module.exports = function() {
 
         });
 
+        $("body").on("click", ".attributeinfo", function() {
+
+            $("#modaltitle").html( "" );
+            $("#modaldescription").html( "" );
+
+            $.ajax({
+                url: "/i-gauge-size/",
+                type:'GET',
+                success: function(data){
+
+                    $("#modaldescription").html( data );
+
+
+                }
+            });
+
+        });
+
         $( "body" ).on("click", ".lightbox-attributes .action-btn .editGauge", function() {
-
-            // /*
-            // When the edit gauge button is clicked in the overlay
-            // */
-
-            //console.log( window.customizerObject.selectedGauges );
-
-            // //Get the gaugeproduct id from the object and use it to find which properties in the gauge object to edit, afterwards 
-            // for(var i = 0; i < customizerObject.gauges[ editIndex ].gaugeAttribute.length; i++) {
-
-            //     for(var property in customizerObject.gauges[ editIndex ].gaugeAttribute[i] ) {
-
-            //         customizerObject.gauges[ editIndex ].gaugeAttribute[i][property] = $(".attributeOption option:selected")[i].value;
-
-            //     }
-            
-            // } 
 
             $('.lightbox-attributes').fadeOut(200);
 

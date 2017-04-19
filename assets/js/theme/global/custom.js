@@ -228,8 +228,6 @@ function addSingleGaugeToSideBar( gaugeName ) {
     var gauge = {"gaugeName": gaugeName};
     customGaugeObject.gauges.push(gauge);
 
-    //console.log(customGaugeObject);
-
     var selectedGaugeSideBar = "";
 
     selectedGaugeSideBar += '<li>';
