@@ -9,6 +9,83 @@ var CustomizerStepTwoObject = {
 	customFieldsObject: [],
 	cacheKitProducts: {},
     selectGaugeAttributes : [],
+    editIndex: 0,
+    findMatchingPriceForSelectedAttributes: function(attributes, selectedAttributes) {
+
+        var matches = 0;
+        var setPrice = 0;
+        
+        for(var i = 0; i < selectedAttributes.attributes.length; i++) {
+
+            var currentMatches = 0;
+
+            for(var k = 0; k < selectedAttributes.attributes[i].length; k++) {
+
+                if( typeof selectedAttributes.attributes[i][selectedAttributes.attributes[i].length - 1] !== "undefined" ) {
+
+                    for(var j = 0; j < attributes.length; j++) {
+
+                        if( selectedAttributes.attributes[i][k] !== "OldSKU" && selectedAttributes.attributes[i][k] !== "Gauge Type" ) {
+
+                            if( typeof attributes[j].text == "object" ) {
+
+                                if( selectedAttributes.attributes[i][k].name == attributes[j].name ) {
+
+                                    if( selectedAttributes.attributes[i][k].text == attributes[j].text[0] ) {
+
+                                        currentMatches++;
+
+                                    } 
+
+                                }
+
+                            } else if( typeof attributes[j].text == "string" ) {
+
+                                if( selectedAttributes.attributes[i][k].name == attributes[j].name ) {
+
+                                    if( selectedAttributes.attributes[i][k].text == attributes[j].text ) {
+
+                                        currentMatches++;
+
+                                    } 
+
+                                }
+
+                            }
+        
+                        }
+
+                        if(currentMatches >= matches) {
+
+                            matches = currentMatches;
+                            setPrice = selectedAttributes.attributes[i][k].price;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        return setPrice;
+
+    },
+    getPriceForCustomProduct: function(title, attributes) {
+
+        for(var i = 0; i < this.cacheKitProducts.length; i++) {
+            
+            if( this.cacheKitProducts[i].title == title) {
+
+                return this.findMatchingPriceForSelectedAttributes( attributes, this.cacheKitProducts[i] );
+
+            }
+
+        }
+
+    },
     getAllCategories: function() {
 
 		return $.ajax({
@@ -293,21 +370,32 @@ var CustomizerStepTwoObject = {
     },
     findStartingPrice: function( attributesData ) {
 
-        var lowestPrice = attributesData[attributesData.length - 1][ attributesData[attributesData.length - 1].length - 1 ];
-
+        var lowestPrice = 1000;
+        
         for( var i = 0; i < attributesData.length; i++ ) {
 
             for( var k = 0; k < attributesData[i].length; k++ ) {
 
-                if( attributesData[i][ attributesData[i].length - 1 ].price < lowestPrice ) {
+                if( typeof attributesData[i][k].price !== "undefined" ) {
 
-                    lowestPrice = attributesData[i][ attributesData[i].length - 1 ].price;
+                    console.log(attributesData[i][k].price);
+                    console.log(lowestPrice);
+
+                    if( lowestPrice > parseFloat(attributesData[i][k].price) ) {
+
+                        console.log("wow");
+
+                        lowestPrice = attributesData[i][k].price;
+
+                    }
 
                 }
 
             }
 
+
         }
+        
 
         return lowestPrice;
 
@@ -339,7 +427,7 @@ var CustomizerStepTwoObject = {
 
         }
 
-        console.log( gaugetotal );
+        //console.log( gaugetotal );
         //append total
         $("#gaugetotal").html( gaugetotal.toFixed(2) );
         $("#gaugeSelected").html(selectedGaugeSideBar);
@@ -607,8 +695,6 @@ module.exports = function() {
 
             $(".attribute").each(function(index, value) {
 
-                console.log(index);
-
                 if( $(value).children().hasClass("select-style") ) {
 
                     //WILL NEED STUFF BELOW
@@ -633,14 +719,6 @@ module.exports = function() {
                     var selectedName = $(value).children("label").children("span").text(); //label name
                     var defaultAttributeOption = $(value).children(".defaultAttributeOption").text().trim();
 
-                    // console.log(selectedName);
-                    // console.log(defaultAttributeOption);
-                    // var labelName = $(this).parent().children("label").children("span").text();
-
-                    // console.log(selectedName);
-                    // console.log(labelName);
-
-
                     var selectedAttributeObject = {};
 
                     selectedAttributeObject.name = selectedName;
@@ -653,14 +731,12 @@ module.exports = function() {
 
             });
 
-            console.log(gaugeProperties);
-
             var price = CustomizerStepTwoObject.gaugeViewing.attributes[ CustomizerStepTwoObject.gaugeViewing.attributes.length - 1][ CustomizerStepTwoObject.gaugeViewing.attributes[ CustomizerStepTwoObject.gaugeViewing.attributes.length - 1].length - 1 ].price;
 
             var selectedGaugeAttributes = {
                 "gaugeProductId" : window.customizerObject.selectedGauges.length,
                 "gaugeName" : CustomizerStepTwoObject.gaugeViewing.title,
-                "gaugePrice" : price,
+                "gaugePrice" : CustomizerStepTwoObject.getPriceForCustomProduct( CustomizerStepTwoObject.gaugeViewing.title, gaugeProperties ),
                 "gaugeAttribute" : gaugeProperties
             }
 
@@ -698,8 +774,11 @@ module.exports = function() {
 
 
             var gaugeEditIndex = $(this).parent().parent().parent().index();
+            CustomizerStepTwoObject.editIndex = gaugeEditIndex;
 
             CustomizerStepTwoObject.buildEditAttributePage( window.customizerObject.selectedGauges[gaugeEditIndex] );
+
+
 
             //hide add Gauge button
             $(".addGauge").hide();
@@ -723,11 +802,17 @@ module.exports = function() {
 
         $("body").on("click", ".attributeinfo", function() {
 
+            var pattern = /[/\" "]/g;
+
+            var labelName = $(this).parent().siblings("span").text().toLowerCase().split(pattern).join("-");
+
+            var aURL = "/i-" + labelName + "/";
+
             $("#modaltitle").html( "" );
             $("#modaldescription").html( "" );
 
             $.ajax({
-                url: "/i-gauge-size/",
+                url: aURL,
                 type:'GET',
                 success: function(data){
 
@@ -762,7 +847,62 @@ module.exports = function() {
 
         $( "body" ).on("click", ".lightbox-attributes .action-btn .editGauge", function() {
 
+            var gaugeProperties = [ ];
+
+            console.log( window.customizerObject.selectedGauges[ CustomizerStepTwoObject.editIndex ] );
+
+            $("#customFieldAttribute").children(".attribute").each(function( item, value, array ) {
+
+                if( $(value).children().hasClass("select-style") ) {
+
+                    //WILL NEED STUFF BELOW
+
+                    var labelName = $(value).children("label").children("span").text();//get the table of a drop down select option
+                    var selectedName = $(value).children(".select-style").children(".attributeOption1").children("option:selected").text().trim();
+                    var unSelectedName = $(value).children(".select-style").children(".attributeOption1").children("option:not(:selected)").text().trim();
+
+                    var res = unSelectedName.split("  ");
+                    res.unshift(selectedName);
+                    
+                    var selectedAttributeObject = {};
+                    selectedAttributeObject.name = labelName;
+                    selectedAttributeObject.text = res;
+
+                    gaugeProperties.push( selectedAttributeObject );
+
+
+                } else if( $(value).children().hasClass("defaultAttributeOption") ) {
+
+
+                    var selectedName = $(value).children("label").children("span").text(); //label name
+                    var defaultAttributeOption = $(value).children(".defaultAttributeOption").text().trim();
+
+                    var selectedAttributeObject = {};
+
+                    selectedAttributeObject.name = selectedName;
+                    selectedAttributeObject.text = defaultAttributeOption.trim();
+
+                    gaugeProperties.push( selectedAttributeObject );
+
+                }
+
+            });
+
+            var selectedGaugeAttributes = {
+                "gaugeProductId" : CustomizerStepTwoObject.editIndex,
+                "gaugeName" : CustomizerStepTwoObject.gaugeViewing.title,
+                "gaugePrice" : CustomizerStepTwoObject.getPriceForCustomProduct( CustomizerStepTwoObject.gaugeViewing.title, gaugeProperties ),
+                "gaugeAttribute" : gaugeProperties
+            }
+
+            window.customizerObject.selectedGauges[ CustomizerStepTwoObject.editIndex ] = selectedGaugeAttributes;
+
+            CustomizerStepTwoObject.displaySelectedGauges();
+
             $('.lightbox-attributes').fadeOut(200);
+
+            //console.log(window.customizerObject.selectedGauges);
+
 
         });
 
