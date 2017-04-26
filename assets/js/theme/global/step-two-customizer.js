@@ -114,7 +114,6 @@ var CustomizerStepTwoObject = {
 
             if( item.name !== "OldSKU" && item.name !== "Gauge Type" ) {
 
-
                 if( item.status == "set" ) {
 
                     customfieldsGaugeAttributes += "<div class='attribute'>";
@@ -174,6 +173,37 @@ var CustomizerStepTwoObject = {
 
                     customfieldsGaugeAttributes += "</div>";
 
+                } else if( item.status == "locked" ) {
+
+                    customfieldsGaugeAttributes += "<div class='attribute'>";
+                    customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'><a class='attributeinfo' href='#openModal' >info_outline</a></i></label>";
+
+                    if(item.text.length == 1) {
+
+                        customfieldsGaugeAttributes += "<p class='defaultAttributeOption' > "+ item.text +" </p>";
+
+                    } else if( item.text.length > 1 ) {
+
+                            customfieldsGaugeAttributes += "<div class='select-style'>";
+                            customfieldsGaugeAttributes += "<select disabled class='attributeOption' >";
+
+                            customfieldsGaugeAttributes += "<option value=''> " + "Please Select An Attribute" + " </option>";            
+
+
+                            for(var i = 0; i < item.text.length; i++) { 
+
+                                customfieldsGaugeAttributes += "<option value=" + item.text[i] + "> "+ item.text[i] +" </option>";            
+
+                            }
+
+                            customfieldsGaugeAttributes += "</select>";
+                            customfieldsGaugeAttributes += "</div>";
+
+
+                    }
+
+                    customfieldsGaugeAttributes += "</div>";
+
                 }
 
             }
@@ -185,32 +215,46 @@ var CustomizerStepTwoObject = {
     },
     addUnselectedOptions: function( attributename, selectedAttribute, unSelectedOptions ) {
 
+        //with the first instance of a drop down we will make unset can be changed
+        //all the drop downs after will be locked and unable to be changed
 
+        var locked = false;
         //push selectedAttribute in to the array unSelectedOption***
 
         //loop this.selectedGaugeAttributes look for a name that matches "attributename"
         for(var i = 0; i < this.selectGaugeAttributes.length; i++) {
             
-            if( this.selectGaugeAttributes[i].name == attributename ) {
+            if( this.selectGaugeAttributes[i].name !== "OldSKU" && this.selectGaugeAttributes[i].name !== "Gauge Type" ) {
 
-                this.selectGaugeAttributes[i].status = "set";
-                this.selectGaugeAttributes[i].text = [];
-                this.selectGaugeAttributes[i].text[0] = selectedAttribute.trim();
-                this.selectGaugeAttributes[i].text = this.selectGaugeAttributes[i].text.concat(unSelectedOptions);
+                if( this.selectGaugeAttributes[i].text.length == 1 ) {
+
+                    this.selectGaugeAttributes[i].status = "set";
+
+                }
+
+                if( this.selectGaugeAttributes[i].name == attributename ) {
+
+                    this.selectGaugeAttributes[i].status = "set";
+                    this.selectGaugeAttributes[i].text = [];
+                    this.selectGaugeAttributes[i].text[0] = selectedAttribute.trim();
+                    this.selectGaugeAttributes[i].text = this.selectGaugeAttributes[i].text.concat(unSelectedOptions);
 
 
-                //console.log( this.selectGaugeAttributes[i] );
+                } else if( this.selectGaugeAttributes[i].status != "set" && locked === false && this.selectGaugeAttributes[i].text.length > 1) {
 
+                    locked = true;
 
-            } else if( this.selectGaugeAttributes[i].status != "set" ) {
+                    this.selectGaugeAttributes[i].status = "unset";
 
-                this.selectGaugeAttributes[i].status = "unset";
+                } else if ( locked == true && this.selectGaugeAttributes[i].text.length > 1) {
+
+                    this.selectGaugeAttributes[i].status = "locked";
+
+                }
 
             }
 
         }
-
-        //console.log(this.selectGaugeAttributes);
         
         //add an addtional attribute on the object or array called selected
 
@@ -246,9 +290,9 @@ var CustomizerStepTwoObject = {
 
         }
 
-        //now add mark the selectedAttribute as selected and push the unSelectedOptions into the array.
-        CustomizerStepTwoObject.addUnselectedOptions( attributename, selectedAttribute, unSelectedOptions );
 
+        //now add mark the selectedAttribute as selected and push the unSelectedOptions into the array.
+        CustomizerStepTwoObject.addUnselectedOptions( attributename, selectedAttribute, unSelectedOptions ); //set the attributes function 
 
         CustomizerStepTwoObject.reBuildGaugeAttributesPage( selectedAttribute, unSelectedOptions );
 
@@ -257,9 +301,9 @@ var CustomizerStepTwoObject = {
 
         var attributeObject = [];
 
-        for(var i = 0; i < CustomizerStepTwoObject.cacheKitProducts.length; i++ ) {
+        for(var i = 0; i < CustomizerStepTwoObject.cacheKitProducts.length; i++ ) { // loop cachekitproducts object
 
-            if( CustomizerStepTwoObject.cacheKitProducts[i].title === CustomizerStepTwoObject.gaugeViewing.title ) {
+            if( CustomizerStepTwoObject.cacheKitProducts[i].title === CustomizerStepTwoObject.gaugeViewing.title ) { //look in the object for correctly matched title
 
                 for(var k = 0; k < CustomizerStepTwoObject.cacheKitProducts[i].attributes.length; k++) {
 
@@ -267,7 +311,7 @@ var CustomizerStepTwoObject = {
 
                             if( CustomizerStepTwoObject.cacheKitProducts[i].attributes[k][j].text.trim() == selectedAttribute.trim() ) {
                                 
-                                attributeObject.push( CustomizerStepTwoObject.cacheKitProducts[i].attributes[k] );
+                                attributeObject.push( CustomizerStepTwoObject.cacheKitProducts[i].attributes[k] ); // save the attibutes ones we have found them in the cahced object
 
                             }
 
@@ -378,12 +422,7 @@ var CustomizerStepTwoObject = {
 
                 if( typeof attributesData[i][k].price !== "undefined" ) {
 
-                    console.log(attributesData[i][k].price);
-                    console.log(lowestPrice);
-
                     if( lowestPrice > parseFloat(attributesData[i][k].price) ) {
-
-                        console.log("wow");
 
                         lowestPrice = attributesData[i][k].price;
 
@@ -393,10 +432,8 @@ var CustomizerStepTwoObject = {
 
             }
 
-
         }
         
-
         return lowestPrice;
 
     },
@@ -632,6 +669,34 @@ var CustomizerStepTwoObject = {
 
         $("#customFieldAttribute").html(customfieldsGaugeAttributes);        
 
+    },
+    checkResetGaguge: function( changeAttribute ) {
+
+        var indexAt = 0;
+
+        for(var i = 0; i < this.selectGaugeAttributes.length; i++ ) {
+
+            if( this.selectGaugeAttributes[i].name === changeAttribute ) {
+
+                indexAt = i;
+
+                for( var k = indexAt+1; k < this.selectGaugeAttributes.length; k++ ) {
+
+                    if( this.selectGaugeAttributes[k].text.length > 1 && this.selectGaugeAttributes[k].status === "set" ) {
+
+                        console.log( this.selectGaugeAttributes[k].status = "unset" );
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        console.log("DONE");
+        console.log( this.selectGaugeAttributes );
+
     }
 
 }
@@ -742,8 +807,6 @@ module.exports = function() {
 
             window.customizerObject.selectedGauges.push( selectedGaugeAttributes );
 
-            console.log( window.customizerObject.selectedGauges );
-
             CustomizerStepTwoObject.displaySelectedGauges();
 
             $('.lightbox-attributes').fadeOut(200);
@@ -772,25 +835,17 @@ module.exports = function() {
             When the edit attributes button is clicked in the side bar
             */
 
-
             var gaugeEditIndex = $(this).parent().parent().parent().index();
             CustomizerStepTwoObject.editIndex = gaugeEditIndex;
 
             CustomizerStepTwoObject.buildEditAttributePage( window.customizerObject.selectedGauges[gaugeEditIndex] );
 
-
-
             //hide add Gauge button
             $(".addGauge").hide();
             $(".editGauge").show();
 
-            //build edit attribute page
-
 
             $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
-
-            //CustomizerStepTwoObject.selectGaugeAttributes = [];
-
 
         });
 
@@ -824,7 +879,23 @@ module.exports = function() {
 
         });
 
-        $("body").on("change", ".attributeOption", function() {
+        $("body").on("change", ".attributeOption", function() { //When a drop down have been modify Add New Gauge
+
+            //check if an above attribute was change this will act as a check if see if we need to reset below attributes
+            console.log( CustomizerStepTwoObject.selectGaugeAttributes.length );
+
+            if( CustomizerStepTwoObject.selectGaugeAttributes.length !== 0 ) {
+
+                console.log("run check");
+                var changeAttributes = $(this).parent().siblings("label").children("span").text();
+
+                //with the label name we check this.selectGaugeAttributes 
+                //if there is a property within selectGaugeAttributes that is appove the label name with status === "set"
+
+                CustomizerStepTwoObject.checkResetGaguge( changeAttributes );
+
+
+            }
 
             var attributename = $(this).parent().siblings("label").children("span").text();
 
@@ -842,6 +913,56 @@ module.exports = function() {
             });
 
             CustomizerStepTwoObject.handleSelectedAttributes( attributename, selectedAttribute, unSelectedOptions );
+
+            /*
+            * we are going to do some check here to call the right functions. 
+            * 
+            *  1. we need to reset gauges if a gauge attibute above is changed reset all of the children
+            *  2. 
+            *
+            *
+            */
+
+        });
+
+
+        $("body").on("change", ".attributeOption1", function() { //When a drop down have been modify Edit Existing Gauge
+
+            //check if an above attribute was change this will act as a check if see if we need to reset below attributes
+            console.log( CustomizerStepTwoObject.selectGaugeAttributes.length );
+
+            if( CustomizerStepTwoObject.selectGaugeAttributes.length !== 0 ) {
+
+                console.log("run check");
+                console.log($(this));
+
+            }
+
+            var attributename = $(this).parent().siblings("label").children("span").text();
+
+            var selectedAttribute = $(this).find("option:selected").text();
+            var unSelectedOptions = [];
+
+            $(this).find('option').each(function() {
+
+                if( ( $(this).val() != "" ) && ( selectedAttribute != $(this).text() ) ) {
+
+                    unSelectedOptions.push( $(this).text().trim() );
+
+                }
+
+            });
+
+            CustomizerStepTwoObject.handleSelectedAttributes( attributename, selectedAttribute, unSelectedOptions );
+
+            /*
+            * we are going to do some check here to call the right functions. 
+            * 
+            *  1. we need to reset gauges if a gauge attibute above is changed reset all of the children
+            *  2. 
+            *
+            *
+            */
 
         });
 
@@ -900,8 +1021,6 @@ module.exports = function() {
             CustomizerStepTwoObject.displaySelectedGauges();
 
             $('.lightbox-attributes').fadeOut(200);
-
-            //console.log(window.customizerObject.selectedGauges);
 
 
         });
