@@ -635,4 +635,13 @@ $('.lightbox-styles .close').click(() => {
 $('.lightbox-attributes .close').click(() => {
     $('.lightbox-attributes').fadeOut(200);
 });
+
+$('.mobileSelectedAttributes ').click(() => {
+    $(".gauges-selected, ul.cards").toggle();
+    $("body.CustomizerApp").toggleClass("viewing-selected-gauges");
+    $(".stepper").toggle();
+    //$("i",this).toggleClass("fa-search fa-times");
+});
+
+
 /* eslint-enable */
