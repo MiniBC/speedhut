@@ -21,6 +21,7 @@ import attributeInfo from './global/attribute-info';
 import selectedGauge from './global/selected-gauge';
 import customizerStepOne from './global/step-one-customizer';
 import customizerStepTwo from './global/step-two-customizer';
+import magnificInit from './global/magnificInit';
 
 
 function fastClick(element) {
@@ -54,5 +55,6 @@ export default class Global extends PageManager {
         customizerStepOne();
         customizerStepTwo();
         //selectedGauge();
+        magnificInit();
     }
 }
