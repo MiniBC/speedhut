@@ -2,7 +2,7 @@ import $ from 'jquery';
 import magnific from './magnific';
 
 export default function () {
-    $('.open-popup-link').magnificPopup({
+    $('.step1-popup').magnificPopup({
       type:'inline',
       midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
     });

@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import magnific from './magnific';
 
 //make an ajax call to get all kits 
 var CustomizerStepOneObject = {
@@ -15,7 +16,7 @@ var CustomizerStepOneObject = {
 			card += ' <div class="title"> ' + gaugeKit[i].name + '</div> ';
 			card += ' <div class="description">' + this.parseShortDescription(gaugeKit[i].description) + '</div> ';
 			card += ' <div class="longDescription" style="display:none">' + gaugeKit[i].description + '</div> ';
-			card += ' <i class="material-icons kitInfo"><a class="kitmodal" href="#openModal">info_outline</a></i> ';
+			card += ' <i class="material-icons kitInfo"><a class="kitmodal popup-step1" href="#popup-step1" data-effect="mfp-zoom-in">info_outline</a></i> ';
 			card += ' <span class="kitid" style="visibility:hidden" >' + gaugeKit[i].id + '</span>';
 			card += ' <span class="kitname" style="visibility:hidden" >' + gaugeKit[i].name + '</span>';
 			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">START WITH ' + gaugeKit[i].name + '</a></div> ';
@@ -24,6 +25,18 @@ var CustomizerStepOneObject = {
 			$("#customize-started").append(card);
 
 		}
+		
+		    $('.popup-step1').magnificPopup({
+			      type:'inline',
+			      removalDelay: 500, //delay removal by X to allow out-animation
+			  callbacks: {
+			    beforeOpen: function() {
+			       this.st.mainClass = this.st.el.attr('data-effect');
+			    }
+			  },
+			  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+			});
+		
 
 	},
 	parseImg: function( imgPath ) {
@@ -72,10 +85,10 @@ var CustomizerStepOneObject = {
 $("body").on("click", ".kitmodal", function() {
 
 	var kittitle = $(this).parent().siblings(".kitname").text();
-	var kitdescription = $(this).parent().siblings(".longDescription").text();
+	var kitdescription = $(this).parent().siblings(".longDescription").html();
 
 	$("#modaltitle").text( kittitle );
-	$("#modaldescription").text( kitdescription );
+	$("#modaldescription").html( kitdescription );
 
 });
 
