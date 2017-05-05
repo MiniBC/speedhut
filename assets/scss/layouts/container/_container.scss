@@ -420,11 +420,12 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 
 .lightbox-styles h1, .lightbox-attributes h1 {
 	text-align: center;
-	font-size: 3rem;
+	font-size: 2rem;
 	text-transform: uppercase;
 	margin-bottom: 4px;
 	font-weight: 500;
 	color: #373737;
+	margin-top: 3rem;
 }
 
 .lightbox-styles .description, .lightbox-attributes .description {
@@ -461,8 +462,8 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 	text-decoration: none;
 	font-weight: 500;
 	display: inline-block;
-	height: 45px;
-	line-height: 45px;
+	height: 55px;
+	line-height: 55px;
 	padding: 0 40px;
 	outline: none;
 	margin-top: 40px;
@@ -475,7 +476,7 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
     -moz-transition: all 200ms ease-in 0s;
     -webkit-transition: all 200ms ease-in 0s;
     -o-transition: all 200ms ease-in 0s;
-    width: auto;
+    width: 100%;
 }
 
 .lightbox-attributes .action-btn a:hover {
@@ -815,6 +816,7 @@ body.fixed-items .gauges-selected .wrapper {
     margin-bottom: 6px;
     overflow: hidden;
     width: 100%;
+    outline: none;
 }
 
 .select-style:hover {
@@ -829,7 +831,8 @@ body.fixed-items .gauges-selected .wrapper {
     padding: 10px 16px;
     width: 110%;
     text-shadow: none;
-     -moz-outline: none; 
+    -moz-outline: none;
+    cursor: pointer;
 }
 
 .select-style select option {
@@ -934,6 +937,14 @@ body.fixed-items .gauges-selected .wrapper {
 
 .mobileSelectedAttributes i {
 	font-size: 2rem;
+}
+
+
+#selectedGaugePrice {
+	font-size: 2.5rem;
+	color: green;
+	letter-spacing: -1px;
+	font-weight: 300;
 }
 
 

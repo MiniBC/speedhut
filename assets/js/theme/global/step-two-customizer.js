@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import magnific from './magnific';
 
 var CustomizerStepTwoObject = {
 
@@ -513,13 +514,24 @@ var CustomizerStepTwoObject = {
 		   	selectedKitGauges += '<div class="price"><span>Starting From:</span> ' + parseFloat( this.findStartingPrice( CustomizerStepTwoObject.cacheKitProducts[i].attributes ) ).toFixed(2) + ' </div>';
 		    // selectedKitGauges += '<div class="description"> ' + item.description + ' </div>';
 		    //selectedKitGauges += '<div class="gaugeid" style="display:none"> ' + item.id + ' </div>';
-		    selectedKitGauges += '<div class="action-btn"><a class="gaugeType">Select <span>Gauge</span> Attributes</a></div>';
+		    selectedKitGauges += '<div class="action-btn"><a class="gaugeType popup-step2" href="#popup-step2" data-effect="mfp-zoom-in">Select <span>Gauge</span> Attributes</a></div>';
 		    selectedKitGauges += "</div>";
 		    selectedKitGauges += '</li>';
 
 			$("#allAvaiable").append(selectedKitGauges);
 
 		}
+		
+			$('.popup-step2').magnificPopup({
+			      type:'inline',
+			      removalDelay: 500, //delay removal by X to allow out-animation
+			  callbacks: {
+			    beforeOpen: function() {
+			       this.st.mainClass = this.st.el.attr('data-effect');
+			    }
+			  },
+			  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+			});
 
     },
     buildAttributesPage: function(attributes) {

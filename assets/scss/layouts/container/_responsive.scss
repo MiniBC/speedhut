@@ -205,13 +205,14 @@ body {overflow-x: hidden;}
 	body.CustomizerApp .navPages-container {}
 	body.CustomizerApp .navPages ul {display: block;}
 	
+	.lightbox-attributes {padding: 15px;}
+	
 
 }
 
 @media only screen and (max-width: 480px) {
 	.card-item {margin: 0 0 20px;}
 	.lightbox-styles {padding: 60px 15px;}
-	.lightbox-attributes {padding: 60px 15px;}
 	.lightbox-attributes .action-btn a {width: 100%;}
 	.gauges-selected h2 {font-size: 1.2rem;}
 	.store-info {padding-top: 0 !important;}
