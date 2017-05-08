@@ -484,7 +484,7 @@ var CustomizerStepTwoObject = {
             selectedGaugeSideBar += ' </div> ';
             selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
             selectedGaugeSideBar += " <div class='delete'><a class='removeAttributes' href='#''><i class='material-icons'>delete</i></a></div> ";
-            selectedGaugeSideBar += ' <div class="edit"><a href="#" class="editAttributes" ><i class="material-icons">mode_edit</i></a></div> ';
+            selectedGaugeSideBar += ' <div class="edit"><a href="#popup-step2" data-effect="mfp-zoom-in" class="editAttributes popup-step2" ><i class="material-icons">mode_edit</i></a></div> ';
             selectedGaugeSideBar += ' </div> ';
             
             selectedGaugeSideBar += '</li>';
@@ -492,11 +492,22 @@ var CustomizerStepTwoObject = {
             var number = parseFloat(window.customizerObject.selectedGauges[i].gaugePrice).toFixed(2);
             gaugetotal = parseFloat(number) + parseFloat(gaugetotal);
 
+            //append total
+            $("#gaugetotal").html( gaugetotal.toFixed(2) );
+            $("#gaugeSelected").html(selectedGaugeSideBar);
+
         }
 
-        //append total
-        $("#gaugetotal").html( gaugetotal.toFixed(2) );
-        $("#gaugeSelected").html(selectedGaugeSideBar);
+        $('.popup-step2').magnificPopup({
+            type:'inline',
+            removalDelay: 500, //delay removal by X to allow out-animation
+          callbacks: {
+            beforeOpen: function() {
+                this.st.mainClass = this.st.el.attr('data-effect');
+            }
+          },
+          midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        });
 
     },
     buildGaugeTypeCards: function() {
@@ -552,7 +563,7 @@ var CustomizerStepTwoObject = {
 
                 } else {
 
-                    $(".addGauge").removeClass("addGauge");
+                    //$(".addGauge").removeClass("addGauge");
 
                     if( selectGaugeAttribute[attributeExist].text.indexOf( attributes[i][k].text ) == -1 ) {
 
@@ -895,9 +906,14 @@ module.exports = function() {
 
         $( "body" ).on("click", ".lightbox-attributes .action-btn .addGauge", function() { //when the add to gauge button is clicked
 
+            console.log("add new gauge!!!");
+
             CustomizerStepTwoObject.addToSelectedGaugeFlag = true;
             CustomizerStepTwoObject.setSelectedGauge();
             
+            //need to remove modal shadow overlay
+            $(".mfp-bg").removeClass("mfp-ready");
+
             $('.lightbox-attributes').fadeOut(200);
 
         });
@@ -933,7 +949,6 @@ module.exports = function() {
             //hide add Gauge button
             $(".addGauge").hide();
             $(".editGauge").show();
-
 
             $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
 
@@ -1010,7 +1025,7 @@ module.exports = function() {
 
                 CustomizerStepTwoObject.setSelectedGauge(true);
 
-                $(".subimtGauge").addClass("addGauge");
+                //$(".subimtGauge").addClass("addGauge");
 
                 //var gaugePriceTotal = parseFloat(window.customizerObject.selectedGauges[ window.customizerObject.selectedGauges.length - 1 ].gaugePrice).toFixed(2);
                 //$("#selectedGaugePrice").html( "$" + gaugePriceTotal );
@@ -1019,7 +1034,7 @@ module.exports = function() {
             } else {
 
                 $("#selectedGaugePrice").html( "" );
-                $(".addGauge").removeClass("addGauge");
+                //$(".addGauge").removeClass("addGauge");
 
 
             }
@@ -1140,7 +1155,10 @@ module.exports = function() {
 
             window.customizerObject.selectedGauges[ CustomizerStepTwoObject.editIndex ] = selectedGaugeAttributes;
 
-            CustomizerStepTwoObject.displaySelectedGauges();
+            CustomizerStepTwoObject.displaySelectedGauges(); //select gauge sidebar
+
+            $(".mfp-bg").removeClass("mfp-ready");
+
 
             $('.lightbox-attributes').fadeOut(200);
 

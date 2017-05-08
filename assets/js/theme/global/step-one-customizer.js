@@ -44,7 +44,10 @@ var CustomizerStepOneObject = {
 		var imgPathLength = imgPath.length;
 		var trimmedimgPath = imgPath.substring(0, imgPathLength - 3);
 
-		var newimgPath = trimmedimgPath + "original.jpg";
+		var newtrimmedimgPath = trimmedimgPath.replace(/ /g, '%20');
+
+		var newimgPath = newtrimmedimgPath + "original.jpg";
+
 		return newimgPath;
 	
 	},
