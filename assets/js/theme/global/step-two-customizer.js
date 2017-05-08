@@ -534,15 +534,22 @@ var CustomizerStepTwoObject = {
 		}
 		
 			$('.popup-step2').magnificPopup({
-			      type:'inline',
-			      removalDelay: 500, //delay removal by X to allow out-animation
-			  callbacks: {
-			    beforeOpen: function() {
+			     type:'inline',
+			     removalDelay: 500, //delay removal by X to allow out-animation
+                 closeOnContentClick: false,
+                 midClick: true,
+			     callbacks: {
+			     beforeOpen: function() {
 			       this.st.mainClass = this.st.el.attr('data-effect');
-			    }
+			    },
+                afterClose: function() {
+                    console.log('Popup is completely closed');
+                }
 			  },
 			  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-			});
+			}).magnificPopup('close');
+
+
 
     },
     buildAttributesPage: function(attributes) {
@@ -912,7 +919,10 @@ module.exports = function() {
             CustomizerStepTwoObject.setSelectedGauge();
             
             //need to remove modal shadow overlay
-            $(".mfp-bg").removeClass("mfp-ready");
+            //$(".mfp-bg").removeClass("mfp-ready");
+
+            $.magnificPopup.close(); // Close popup that is currently opened (shorthand)
+
 
             $('.lightbox-attributes').fadeOut(200);
 
@@ -949,6 +959,7 @@ module.exports = function() {
             //hide add Gauge button
             $(".addGauge").hide();
             $(".editGauge").show();
+
 
             $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
 
@@ -1157,8 +1168,9 @@ module.exports = function() {
 
             CustomizerStepTwoObject.displaySelectedGauges(); //select gauge sidebar
 
-            $(".mfp-bg").removeClass("mfp-ready");
+            //$(".mfp-bg").removeClass("mfp-ready");
 
+            $.magnificPopup.close(); // Close popup that is currently opened (shorthand)
 
             $('.lightbox-attributes').fadeOut(200);
 

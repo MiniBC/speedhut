@@ -22,6 +22,8 @@ var CustomizerStepOneObject = {
 			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">START WITH ' + gaugeKit[i].name + '</a></div> ';
 			card += '</div></li>';
 
+			//this.parseHtmlToText();
+
 			$("#customize-started").append(card);
 
 		}
@@ -39,6 +41,14 @@ var CustomizerStepOneObject = {
 		
 
 	},
+	parseHtmlToText: function() {
+
+		// $.each($('.description'), function (index, obj) {
+  //   		var $this = $(this);
+  //   		$this.html($this.text());
+		// });
+
+	},
 	parseImg: function( imgPath ) {
 
 		var imgPathLength = imgPath.length;
@@ -51,9 +61,13 @@ var CustomizerStepOneObject = {
 		return newimgPath;
 	
 	},
-	parseShortDescription: function( shortDescription ) {
+	parseShortDescription: function( shortDescription ) { //limits text to 150 char
 
-		return shortDescription.substring(0, 150) + "...";
+		console.log("short description function..");
+ 		var newShortDescription =  $(shortDescription).text();
+
+
+		return newShortDescription.substring(0, 150) + "...";
 
 	},
 	getAllGaugeKits : function(  ) {
