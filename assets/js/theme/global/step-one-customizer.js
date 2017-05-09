@@ -67,7 +67,7 @@ var CustomizerStepOneObject = {
  		var newShortDescription =  $(shortDescription).text();
 
 
-		return newShortDescription.substring(0, 150) + "...";
+		return newShortDescription.substring(0, 140) + "...";
 
 	},
 	getAllGaugeKits : function(  ) {

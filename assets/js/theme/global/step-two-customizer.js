@@ -831,7 +831,7 @@ var CustomizerStepTwoObject = {
 
             var currentGaugePrice = parseFloat( selectedGaugeAttributes.gaugePrice ).toFixed(2);
 
-            $("#selectedGaugePrice").html( currentGaugePrice );
+            $("#selectedGaugePrice").html( "Total: $" + currentGaugePrice );
 
         }
 
