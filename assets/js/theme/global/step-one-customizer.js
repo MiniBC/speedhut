@@ -19,7 +19,7 @@ var CustomizerStepOneObject = {
 			card += ' <i class="material-icons kitInfo"><a class="kitmodal popup-step1" href="#popup-step1" data-effect="mfp-zoom-in">info_outline</a></i> ';
 			card += ' <span class="kitid" style="visibility:hidden" >' + gaugeKit[i].id + '</span>';
 			card += ' <span class="kitname" style="visibility:hidden" >' + gaugeKit[i].name + '</span>';
-			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">' + gaugeKit[i].name + '</a></div> ';
+			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">Get Started</a></div> ';
 			card += '</div></li>';
 
 			//this.parseHtmlToText();
