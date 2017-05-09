@@ -476,7 +476,7 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
     -moz-transition: all 200ms ease-in 0s;
     -webkit-transition: all 200ms ease-in 0s;
     -o-transition: all 200ms ease-in 0s;
-    width: 100%;
+    width: auto;
 }
 
 .lightbox-attributes .action-btn a:hover {
@@ -628,7 +628,7 @@ ul.cards {
 	color: #8a8a8a;
 	line-height: 1.5;
 	font-weight: 500;
-	min-height: 70px;
+	min-height: 90px;
 	font-size: 1rem;
 	text-align: left;
 	margin-bottom: 0;
@@ -945,6 +945,10 @@ body.fixed-items .gauges-selected .wrapper {
 	color: green;
 	letter-spacing: -1px;
 	font-weight: 300;
+}
+
+#selectedGaugePrice span {
+	color: #444;
 }
 
 
