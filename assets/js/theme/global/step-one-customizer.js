@@ -112,7 +112,13 @@ $("body").on("click", ".kitmodal", function() {
 //Step one : A Kit Was Selected
 $( "body" ).on( "click", ".startsteptwo", function(  ) {
 
-	window.customizerObject.selectedGauges = []; //empty array of selected gauges because a new kit has been selected.
+	$("#gaugeSelected").html("");
+
+	console.log(" start step two...");
+
+	console.log( window.customizerObject.selectedGauges );
+
+	window.customizerObject.selectedGauges.length = 0; //empty array of selected gauges because a new kit has been selected.
 
 	window.customizerObject.kitname = $(this).siblings(".kitname").text();
 

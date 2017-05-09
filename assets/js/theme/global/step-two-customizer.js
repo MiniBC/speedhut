@@ -473,6 +473,12 @@ var CustomizerStepTwoObject = {
 
         var gaugetotal = 0;
 
+        if( window.customizerObject.selectedGauges.length == 0 ) {
+
+            $("#gaugetotal").html( gaugetotal.toFixed(2) );
+            
+        }
+
         for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
 
             selectedGaugeSideBar += '<li class="animated fadeIn">';
@@ -492,11 +498,14 @@ var CustomizerStepTwoObject = {
             var number = parseFloat(window.customizerObject.selectedGauges[i].gaugePrice).toFixed(2);
             gaugetotal = parseFloat(number) + parseFloat(gaugetotal);
 
+            console.log(gaugetotal);
+
             //append total
             $("#gaugetotal").html( gaugetotal.toFixed(2) );
             $("#gaugeSelected").html(selectedGaugeSideBar);
 
         }
+
 
         $('.popup-step2').magnificPopup({
             type:'inline',
@@ -831,7 +840,7 @@ var CustomizerStepTwoObject = {
 
             var currentGaugePrice = parseFloat( selectedGaugeAttributes.gaugePrice ).toFixed(2);
 
-            $("#selectedGaugePrice").html( "Total: $" + currentGaugePrice );
+            $("#selectedGaugePrice").html( "<span class='customPriceTotal' >Total: $</span>" + currentGaugePrice );
 
         }
 
@@ -862,6 +871,8 @@ module.exports = function() {
 
 		//this step needs to pull all produ
 		window.initsteptwo = function() { //called when page loads
+
+            console.log("now..... step 2");
 
             CustomizerStepTwoObject.displaySelectedGauges();
 
@@ -917,9 +928,6 @@ module.exports = function() {
 
             CustomizerStepTwoObject.addToSelectedGaugeFlag = true;
             CustomizerStepTwoObject.setSelectedGauge();
-            
-            //need to remove modal shadow overlay
-            //$(".mfp-bg").removeClass("mfp-ready");
 
             $.magnificPopup.close(); // Close popup that is currently opened (shorthand)
 
@@ -930,6 +938,8 @@ module.exports = function() {
 
         // -- The remove button has been clicked -- // 
         $( "body" ).on( "click", ".removeAttributes", function() {
+
+            //console.log("removing....");
 
             var removedIndex = $(this).parent().parent().parent().index();
 
@@ -1036,17 +1046,9 @@ module.exports = function() {
 
                 CustomizerStepTwoObject.setSelectedGauge(true);
 
-                //$(".subimtGauge").addClass("addGauge");
-
-                //var gaugePriceTotal = parseFloat(window.customizerObject.selectedGauges[ window.customizerObject.selectedGauges.length - 1 ].gaugePrice).toFixed(2);
-                //$("#selectedGaugePrice").html( "$" + gaugePriceTotal );
-                //console.log( window.customizerObject.selectedGauges[ window.customizerObject.selectedGauges.length - 1 ].gaugePrice );
-
             } else {
 
                 $("#selectedGaugePrice").html( "" );
-                //$(".addGauge").removeClass("addGauge");
-
 
             }
 
@@ -1167,8 +1169,6 @@ module.exports = function() {
             window.customizerObject.selectedGauges[ CustomizerStepTwoObject.editIndex ] = selectedGaugeAttributes;
 
             CustomizerStepTwoObject.displaySelectedGauges(); //select gauge sidebar
-
-            //$(".mfp-bg").removeClass("mfp-ready");
 
             $.magnificPopup.close(); // Close popup that is currently opened (shorthand)
 
