@@ -123,6 +123,7 @@ $( "body" ).on( "click", ".startsteptwo", function(  ) {
 	window.customizerObject.kitname = $(this).siblings(".kitname").text();
 
 	window.customizerObject.currentStep = 2; //set the customizer stage
+
 	window.customizerObject.kitid = $(this).parent().parent().children(".kitid").text();
 
     $("#style-page-title").html(window.customizerObject.kitname); //set name of header on step.2

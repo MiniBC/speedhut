@@ -23,7 +23,6 @@ import customizerStepOne from './global/step-one-customizer';
 import customizerStepTwo from './global/step-two-customizer';
 import magnificInit from './global/magnificInit';
 
-
 function fastClick(element) {
     return new FastClick(element);
 }

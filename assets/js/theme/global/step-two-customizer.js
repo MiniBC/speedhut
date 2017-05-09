@@ -926,6 +926,8 @@ module.exports = function() {
 
             console.log("add new gauge!!!");
 
+            console.log( window.customizerObject.selectedGauges );
+
             CustomizerStepTwoObject.addToSelectedGaugeFlag = true;
             CustomizerStepTwoObject.setSelectedGauge();
 
@@ -1141,7 +1143,6 @@ module.exports = function() {
                     console.log( gaugeProperties );
 
                 } else if( $(value).children().hasClass("defaultAttributeOption") ) {
-
 
                     var selectedName = $(value).children("label").children("span").text(); //label name
                     var defaultAttributeOption = $(value).children(".defaultAttributeOption").text().trim();
