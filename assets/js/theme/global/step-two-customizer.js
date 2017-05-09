@@ -840,7 +840,7 @@ var CustomizerStepTwoObject = {
 
             var currentGaugePrice = parseFloat( selectedGaugeAttributes.gaugePrice ).toFixed(2);
 
-            $("#selectedGaugePrice").html( "<span class='customPriceTotal' >Total: $</span>" + currentGaugePrice );
+            $("#selectedGaugePrice").html( "<span class='customPriceTotal' >Total:</span> $" + currentGaugePrice );
 
         }
 
