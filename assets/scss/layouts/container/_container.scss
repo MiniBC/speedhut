@@ -293,11 +293,11 @@ a.navUser-action--quickSearch i {
 
 #CustomizableContainer {display: none;}
 body.CustomizerApp #CustomizableContainer {display: block;}
-body.CustomizerApp .productView {display: none;}
+body.CustomizerApp .productView {display: inhert;}
 body.CustomizerApp #CustomizableContainer .productView {display: block;}
 
 body.CustomizerApp {
-	background: #f0f0f0;
+	background: #fff;
 	/*background: -moz-linear-gradient(top,  #dadadc -30%, #ffffff 100%);
 	background: -webkit-linear-gradient(top,  #dadadc -30%,#ffffff 100%);
 	background: linear-gradient(to bottom,  #dadadc -30%,#ffffff 100%);
@@ -688,6 +688,12 @@ ul.cards {
 .gauges-selected {
 }
 
+body.fixed-items .gauges-selected .wrapper {
+	position: fixed;
+	top: 12px;
+	max-width: 320px;
+}
+
 .gauges-selected h2 {
 	margin: 0;
 	padding: 5px 0 20px;
@@ -800,11 +806,6 @@ ul.cards {
 	width: 100%;
 }
 
-body.fixed-items .gauges-selected .wrapper {
-	position: fixed;
-	top: 12px;
-	max-width: 320px;
-}
 
 
 .select-style {
@@ -1373,3 +1374,20 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+
+
+.unselectedFeature {
+	border: solid #ff0000;
+}
+.unselectedFeature:hover{
+	border: solid #ff0000;
+}
+
+.img-preview-select{
+
+	border: solid #000;
+	border-left: solid #fff;
+    border-right: solid #fff;
+    border-top: solid #fff;
+
+}

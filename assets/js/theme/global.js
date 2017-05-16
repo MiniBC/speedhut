@@ -21,7 +21,11 @@ import attributeInfo from './global/attribute-info';
 import selectedGauge from './global/selected-gauge';
 import customizerStepOne from './global/step-one-customizer';
 import customizerStepTwo from './global/step-two-customizer';
+import customizerStepThree from './global/step-three-customizer';
 import magnificInit from './global/magnificInit';
+import clickedCustomizeGaugeButton from './global/clickedCustomizeGaugeButton';
+
+//import saveSelectedGagues from './global/saveSelectedGagues';
 
 function fastClick(element) {
     return new FastClick(element);
@@ -51,9 +55,14 @@ export default class Global extends PageManager {
         custom();
         productCustomizer();
         attributeInfo();
-        customizerStepOne();
+        customizerStepThree();
+        //customizerStepOne();
         customizerStepTwo();
+        //saveSelectedGagues();
         //selectedGauge();
         magnificInit();
+        customizerStepOne();
+        clickedCustomizeGaugeButton();
+
     }
 }

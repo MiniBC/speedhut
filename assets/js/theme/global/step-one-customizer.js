@@ -6,6 +6,9 @@ var CustomizerStepOneObject = {
 
 	buildStepOneCards : function( gaugeKit ) {
 
+		$("#customize-started").html("");
+
+
         for( var i = 0; i < gaugeKit.length; i++ ) {
 
 			var card;
@@ -19,34 +22,24 @@ var CustomizerStepOneObject = {
 			card += ' <i class="material-icons kitInfo"><a class="kitmodal popup-step1" href="#popup-step1" data-effect="mfp-zoom-in">info_outline</a></i> ';
 			card += ' <span class="kitid" style="visibility:hidden" >' + gaugeKit[i].id + '</span>';
 			card += ' <span class="kitname" style="visibility:hidden" >' + gaugeKit[i].name + '</span>';
-			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">Get Started</a></div> ';
+			card += ' <div class="action-btn startsteptwo"><a href="#step-two" class="Step Two" tabindex="0">START WITH ' + gaugeKit[i].name + '</a></div> ';
 			card += '</div></li>';
-
-			//this.parseHtmlToText();
 
 			$("#customize-started").append(card);
 
 		}
 		
-		    $('.popup-step1').magnificPopup({
-			      type:'inline',
-			      removalDelay: 500, //delay removal by X to allow out-animation
-			  callbacks: {
-			    beforeOpen: function() {
-			       this.st.mainClass = this.st.el.attr('data-effect');
-			    }
-			  },
-			  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-			});
+	    $('.popup-step1').magnificPopup({
+		      type:'inline',
+		      removalDelay: 500, //delay removal by X to allow out-animation
+		  callbacks: {
+		    beforeOpen: function() {
+		       this.st.mainClass = this.st.el.attr('data-effect');
+		    }
+		  },
+		  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+		});
 		
-
-	},
-	parseHtmlToText: function() {
-
-		// $.each($('.description'), function (index, obj) {
-  //   		var $this = $(this);
-  //   		$this.html($this.text());
-		// });
 
 	},
 	parseImg: function( imgPath ) {
@@ -79,15 +72,12 @@ var CustomizerStepOneObject = {
 			method: "GET",
 	        data: {gaugeKits: true},
 	        url: "http://schurton.com/speedhutcache/styles.php" 
-	        //url: "http://schurton.com/speedhutcache/styles.php" 
-
-
 		}).done(function( response ) {
 
 			//Parse JSON
-			var gaugeKitJson = JSON.parse(response);
+			window.customizerObject.allGaugeKits = JSON.parse(response);
 
-			self.buildStepOneCards( gaugeKitJson );
+			self.buildStepOneCards( window.customizerObject.allGaugeKits );
 
 		})
 	},
@@ -114,13 +104,14 @@ $( "body" ).on( "click", ".startsteptwo", function(  ) {
 
 	$("#gaugeSelected").html("");
 
-	console.log(" start step two...");
-
 	console.log( window.customizerObject.selectedGauges );
 
 	window.customizerObject.selectedGauges.length = 0; //empty array of selected gauges because a new kit has been selected.
 
 	window.customizerObject.kitname = $(this).siblings(".kitname").text();
+	
+	localStorage.setItem( "myselectedKitName", window.customizerObject.kitname );
+	//set localstorage for selected kit
 
 	window.customizerObject.currentStep = 2; //set the customizer stage
 
@@ -137,8 +128,32 @@ module.exports = function() {
 
 	$(function(){
 
-		CustomizerStepOneObject.getAllGaugeKits();
+		//we need to check if the user has already started a gauge
+		if( localStorage.getItem("myselectedGauges") ) {
+
+			console.log("sett!!");
+			window.customizerObject.kitname = localStorage.getItem("myselectedKitName");
+			window.customizerObject.loadStepTwo();
+
+
+		} else {
+
+			console.log("not set!!!");
+			CustomizerStepOneObject.getAllGaugeKits();
+
+		}
+
 
 	});
 
 };
+
+//Step 1 in the header was clicked
+$("body").on("click", "#step-1", function() {
+
+	customizerObject.loadStepOne();
+	CustomizerStepOneObject.getAllGaugeKits();
+
+})
+
+
