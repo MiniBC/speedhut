@@ -1,6 +1,4 @@
-<!-- <div id="ProductCustomizerSectionLoad" style="text-align:center;">
-	<div class="loader">Loading...</div>
-</div> -->
+
 <div id="ProductCustomizerSection" >
 
 
@@ -19,91 +17,7 @@
                     <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
             
             
-            <!--<dl class="productView-info">
-                
-                {{#if product.upc}}
-                    <dt class="productView-info-name">{{lang 'products.upc'}}</dt>
-                    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
-                {{/if}}
-                {{#if product.condition}}
-                    <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
-                    <dd class="productView-info-value">{{product.condition}}</dd>
-                {{/if}}
-                {{#if product.availability}}
-                    <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
-                    <dd class="productView-info-value">{{product.availability}}</dd>
-                {{/if}}
-                {{#if product.weight}}
-                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
-                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
-                {{/if}}
-                {{#if product.min_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.max_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.gift_wrapping_available}}
-                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
-                {{/if}}
-                {{#if product.shipping}}
-                    {{#if product.shipping.calculated}}
-                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
-                    {{else}}
-                        {{#if product.shipping.price.value '===' 0}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
-                        {{else}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
-                        {{/if}}
-                    {{/if}}
-                {{/if}}
-                {{#if product.bulk_discount_rates.length}}
-                    <dt class="productView-info-name">{{lang 'products.bulk_pricing.title'}}</dt>
-                    <dd class="productView-info-value">
-                        <a href="{{product.url}}"
-                            {{#unless is_ajax }}data-reveal-id="bulkPricingModal" {{/unless}}>
-                            {{lang 'products.bulk_pricing.view'}}
-                        </a>
-                    </dd>
 
-                    <div id="bulkPricingModal" class="modal modal--small" data-reveal>
-                        <div class="modal-header">
-                            <h2 class="modal-header-title">{{lang 'products.bulk_pricing.modal_title'}}</h2>
-                            <a href="#" class="modal-close" aria-label="Close"><span aria-hidden="true">&#215;</span></a>
-                        </div>
-                        <div class="modal-body">
-                            <p>{{lang 'products.bulk_pricing.instructions'}}</p>
-                            <ul>
-                            {{#each product.bulk_discount_rates}}
-                                <li>
-                                    {{lang 'products.bulk_pricing.range' min=min max=max}}
-                                    {{#if type '===' 'percent'}}
-                                        {{lang 'products.bulk_pricing.percent' discount=discount.formatted}}
-                                    {{/if}}
-                                    {{#if type '===' 'fixed'}}
-                                        {{lang 'products.bulk_pricing.fixed' discount=discount.formatted}}
-                                    {{/if}}
-                                    {{#if type '===' 'price'}}
-                                        {{lang 'products.bulk_pricing.price' discount=discount.formatted}}
-                                    {{/if}}
-                                </li>
-                            {{/each}}
-                            </ul>
-                        </div>
-                    </div>
-                {{/if}}
-
-                {{#each product.custom_fields}}
-                    <dt class="productView-info-name">{{name}}:</dt>
-                    <dd class="productView-info-value">{{{value}}}</dd>
-                {{/each}}
-            </dl> -->
         </div>
     </section>
 
@@ -113,34 +27,7 @@
 
 
 
-<!--     <section class="productView-images" data-image-gallery>
-        <figure class="productView-image"
-                data-image-gallery-main
-                data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
-                >
-            <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
-                <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" data-main-image>
-            </a>
-        </figure>
 
-        <ul class="productView-thumbnails">
-               <li class="productView-thumbnail">
-                    <a
-                        class="productView-thumbnail-link"
-                        href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
-                        data-image-gallery-item
-                        data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
-                        data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
-                        <img src="{{getImage this 'productthumb_size' (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}">
-                    </a>
-                </li>
-       </ul>
-        
-        <p class="note">Click on individual gauges below to edit and learn more about each one</p>
-        
-
-
-    </section> -->
 
     <section class="productView-details">
         <div class="productView-options">
@@ -178,16 +65,10 @@
         <p class="kit-price-txt">Total Kit Price</p> {{> components/products/price price=product.price schema_org=schema}}
     </div>
 	 
-	 <div class="gauge-specs" >
-		 <div class="title">Gauge Specs</div>
-		 <ul>
-            {{login.heading}}
-			 <li><b>Type:</b> GPS</li>
-			 <li><b>Size:</b> 4 - 1/2"</li>
-			 <li><b>Sweep:</b> 4 - 1/2"</li>
-			 <li><b>Turn Signals:</b> No</li>
-			 <li><b>High Beam:</b> Yes</li>
-		 </ul>
+	<div class="gauge-specs">
+	   <div class="title">Gauge Specs <span class="edit-gauge-feature-step3"><a href="#popup-step2" class="popup-step2">Edit Features</a></span></div>
+		    <ul class="gauge-spec-preview" >
+		    </ul>
 	 </div>
 	 
 	 	 
@@ -197,18 +78,7 @@
 		 
          <ul>
 
-<!-- 			 <li class="color "> <i class="fa fa-eyedropper"></i> <b>Color</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="font-style "> <i class="fa fa-font"></i> <b>Font Style</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="tick-style "> <i class="fa fa-tachometer"></i> <b>Tick Style</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="graphic "> <i class="fa fa-paint-brush"></i> <b>Graphic</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="logo "> <i class="fa fa-picture-o"></i> <b>Logo</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="text "> <i class="fa fa-text-width" aria-hidden="true"></i> <b>Text</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="pointer "> <img src="{{cdn '/assets/img/customicon-pointer.png'}}" /> <b>Pointer</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="bezel "> <img src="{{cdn '/assets/img/customicon-bezel.png'}}" /> <b>Bezel</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="window "> <img src="{{cdn '/assets/img/customicon-window.png'}}" /> <b>Window</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="disc "> <img src="{{cdn '/assets/img/customicon-disc.png'}}" /> <b>Disc</b> <span class="info">Choose</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-			 <li class="gauge-note "> <i class="fa fa-pencil-square-o"></i> <b>Gauge Note:</b> <span class="info">Add a note</span> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
- -->		 
+	 
          </ul>
 		 
 		 
@@ -233,16 +103,16 @@
 			 
 			 
 			 
-		 </div> <!-- end of options overlay -->
+		 </div> 
 		 
 		 
 	 </div>
 	 
 	 <p class="note">* Current handling time is 10-15 business days.</p>
 	 
- </div> <!-- end of sidebar -->
+ </div> 
 
- </div> <!-- end product customizer section -->
+ </div> 
 
 
 

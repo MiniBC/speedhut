@@ -42,7 +42,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 				$(".selectedGaugePreivew").append("<br>");
 			}
 
-			$(".selectedGaugePreivew").append( "<img class='img-preview' src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177'>" );
+			$(".selectedGaugePreivew").append( "<img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177'>" );
 
 
 		}
@@ -61,9 +61,15 @@ var CustomizerStepThreeObject = {  //start of step three object
 		for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
 
 			var gaugePreivew = backgroundLayer;
+			//var nightGaugePreview = nightBackgroundLayer;
 
 			window.customizerObject.selectedGauges[i].dayTimeGaugePreviewLayyer = "";
 			window.customizerObject.selectedGauges[i].dayTimeGaugePreviewLayyer = gaugePreivew;
+
+			// window.customizerObject.selectedGauges[i].nightTimeGaugePreviewLayyer = "";
+			// window.customizerObject.selectedGauges[i].nightTimeGaugePreviewLayyer = "";
+
+
 
 
 		}
@@ -85,10 +91,19 @@ module.exports = function() {
 
 	$(function() {
 
+		console.log( window.customizerObject.priceset );
+
 		window.initstepthree = function() { //called when page loads
 
 			CustomizerStepThreeObject.setSettings();
 			CustomizerStepThreeObject.setStepThreeGaugePreview();
+			window.customizerObject.displayGaugeSpecs(0);
+
+			console.log(" loading step 3...... ");
+
+			$(".price--withoutTax").html( "$" + window.customizerObject.totalKitPrice ); // add final price to step 3 price total.
+			$("#0").addClass( "img-preview-select" );
+			//console.log( window.customizerObject.totalKitPrice );
 
 		}
 
@@ -96,7 +111,7 @@ module.exports = function() {
 
 	$("body").on("click", ".img-preview", function() {
 
-		CustomizerStepThreeObject.currentEditIndex = $(this).index();
+		CustomizerStepThreeObject.currentEditIndex = $(this).attr("id");
 
 		$(".img-preview").removeClass("img-preview-select");
 		$(this).addClass("img-preview-select");
@@ -105,13 +120,15 @@ module.exports = function() {
 
 		$("#pcCanvas").html( window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer );
 
+		window.customizerObject.displayGaugeSpecs( CustomizerStepThreeObject.currentEditIndex );
 
 	});
 
 	$("body").on("click", ".apply-to-kit", function() {
 
-		//alert("kit");
 		CustomizerStepThreeObject.saveToAllGauges();
+
+		window.customizerObject.updateSelectedGauges();
 
 	});
 
@@ -119,16 +136,17 @@ module.exports = function() {
 
 		CustomizerStepThreeObject.saveStyleToSelectedGauge();
 		
+		window.customizerObject.updateSelectedGauges();
+		
 
 	});
 
-	$("body").on("click", "#daynight", function() {
+	$("body").on("click", ".edit-gauge-feature-step3", function() {
 
+		//window.customizerObject.loadStepTwo();
 
-		//$("#pcCanvas").html( window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer );
+		window.customizerObject.editGaugeButtonStep3 = $(".img-preview-select").attr("id");
 
-
-		//alert("switch daynight");
 
 	});
 
