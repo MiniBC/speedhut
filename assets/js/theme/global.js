@@ -24,8 +24,7 @@ import customizerStepTwo from './global/step-two-customizer';
 import customizerStepThree from './global/step-three-customizer';
 import magnificInit from './global/magnificInit';
 import clickedCustomizeGaugeButton from './global/clickedCustomizeGaugeButton';
-
-//import saveSelectedGagues from './global/saveSelectedGagues';
+import saveSelectedGagues from './global/saveSelectedGagues';
 
 function fastClick(element) {
     return new FastClick(element);
@@ -58,7 +57,7 @@ export default class Global extends PageManager {
         customizerStepThree();
         //customizerStepOne();
         customizerStepTwo();
-        //saveSelectedGagues();
+        saveSelectedGagues();
         //selectedGauge();
         magnificInit();
         customizerStepOne();

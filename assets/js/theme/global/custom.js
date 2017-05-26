@@ -1,5 +1,9 @@
 import $ from 'jquery';
+<<<<<<< HEAD
 // /* eslint-disable */
+=======
+/* eslint-disable */
+>>>>>>> origin/master
 
 $('.my-account a').click(() => {
  	$('.my-account .dropdown-menu').toggle();
@@ -102,19 +106,19 @@ function sideNav(){
 };
 
 
-// function resizeSidebarOnScroll() {
-//   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
-//   shrinkOn = 245,
-//   headerEl = document.body;
+function resizeSidebarOnScroll() {
+  const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+  shrinkOn = 245,
+  headerEl = document.body;
   
-//   if (distanceY > shrinkOn) {
-//     headerEl.classList.add("fixed-items");
-//   } else {
-//     headerEl.classList.remove("fixed-items");
-//   }
-// }
+  if (distanceY > shrinkOn) {
+    headerEl.classList.add("fixed-items");
+  } else {
+    headerEl.classList.remove("fixed-items");
+  }
+}
 
-// window.addEventListener('scroll', resizeSidebarOnScroll);
+window.addEventListener('scroll', resizeSidebarOnScroll);
 
 
 

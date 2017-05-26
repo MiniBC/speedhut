@@ -84,7 +84,6 @@ var CustomizerStepOneObject = {
 	populateModal: function( ) {
 
 
-
 	}
 	
 }
@@ -104,18 +103,18 @@ $( "body" ).on( "click", ".startsteptwo", function(  ) {
 
 	$("#gaugeSelected").html("");
 
-	console.log( window.customizerObject.selectedGauges );
-
 	window.customizerObject.selectedGauges.length = 0; //empty array of selected gauges because a new kit has been selected.
 
 	window.customizerObject.kitname = $(this).siblings(".kitname").text();
 	
-	localStorage.setItem( "myselectedKitName", window.customizerObject.kitname );
+	window.customizerObject.setLocalHostKitName();
 	//set localstorage for selected kit
 
 	window.customizerObject.currentStep = 2; //set the customizer stage
 
 	window.customizerObject.kitid = $(this).parent().parent().children(".kitid").text();
+
+	window.customizerObject
 
     $("#style-page-title").html(window.customizerObject.kitname); //set name of header on step.2
 
@@ -129,20 +128,20 @@ module.exports = function() {
 	$(function(){
 
 		//we need to check if the user has already started a gauge
-		if( localStorage.getItem("myselectedGauges") ) {
+		if( localStorage.getItem( "my-selected-kit-name" ) ) {
 
-			console.log("sett!!");
-			window.customizerObject.kitname = localStorage.getItem("myselectedKitName");
+			window.customizerObject.kitname = localStorage.getItem("my-selected-kit-name");
+			$("#style-page-title").html(window.customizerObject.kitname); //set name of header on step.2
 			window.customizerObject.loadStepTwo();
-
+			CustomizerStepOneObject.getAllGaugeKits();
 
 		} else {
 
-			console.log("not set!!!");
+			window.customizerObject.loadStepOne();
+
 			CustomizerStepOneObject.getAllGaugeKits();
 
 		}
-
 
 	});
 
