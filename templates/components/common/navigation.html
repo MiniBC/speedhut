@@ -1,5 +1,5 @@
 <nav class="navUser">
- <div class="container">
+ <div class="container-alt">
     {{> components/common/currency-selector}}
 
     <ul class="navUser-section navUser-section--alt">
@@ -40,8 +40,12 @@
             </li>
         {{/if}}-->
         
+        <li class="navUser-item">
+        	<a class="navUser-action" href="tel:8017090972"><i class="material-icons">phone</i> 801-709-0972</a>
+        </li>
+        
         <li class="navUser-item my-account">
-        	<a class="navUser-action" href="#"><img src="{{cdn '/assets/img/garage-icon.png'}}" /> My Account <i class="material-icons">arrow_drop_down</i></a>
+        	<a class="navUser-action" href="#"><img src="{{cdn '/assets/img/garage-icon.png'}}" /> My Garage <i class="material-icons">arrow_drop_down</i></a>
         
 			<div class="dropdown-menu is-open" style="display: none;">
 				{{#if settings.account_creation_enabled}}
@@ -58,20 +62,17 @@
         
         </li>
 
+    
         
-        <li class="navUser-item">
-        	<a class="navUser-action" href="tel:8017090972"><i class="material-icons">phone</i> 801-709-0972</a>
-        </li>
-        
-        <li class="navUser-item">
+        <!--<li class="navUser-item">
          <a class="navUser-action" href="/support"><i class="material-icons">chat</i> Customer Support</a>
-        </li>
+        </li>-->
         
-        {{#if settings.gift_certificates_enabled}}
+        <!--{{#if settings.gift_certificates_enabled}}
             <li class="navUser-item">
                 <a class="navUser-action" href="{{urls.gift_certificate.purchase}}"><i class="material-icons">card_giftcard</i> {{lang 'common.gift_cert'}}</a>
             </li>
-        {{/if}}
+        {{/if}}-->
         
         <li class="navUser-item navUser-item--cart">
             <a
@@ -86,9 +87,9 @@
             <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
         </li>
         
-        <li class="navUser-item search-item">
-            <a class="navUser-action navUser-action--quickSearch" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false"><i class="material-icons">search</i> <!--{{lang 'common.search'}}--></a>
-        </li>
+        <!--<li class="navUser-item search-item">
+            <a class="navUser-action navUser-action--quickSearch" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false"><i class="material-icons">search</i></a>
+        </li>-->
         
     </ul>
  </div>

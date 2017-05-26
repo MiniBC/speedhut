@@ -303,7 +303,7 @@
         "show_accept_paypal": false,
         "show_accept_visa": false,
         "product_list_display_mode": "grid",
-        "logo-position": "center",
+        "logo-position": "left",
         "logo_size": "250x100",
         "brand_size": "190x250",
         "gallery_size": "300x300",

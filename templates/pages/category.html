@@ -16,27 +16,56 @@ category:
 
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-{{{snippet 'categories'}}}
-<div class="category">
-    <aside class="col-sm-3 col-md-3 col-lg-2" id="faceted-search-container">
-        {{> components/category/sidebar}}
-    </aside>
+</div> <!-- closes container div -->
 
-    <main class="col-sm-8 col-md-9 col-lg-10" id="product-listing-container">
+<div class="cat-hero-banner">
+	<div>	
+		{{#if banners.top}}
+		<div class="banners" data-banner-location="top">
+		    <div class="banner">
+		        {{{limit banners.top 1}}}
+		    </div>
+		</div>
+		{{/if}}
+	</div>
+</div>
+
+<div class="container">
+
+<div class="cat-heading-title">
+	<div class="cat-breadcrumbs col-sm-4 col-md-4 col-lg-4">
+		{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+	</div>
+	
+	<div class="col-sm-4 col-md-4 col-lg-4 col-lg-4">
+	<h1 class="page-heading">{{category.name}}</h1>
+	</div>
+	
+	<div class="col-sm-4 col-md-4 col-lg-4 cat-sort-products">
+		{{> components/products/filter sort=pagination.category.sort}}
+	</div>
+</div>
+
+<div class="page">
+	
+    <div class="category-sidebar col-sm-4 col-md-3 col-lg-2" id="faceted-search-container">
+        {{> components/category/sidebar}}
+    </div>
+
+    <div class="animated fadeIn category-content col-sm-8 col-md-9 col-lg-10" id="product-listing-container">
+	    <div class="category-description">{{{category.description}}}</div>
+        {{{snippet 'categories'}}}
         
         {{#if category.image}}
-            <img src="{{getImage category.image 'thumbnail'}}">
+          <img src="{{getImage category.image 'thumbnail'}}" class="featured-category-image">
         {{/if}}
-        <h1 class="page-heading">{{category.name}}</h1>
-        {{{category.description}}}
-        
+                
         {{#if category.products}}
             {{> components/category/product-listing}}
         {{else}}
             <p align="center">{{lang 'categories.no_products'}}</p>
         {{/if}}
-    </main>
+    </div>
 </div>
 
 {{/partial}}
