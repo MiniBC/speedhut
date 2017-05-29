@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import magnific from './magnific';
 
+
 var CustomizerStepThreeObject = {  //start of step three object
 
 	currentEditIndex: 0,
@@ -8,12 +9,11 @@ var CustomizerStepThreeObject = {  //start of step three object
 	saveStyleToSelectedGauge: function() {
 
 		var currentGaugeSelection = $("#pcCanvas").html();
-		
+
 		console.log( CustomizerStepThreeObject.currentEditIndex );
 		console.log( $("#pcCanvas").html() );
-		
-		window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer = currentGaugeSelection;
 
+		window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer = currentGaugeSelection;
 
 		console.log( window.customizerObject.selectedGauges );
 
@@ -42,16 +42,41 @@ var CustomizerStepThreeObject = {  //start of step three object
 				$(".selectedGaugePreivew").append("<br>");
 			}
 
-			$(".selectedGaugePreivew").append( "<img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177'>" );
+			// HERE WE HAVE TO APPEND THE SAME CODE THAT'S INSIDE THE MAIN GAUGE
+			$(".selectedGaugePreivew").append( "<div class='gauge-preview-container' id='gauge-preview-container-"+i+"'><img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177'></div>" );
+			// if changes have been made to the gauge, it should update its preview
+			// $(".selectedGaugePreivew").append()
 
-
+			// TEMPORARY
+			// $('.layer_logo').remove();
+			// $('.layer_lcd').remove();
 		}
 
 		console.log( window.customizerObject.selectedGauges );
 
 	},
+	swapGaugePreview: function() {
+		console.log("&&&&&&& THE SWAP FUNCTION RUNS &&&&&&&");
+		var gaugePreviewSection;
+
+		var previewGauge = $('#cloneclass').clone();
+		previewGauge.attr('id', CustomizerStepThreeObject.currentEditIndex);
+		// previewGauge.attr('id', 'previewCanvas-' + CustomizerStepThreeObject.currentEditIndex);
+		previewGauge.addClass('gauge-preview-item');
+		// to make it selectable again
+		previewGauge.addClass('img-preview');
+
+		console.log('THIS IS Main Gauge!!!');
+		console.log(previewGauge);
+		$('#gauge-preview-container-' + CustomizerStepThreeObject.currentEditIndex).html("");
+		$('#gauge-preview-container-' + CustomizerStepThreeObject.currentEditIndex).append(previewGauge);
+
+		// $('#'+idOfGaugeChanged).html(mainGauge);
+		// $('.layer_logo').remove();
+		// $('.layer_lcd').remove();
+	},
 	setStepThreeGaugePreview: function() {
-	
+
 		var gaugeElement;
 
 		var backgroundLayer = $("#pcCanvas").html();
@@ -69,19 +94,16 @@ var CustomizerStepThreeObject = {  //start of step three object
 			// window.customizerObject.selectedGauges[i].nightTimeGaugePreviewLayyer = "";
 			// window.customizerObject.selectedGauges[i].nightTimeGaugePreviewLayyer = "";
 
-
-
-
 		}
 
 		CustomizerStepThreeObject.buildStepThreeGaugePreview();
-	
+
 	},
 	setSettings: function() {
 
 		$("#customizer_layer_2").css("left","0");
 		$("#customizer_layer_2").css("top","0");
-		
+
 	}
 
 
@@ -130,15 +152,17 @@ module.exports = function() {
 
 		window.customizerObject.updateSelectedGauges();
 
+
+		// CustomizerStepThreeObject.buildStepThreeGaugePreview();
 	});
 
 	$("body").on("click", ".apply-to-gauge", function() {
-
+		// after this function is run, we need to update the preview of gauges with their mini versions
 		CustomizerStepThreeObject.saveStyleToSelectedGauge();
-		
-		window.customizerObject.updateSelectedGauges();
-		
 
+		window.customizerObject.updateSelectedGauges();
+
+		CustomizerStepThreeObject.swapGaugePreview(0);
 	});
 
 	$("body").on("click", ".edit-gauge-feature-step3", function() {
