@@ -30,6 +30,7 @@
 
 .gauge-preview-container {
 	
+	cursor: pointer;
 	vertical-align: top;
 	width: 173px;
 	height: 173px;
@@ -946,20 +947,9 @@ body.night-mode {
 	
 	.stepper {background: #111; border-color: #111;}
 	.header-middle {border-color: #111;}
-	.customize-your-gauge ul li {background: #000;}
-	.gauge-specs .title {background: #111;}
-	.preview-window h1 {color: #ccc !important;}
-	.preview-window .productView-product {color: #ccc;}
-	.options-overlay {border-color: #111;}
-	.options-overlay .content {background: #000;}
-	.options-overlay .heading-title {background: #111; border-color: #111;}
-	.options-overlay .actions {background: #111;}
-	.options-overlay .heading-title .info {color: #ccc; font-weight: 400;}
-	.sidebar .title {background: #222;}
-	.customize-your-gauge ul li {border-color: #222;}
-	.customize-your-gauge li b {color: #ccc;}
-	.customize-your-gauge li .info {color: #999;}
-	.customize-your-gauge li i {color: #ccc;}
+	.sidebar {box-shadow: none;}
+	.stepper ul li a {color: #999 !important;}
+
 	
 }
 
@@ -968,6 +958,7 @@ body.night-mode {
 	margin-top: 10px;
 	box-shadow: 0 0 15px #ddd;
 	padding: 0;
+	background: #fff;
 }
 
 .sidebar .gauge-title-selected {
@@ -1034,6 +1025,11 @@ body.night-mode {
 }
 
 }
+
+.gauge--selected {
+	border-bottom: 2px solid #ccc;
+}
+
 
 .gauge-specs {background: #fff; display: inline-block; margin-bottom: 10px; width: 100%; border: 1px solid #ccc; border-radius: 0;}
 .gauge-specs ul {margin: 0; padding: 0;}
