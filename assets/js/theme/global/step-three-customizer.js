@@ -194,7 +194,7 @@ module.exports = function() {
 		CustomizerStepThreeObject.swapGaugePreview(0);
 
 		// close the the menu
-		$('.options-overlay').toggle();
+		//$('.options-overlay').toggle();
 
 	});
 
