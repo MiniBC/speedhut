@@ -56,24 +56,39 @@ var CustomizerStepThreeObject = {  //start of step three object
 
 	},
 	swapGaugePreview: function() {
-		console.log("&&&&&&& THE SWAP FUNCTION RUNS &&&&&&&");
 		var gaugePreviewSection;
-
 		var previewGauge = $('#cloneclass').clone();
 		previewGauge.attr('id', CustomizerStepThreeObject.currentEditIndex);
-		// previewGauge.attr('id', 'previewCanvas-' + CustomizerStepThreeObject.currentEditIndex);
 		previewGauge.addClass('gauge-preview-item');
 		// to make it selectable again
-		previewGauge.addClass('img-preview');
+		previewGauge.addClass('img-preview'); // or should it be: img-preview-select
 
-		console.log('THIS IS Main Gauge!!!');
-		console.log(previewGauge);
 		$('#gauge-preview-container-' + CustomizerStepThreeObject.currentEditIndex).html("");
 		$('#gauge-preview-container-' + CustomizerStepThreeObject.currentEditIndex).append(previewGauge);
-
 		// $('#'+idOfGaugeChanged).html(mainGauge);
 		// $('.layer_logo').remove();
 		// $('.layer_lcd').remove();
+	},
+	swapGaugeKitPreview: function() {
+		// Currently it takes the main one and updates all the images with it
+
+		var quantityGauges = window.customizerObject.selectedGauges.length;
+		// console.log(quantityGauges);
+
+		var $currentGaugeClone;
+		// var $gaugeClonesArr = [];
+
+		for (var index = 0; index < quantityGauges; index++) {
+			$currentGaugeClone = $('#cloneclass').clone();
+			$currentGaugeClone.addClass('gauge-preview-item');
+			$currentGaugeClone.addClass('img-preview'); // or should it be: img-preview-select
+			$currentGaugeClone.attr('id', index);
+
+			// swap. (if it is slow, then swap them later after cloning is done in this loop)
+			$('#gauge-preview-container-' + index).html("");
+			$('#gauge-preview-container-' + index).append($currentGaugeClone);
+		}
+
 	},
 	setStepThreeGaugePreview: function() {
 
@@ -157,11 +172,18 @@ module.exports = function() {
 
 		window.customizerObject.updateSelectedGauges();
 
+<<<<<<< HEAD
 		CustomizerStepThreeObject.swapGaugePreview(0);
 
 
 
+=======
+		CustomizerStepThreeObject.swapGaugeKitPreview();
+>>>>>>> origin/master
 		// CustomizerStepThreeObject.buildStepThreeGaugePreview();
+
+		// close the the menu
+		$('.options-overlay').toggle();
 	});
 
 	$("body").on("click", ".customizer_option_value", function() {
@@ -172,7 +194,14 @@ module.exports = function() {
 		window.customizerObject.updateSelectedGauges();
 
 		CustomizerStepThreeObject.swapGaugePreview(0);
+<<<<<<< HEAD
 	
+=======
+
+		// close the the menu
+		$('.options-overlay').toggle();
+
+>>>>>>> origin/master
 	});
 
 	// $("body").on("click", ".apply-to-gauge", function() {
