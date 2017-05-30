@@ -124,7 +124,6 @@ $( "body" ).on( "click", ".startsteptwo", function(  ) {
 
 
 module.exports = function() {
-
 	$(function(){
 
 		//we need to check if the user has already started a gauge

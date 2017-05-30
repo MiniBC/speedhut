@@ -1,10 +1,6 @@
 import $ from 'jquery';
-<<<<<<< HEAD
-// /* eslint-disable */
-=======
-/* eslint-disable */
->>>>>>> origin/master
 
+/* eslint-disable */
 $('.my-account a').click(() => {
  	$('.my-account .dropdown-menu').toggle();
 });
