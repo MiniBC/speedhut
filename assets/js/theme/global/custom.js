@@ -117,6 +117,16 @@ function resizeSidebarOnScroll() {
 window.addEventListener('scroll', resizeSidebarOnScroll);
 
 
+$(".gauge-specs .title").click(function(){
+$(".gauge-specs-content").toggle();   
+    if ($("i",this).text() == "keyboard_arrow_down") {
+         $("i",this).text("keyboard_arrow_up");
+     }
+      else {
+         $("i",this).text("keyboard_arrow_down");
+     } 
+ });
+
 
 // //Global Customizer Object that needs to share data and functions across all customizer steps
 // var customGaugeObject = {

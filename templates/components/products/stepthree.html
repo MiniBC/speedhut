@@ -1,257 +1,81 @@
-
-<div id="ProductCustomizerSection" >
-
-
+<div id="ProductCustomizerSection">
  <div class="col-sm-12 col-md-8 col-lg-8 preview-window">
-
-
-
-
-<div class="productView">
-
+  <div class="productView">
     <section class="productView-details">
         <div class="productView-product">
-	        
-            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
-                    <dt class="productView-info-name">{{lang 'products.sku'}}</dt>
-                    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-            
-            
-
+	        <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+	        <dt class="productView-info-name">{{lang 'products.sku'}}</dt>
+	        <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
         </div>
     </section>
-
-    <div class="productView-canvas" id="cloneclass" >
-        
-    </div>
-
-
-
-
-
+    <div class="productView-canvas" id="cloneclass"></div>
     <section class="productView-details">
         <div class="productView-options">
             {{#if product.release_date }}
                 <p>{{product.release_date}}</p>
             {{/if}}
-
-
-
         </div>
-
         {{{snippet 'product_details'}}}
     </section>
+  </div> <!-- productView Details -->
 
-    </div>
-
-<div id="previewModal" class="modal modal--large" data-reveal>
+  <div id="previewModal" class="modal modal--large" data-reveal>
     <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
         <span aria-hidden="true">&#215;</span>
     </a>
     <div class="modal-content"></div>
     <div class="loadingOverlay"></div>
-</div>
-	 
-
-
-	 
-	 
- </div>
+  </div>
+  
+  <div class="selectedGaugePreivew col-lg-12"></div>
+  
+ </div> <!-- preview window -->
  
  
  <div class="col-sm-12 col-md-4 col-lg-4 sidebar">
-
-    <div class="productView-price">
-        <p class="kit-price-txt">Total Kit Price</p> {{> components/products/price price=product.price schema_org=schema}}
-    </div>
-	 
-	<div class="gauge-specs">
-	   <div class="title">Gauge Specs <span class="edit-gauge-feature-step3"><a href="#popup-step2" class="popup-step2">Edit Features</a></span></div>
-		    <ul class="gauge-spec-preview" >
-		    </ul>
+    
+    <div class="gauge-specs">
+	   <div class="title">Gauge Specs <i class="material-icons">keyboard_arrow_down</i></div>
+		<div class="gauge-specs-content">
+			<ul class="gauge-spec-preview"></ul>
+			<span class="edit-gauge-feature-step3"><a href="#popup-step2" class="popup-step2">Edit Features</a></span>
+		</div>
 	 </div>
-	 
-	 	 
+
+ 
 	 <div class="customize-your-gauge">
-
 		 <div class="title">Customize Your Gauge</div>
-		 
-         <ul>
+         <ul></ul>
 
-	 
-         </ul>
-		 
-		 
 		<div class="options-overlay">
-
-
-			 
 		    <div class="heading-title">
 			    <span> <i class="fa fa-paint-brush"></i> <b>AA</b> <span class="info">Choose</span> </span>
     	    </div>
 			 
 			 <div class="content">
-				 			 
 			    <div class="actions">
 				 <a class="cancel">Cancel</a>
 				 <a class="apply-to-kit">Apply to Kit</a>
 				 <a class="apply-to-gauge">Apply to Gauge</a>
 			    </div>
-			 
-			 </div>
-			 
-			 
-			 
-			 
+			 </div> 
 		 </div> 
-		 
-		 
 	 </div>
-	 
-	 <p class="note">* Current handling time is 10-15 business days.</p>
-	 
- </div> 
-
- </div> 
 
 
+  	 <p class="note">* Current handling time is 10-15 business days.</p>
 
-
-<!-- <div class="add-to-cart-sticky">
-    
+  
+      <div class="productView-price">
+        <p class="kit-price-txt">Total Kit Price</p>
+        {{> components/products/price price=product.price schema_org=schema}}
+      </div>
             
-            {{#if product.call_for_price}}
-                <p class="productView-price">
-                    <span>{{product.call_for_price}}</span>
-                </p>
-            {{/if}}
-            {{#if product.price}}
-                <div class="productView-price">
-                   <p class="kit-price-txt">Total Kit Price</p> {{> components/products/price price=product.price schema_org=schema}}
-                </div>
-            {{/if}}
+            	
+	</div> 
 
-    
-    
-    <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
-        <input type="hidden" name="action" value="add">
-        <input type="hidden" name="product_id" value="{{product.id}}"/>
-
-
-            {{#each product.customizations}}
-                {{{dynamicComponent 'components/products/customizations'}}}
-            {{/each}}
-        <div data-product-option-change>
-            {{#each product.options}}
-                {{{dynamicComponent 'components/products/options'}}}
-            {{/each}}
-        </div> 
-
-        {{#if product.event_date}}
-            <div class="form-field">
-                <label class="form-label form-label--alternate form-label--inlineSmall">
-                {{product.event_date.name}}:
-                <small>{{lang 'common.required'}}</small>
-                </label>
-                <select class="form-select form-select--date" name="EventDate[Mth]" required>
-                    <option value="">{{lang 'common.month'}}</option>
-                    {{#enumerate 1 12}}
-                        <option value="{{this}}">{{getShortMonth this}}</option>
-                    {{/enumerate}}
-                </select>
-                <select class="form-select form-select--date" name="EventDate[Day]" required>
-                    <option value="">{{lang 'common.day'}}</option>
-                    {{#enumerate 1 31}}
-                        <option value="{{this}}">{{this}}</option>
-                    {{/enumerate}}
-                </select>
-                <select class="form-select form-select--date" name="EventDate[Yr]" required>
-                    <option value="">{{lang 'common.year'}}</option>
-                    {{#enumerate product.event_date.earliest_year product.event_date.latest_year}}
-                        <option value="{{this}}" >{{this}}</option>
-                    {{/enumerate}}
-                </select>
-            </div>
-        {{/if}}
-
-        <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
-            <label class="form-label form-label--alternate">
-                {{lang 'products.current_stock'}}
-                <span data-product-stock>{{product.stock_level}}</span>
-            </label>
-
-        </div>
-       
-        {{#if product.can_purchase}}
-
-            <div class="form-field form-field--increments">
-                <label class="form-label form-label--alternate"
-                       for="qty[]">{{lang 'products.quantity'}}</label>
-
-                <div class="form-increment" data-quantity-change>
-
-
-                    <button class="button button--icon" data-action="inc">
-                        <span class="u-hiddenVisually">{{lang 'products.quantity_increase'}}</span>
-                        <i class="icon" aria-hidden="true">
-                            <svg>
-                                <use xlink:href="#icon-keyboard-arrow-up"/>
-                            </svg>
-                        </i>
-                    </button>
-
-                    <input class="form-input form-input--incrementTotal"
-                           id="qty[]"
-                           name="qty[]"
-                           type="tel"
-                           value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
-                           data-quantity-min="{{product.min_purchase_quantity}}"
-                           data-quantity-max="{{product.max_purchase_quantity}}"
-                           min="1"
-                           pattern="[0-9]*"
-                           aria-live="polite">
-
-                    <button class="button button--icon" data-action="dec">
-                        <span class="u-hiddenVisually">{{lang 'products.quantity_decrease'}}</span>
-                        <i class="icon" aria-hidden="true">
-                            <svg>
-                                <use xlink:href="#icon-keyboard-arrow-down"/>
-                            </svg>
-                        </i>
-                    </button>
-                    
-                </div>
-            </div>
-
-            <div class="alertBox productAttributes-message" >
-                <div class="alertBox-column alertBox-icon">
-                    <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
-                </div>
-                <p class="alertBox-column alertBox-message"></p>
-            </div>
-
-            <div class="form-action">
-                <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit" value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
-            </div>
-            {{{snippet 'product_addtocart'}}}
-        {{/if}}
-        {{#if product.out_of_stock}}
-            {{#if product.out_of_stock_message}}
-                {{>components/common/alert-error product.out_of_stock_message}}
-            {{else}}
-                {{>components/common/alert-error (lang 'products.sold_out')}}
-            {{/if}}
-        {{/if}}
-    </form> 
-
-    
-    
-</div> -->
+  
+</div> 
 
 
 </div> 
-
-        <div class="selectedGaugePreivew">
-
-        </div>
-

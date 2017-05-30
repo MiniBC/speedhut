@@ -28,61 +28,49 @@
 	padding-right: 10px;
 }
 
+.gauge-preview-container {
+	
+	vertical-align: top;
+	
+	.canvas {
+		transform: scale(0.28);
+		margin: -147px 0 0 -130px;
+	}
+	
+	.img-preview-select {
+		border: none;
+	}
+	
+	&:hover {
+		opacity: .8;
+	}
+	
+}
 
-// .selectedGaugePreivew {
-//   display: flex;
-//   flex-direction: column;
-//
-// }
+#ProductCustomizerSection .sidebar {
+
+}
+
+.preview-window .productView-info-name, .preview-window .productView-info-value {
+	float: none;
+	text-align: center;
+}
+
 #gauge-preview-container-1 {
   // width: 100px !important;
 }
 /* ALEX ADDITIONS CSS */
 .gauge-preview-container {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // flex-direction: row;
-  // min-width: 220px !important;
-  // width: 220px !important;
-  // max-width: 220px !important;
-
-
   display: inline-block;
-
-
-  // width: 300;
-  // height: auto;
+  float: none;
+  max-width: 180px;
+  
   .layer_logo,
   .layer_lcd {
     display: none;
   }
 }
-// #gauge-preview-container-0 {
-//
-//   width: 220px !important;
-// }
 
-.gauge-preview-item {
-  transform: scale(0.5);
-  
-  .canvas {
-    width: 220px !important;
-
-  }
-
-  // .canvas {
-  //   min-width: 300px !important;
-  //   min-height: 250px !important;
-  //
-  //   .layer {
-  //     min-width: 300px !important;
-  //     min-height: 250px !important;
-  //     // max-width: 300px;
-  // //   }
-  // }
-
-}
 
 .header-search .form-field i {
     background: #ffffff none repeat scroll 0 0;
@@ -946,6 +934,29 @@ body.CustomizerApp .preview-window h1 {font-size: 30px; font-weight: bold; color
 .preview-window  .productView-info-name {display: inline-block;}
 .preview-window .productView-info-value {display: inline-block;}
 
+
+body.night-mode {
+	background: #000;
+	
+	.stepper {background: #111; border-color: #111;}
+	.header-middle {border-color: #111;}
+	.customize-your-gauge ul li {background: #000;}
+	.gauge-specs .title {background: #111;}
+	.preview-window h1 {color: #ccc !important;}
+	.preview-window .productView-product {color: #ccc;}
+	.options-overlay {border-color: #111;}
+	.options-overlay .content {background: #000;}
+	.options-overlay .heading-title {background: #111; border-color: #111;}
+	.options-overlay .actions {background: #111;}
+	.options-overlay .heading-title .info {color: #ccc; font-weight: 400;}
+	.sidebar .title {background: #222;}
+	.customize-your-gauge ul li {border-color: #222;}
+	.customize-your-gauge li b {color: #ccc;}
+	.customize-your-gauge li .info {color: #999;}
+	.customize-your-gauge li i {color: #ccc;}
+	
+}
+
 .sidebar {max-width: 380px; margin-top: 10px;}
 .sidebar .title {
 	background: #d2232c;
@@ -956,9 +967,16 @@ body.CustomizerApp .preview-window h1 {font-size: 30px; font-weight: bold; color
 	font-weight: 600;
 }
 
-.gauge-specs {background: #fff; display: inline-block;}
+.selectedGaugePreivew br {
+	display: none;
+}
+
+.gauge-specs {background: #fff; display: inline-block; margin-bottom: 10px; width: 100%; border: 1px solid #ccc; border-radius: 0;}
 .gauge-specs ul {margin: 0; padding: 0;}
 .gauge-specs ul li {list-style: none; float: left;  width: 50%; padding: 12px 15px; }
+.gauge-specs .title {background: #fff; color: #444; cursor: pointer; font-weight: 500; }
+.gauge-specs .title:hover {border-color: #222;}
+.gauge-specs .title i {float: right;}
 
 .customize-your-gauge {background: #fff; display: inline-block; position: relative;}
 .customize-your-gauge ul {margin: 0; padding: 0;}
@@ -973,12 +991,15 @@ body.CustomizerApp .preview-window h1 {font-size: 30px; font-weight: bold; color
 .customize-your-gauge li .info {float: left; width: 200px; color: #777; font-size: 13px; margin-top: -3px;}
 .customize-your-gauge li .fa-angle-right {position: absolute; right: 30px; top: 13px; font-size: 22px; margin-right: 0; width: auto; }
 
+#customizer_values_list li {border: none;}
+.productView-price {margin: 2rem 0 0;}
+
 /** Customizer Overlay Sub-options */
 .customizer-suboption { margin-top: 3em; }
 .customizer-suboption .option-note { margin-bottom: 1em; }
 #CustomizerContainer .customizer-suboption .option-note p { text-align: left;margin-bottom: 0.5em; }
 
-.options-overlay {position: absolute; top: 47px; width: 100%; background: #fff; border: 1px solid #cccccc; padding: 0; display: none; }
+.options-overlay {position: absolute; top: 47px; width: 100%; background: #fff; border: 1px solid #cccccc; padding: 0; display: none; z-index: 9; }
 .options-overlay .heading-title {border-bottom: 1px solid #ccc; padding: 17px;}
 .options-overlay .heading-title .info {float: right;}
 .options-overlay .heading-title i {float: left;font-size: 16px;height: 25px;line-height: 25px;margin-right: 20px; margin-top: 0;text-align: center;width: 25px;}
@@ -1171,7 +1192,7 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 	text-align: center;
 	font-size: 1.2rem;
 	font-weight: 400;
-	margin-bottom: 40px;
+	margin-bottom: 0;
 	color: #6c6c6c;
 }
 
@@ -1421,6 +1442,40 @@ body.fixed-items .gauges-selected .wrapper {
 	width: 100%;
 }
 
+.edit-gauge-feature-step3 {
+
+	float: left;
+	width: 100%;
+
+	a {
+		float: right;
+		width: 100%;
+		border: none;
+		border-radius: 0 !important;
+		background: #222;
+		height: 45px;
+		line-height: 45px;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 3px;
+		color: #fff;
+		font-weight: 500;
+		padding: 0 2rem;
+		margin: 15px 0 0;
+		width: 100%;
+		
+		&:hover {
+			color: #fff;
+			background: #333;
+		}
+ }	
+}
+
+
+.gauge-specs-content {
+	display: none;
+}
+
 
 
 .select-style {
@@ -1475,6 +1530,7 @@ body.fixed-items .gauges-selected .wrapper {
 	font-size: 1.2rem;
 	font-weight: 500;
 	color: #d2222d;
+	text-align: center;
 }
 
 .productView-product .price-section.price-section--withoutTax {
@@ -2006,12 +2062,12 @@ img.mfp-img {
 	border-color: #eee;
 }
 
-.img-preview-select{
+.img-preview {
+	border: none;
+}
 
-	border: solid #000;
-	border-left: solid #fff;
-    border-right: solid #fff;
-    border-top: solid #fff;
+.img-preview-select {
+	border: 2px solid #ccc;
 }
 
 .edit-gauge-feature-step3 {
