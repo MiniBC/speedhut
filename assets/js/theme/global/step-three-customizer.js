@@ -141,6 +141,9 @@ module.exports = function() {
 
 			CustomizerStepThreeObject.setSettings();
 			CustomizerStepThreeObject.setStepThreeGaugePreview();
+			// show title of the first gauge loaded
+			$('.productView-title').text(window.customizerObject.selectedGauges[0].gaugeName);
+
 			window.customizerObject.displayGaugeSpecs(0);
 
 			console.log(" loading step 3...... ");
@@ -155,7 +158,10 @@ module.exports = function() {
 
 	$("body").on("click", ".img-preview", function() {
 
-		CustomizerStepThreeObject.currentEditIndex = $(this).attr("id");
+		var currentID = $(this).attr("id");
+		CustomizerStepThreeObject.currentEditIndex = currentID;
+		// change title
+		$('.productView-title').text(window.customizerObject.selectedGauges[currentID].gaugeName);
 
 		$(".img-preview").removeClass("img-preview-select");
 		$(this).addClass("img-preview-select");
@@ -182,6 +188,9 @@ module.exports = function() {
 
 		// close the the menu
 		$('.options-overlay').toggle();
+
+		console.log('*&*&*&*&*&*&*&*&*&*');
+		console.log(window.customizerObject.selectedGauges[0].gaugeName);
 	});
 
 	$("body").on("click", ".customizer_option_value", function() {
