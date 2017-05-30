@@ -157,7 +157,7 @@ module.exports = function() {
 	});
 
 	$("body").on("click", ".img-preview", function() {
-
+		console.log('IMG PREVIEW CLICKED');
 		var currentID = $(this).attr("id");
 		CustomizerStepThreeObject.currentEditIndex = currentID;
 		// change title
@@ -165,6 +165,9 @@ module.exports = function() {
 
 		$(".img-preview").removeClass("img-preview-select");
 		$(this).addClass("img-preview-select");
+
+		$('.gauge-preview-container').removeClass('gauge--selected');
+		$(this).parent().addClass('gauge--selected');
 
 		window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer;
 
