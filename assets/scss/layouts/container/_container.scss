@@ -31,10 +31,16 @@
 .gauge-preview-container {
 	
 	vertical-align: top;
+	width: 173px;
+	height: 173px;
 	
 	.canvas {
 		transform: scale(0.28);
 		margin: -147px 0 0 -130px;
+	}
+	
+	.canvas:after {
+		content: "----"
 	}
 	
 	.img-preview-select {
@@ -63,7 +69,7 @@
 .gauge-preview-container {
   display: inline-block;
   float: none;
-  max-width: 180px;
+  max-width: 173px;
   
   .layer_logo,
   .layer_lcd {
@@ -899,7 +905,7 @@ body.CustomizerApp .header {position: relative; z-index: 99;}
 body.CustomizerApp .header-logo {text-align: center;}
 body.CustomizerApp .header-search-section {display: none;}
 body.CustomizerApp .breadcrumbs {display: none;}
-body.CustomizerApp .productView {padding-top: 0;}
+body.CustomizerApp .productView {margin-top: 50px;}
 body.CustomizerApp .navPages ul {display: none;}
 body.CustomizerApp .navUser {display: none;}
 body.CustomizerApp .navPages-container {}
@@ -957,18 +963,76 @@ body.night-mode {
 	
 }
 
-.sidebar {max-width: 380px; margin-top: 10px;}
+.sidebar {
+	max-width: 380px;
+	margin-top: 10px;
+	box-shadow: 0 0 15px #ddd;
+	padding: 0;
+}
+
+.sidebar .gauge-title-selected {
+	border-bottom: 1px solid #eee;
+	float: left;
+	width: 100%;
+	padding: 16px;
+	
+	.productView-title {
+		margin-top: 0;
+	}
+	
+}
+
 .sidebar .title {
-	background: #d2232c;
-	color: #fff;
-	font-size: 16px;
-	padding: 12px 15px 11px;
-	text-transform: uppercase;
-	font-weight: 600;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #222;
 }
 
 .selectedGaugePreivew br {
 	display: none;
+}
+
+#ProductCustomizerSection {
+	
+	.productView-price {
+		margin: 2rem 0;
+	}
+	
+	.kit-price-txt {
+		margin-bottom: 0px !important;
+	}
+
+	.price--withoutTax {
+		color: #333;
+		font-size: 1.9rem;
+		margin-bottom: 20px;
+	}
+
+ .action-btn {	
+	margin: 15px;
+	
+	a {
+		width: 100%;
+		margin: 0;
+		color: #fff;
+		background: #d61e2a;
+		border: none;
+		height: 45px;
+		line-height: 45px;
+		padding: 0;
+		font-size: 1.1rem;
+		font-weight: 500;
+		border-radius: 3px;
+		
+		&:hover {
+			background: #222;
+		}
+		
+	}
+	
+	
+}
+
 }
 
 .gauge-specs {background: #fff; display: inline-block; margin-bottom: 10px; width: 100%; border: 1px solid #ccc; border-radius: 0;}
@@ -980,18 +1044,19 @@ body.night-mode {
 
 .customize-your-gauge {background: #fff; display: inline-block; position: relative;}
 .customize-your-gauge ul {margin: 0; padding: 0;}
-.customize-your-gauge ul li {list-style: none; float: left;  width: 100%; padding: 10px 15px 8px; border: 1px solid #ccc; margin-bottom: -1px; position: relative; cursor: pointer; }
+.customize-your-gauge ul li {list-style: none; float: left;  width: 100%; padding: 10px 15px 8px; border: 1px solid #eee; margin-bottom: -1px; position: relative; cursor: pointer; }
 .customize-your-gauge ul li:hover {background: #eee;}
 .customize-your-gauge ul li:first-child {border-top: none;}
 .customize-your-gauge ul:after { content:' ';clear:both;width:100%;display:block; }
 
 .customize-your-gauge li i {float: left; width: 25px; height: 25px; margin-right: 20px; line-height: 25px; font-size: 16px; text-align: center; margin-top: 4px; }
 .customize-your-gauge li img {float: left; line-height: 25px; font-size: 17px; text-align: center; margin: 7px 25px 10px 4px; }
-.customize-your-gauge li b {float: left; width: 200px; text-transform: uppercase; font-size: 14px; color: #222; }
+.customize-your-gauge li b {float: left; width: 200px; text-transform: uppercase; font-size: 14px; color: #222; font-weight: 500; }
 .customize-your-gauge li .info {float: left; width: 200px; color: #777; font-size: 13px; margin-top: -3px;}
 .customize-your-gauge li .fa-angle-right {position: absolute; right: 30px; top: 13px; font-size: 22px; margin-right: 0; width: auto; }
 
-#customizer_values_list li {border: none;}
+#customizer_values_list li {border: none; width: 33% !important; text-align: center; }
+#customizer_values_list li img {width: auto !important; height: auto !important; margin-bottom: 10px; float: none; }
 .productView-price {margin: 2rem 0 0;}
 
 /** Customizer Overlay Sub-options */
@@ -999,11 +1064,11 @@ body.night-mode {
 .customizer-suboption .option-note { margin-bottom: 1em; }
 #CustomizerContainer .customizer-suboption .option-note p { text-align: left;margin-bottom: 0.5em; }
 
-.options-overlay {position: absolute; top: 47px; width: 100%; background: #fff; border: 1px solid #cccccc; padding: 0; display: none; z-index: 9; }
+.options-overlay {position: absolute; top: 0; width: 100%; background: #fff; padding: 0; display: none; z-index: 9; }
 .options-overlay .heading-title {border-bottom: 1px solid #ccc; padding: 17px;}
 .options-overlay .heading-title .info {float: right;}
 .options-overlay .heading-title i {float: left;font-size: 16px;height: 25px;line-height: 25px;margin-right: 20px; margin-top: 0;text-align: center;width: 25px;}
-.options-overlay .content {float: left; background: #fafafa; text-align: left; padding: 18px; min-height: 563px; position: relative; width: 100%; }
+.options-overlay .content {float: left; background: #fff; text-align: left; padding: 18px; min-height: 660px; position: relative; width: 100%; }
 .options-overlay .content h5 {margin: 0; padding: 0;}
 
 .options-overlay .actions {float: left; width: 100%; background: #fafafa; text-align: center; padding: 15px 0 12px; position: absolute; bottom: 0; left: 0; }
@@ -1029,7 +1094,7 @@ body.CustomizerApp .subscribe {display: none;}
 body.CustomizerApp .footer {display: none;}
 body.CustomizerApp .footer-copyright {background: #f0f0f0; border-top: none; }
 
-body.CustomizerApp p.note {text-align: center; margin: 12px 0; opacity: .7;}
+body.CustomizerApp p.note {text-align: center; margin: 12px 0;}
 body.CustomizerApp .footer-copyright {padding-bottom: 110px;}
 
 body.CustomizerApp .back-to-home {position: absolute; left: 60px; top: 19px; display: block !important;}
@@ -1190,11 +1255,16 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 
 #CustomizerContainer .tab-content p {
 	text-align: center;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-weight: 400;
-	margin-bottom: 0;
-	color: #6c6c6c;
+	color: #999;
+	margin: 1rem 0 2rem;
 }
+
+#daynight {
+	margin: 15px 0 !important;
+}
+
 
 .card-item {
 	background: #fff;
@@ -1443,33 +1513,23 @@ body.fixed-items .gauges-selected .wrapper {
 }
 
 .edit-gauge-feature-step3 {
+	
+	float: none;
+	margin-left: 10px;
 
-	float: left;
-	width: 100%;
-
-	a {
-		float: right;
-		width: 100%;
-		border: none;
-		border-radius: 0 !important;
-		background: #222;
-		height: 45px;
-		line-height: 45px;
-		text-align: center;
-		text-decoration: none;
-		border-radius: 3px;
-		color: #fff;
-		font-weight: 500;
-		padding: 0 2rem;
-		margin: 15px 0 0;
-		width: 100%;
-		
-		&:hover {
-			color: #fff;
-			background: #333;
+		a {
+			margin: 0 6px;
+			text-decoration: none;
+			outline: none;
+			font-weight: 400;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+			
 		}
- }	
-}
+
+	}
 
 
 .gauge-specs-content {
@@ -2068,10 +2128,4 @@ img.mfp-img {
 
 .img-preview-select {
 	border: 2px solid #ccc;
-}
-
-.edit-gauge-feature-step3 {
-
-	float:right;
-
 }

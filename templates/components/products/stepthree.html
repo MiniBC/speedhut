@@ -1,7 +1,7 @@
 <div id="ProductCustomizerSection">
  <div class="col-sm-12 col-md-8 col-lg-8 preview-window">
   <div class="productView">
-    <section class="productView-details">
+    <section class="productView-details" style="display: none;">
         <div class="productView-product">
 	        <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
 	        <dt class="productView-info-name">{{lang 'products.sku'}}</dt>
@@ -33,18 +33,28 @@
  
  
  <div class="col-sm-12 col-md-4 col-lg-4 sidebar">
-    
-    <div class="gauge-specs">
-	   <div class="title">Gauge Specs <i class="material-icons">keyboard_arrow_down</i></div>
-		<div class="gauge-specs-content">
-			<ul class="gauge-spec-preview"></ul>
-			<span class="edit-gauge-feature-step3"><a href="#popup-step2" class="popup-step2">Edit Features</a></span>
-		</div>
-	 </div>
 
  
 	 <div class="customize-your-gauge">
-		 <div class="title">Customize Your Gauge</div>
+		
+		<div class="gauge-title-selected">
+			<div class="productView-title">CJ Jeep Speedometer</div>
+		 	<dt class="productView-info-name">{{lang 'products.sku'}}</dt>
+	        <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+			
+			<span class="edit-gauge-feature-step3">| <a href="#popup-step2" class="popup-step2">Edit Features</a></span> 
+			 
+			<div class="gauge-specs" style="display: none;">
+			   <div class="title">Gauge Specs <i class="material-icons">keyboard_arrow_down</i></div>
+				<div class="gauge-specs-content">
+					<ul class="gauge-spec-preview"></ul>
+					<span class="edit-gauge-feature-step3"><a href="#popup-step2" class="popup-step2">Edit Features</a></span>
+				</div>
+			</div>
+		</div>
+		
+		
+		 
          <ul></ul>
 
 		<div class="options-overlay">
@@ -62,20 +72,17 @@
 		 </div> 
 	 </div>
 
-
-  	 <p class="note">* Current handling time is 10-15 business days.</p>
-
+  	  <p class="note">* Current handling time is 10-15 business days.</p>
   
       <div class="productView-price">
         <p class="kit-price-txt">Total Kit Price</p>
         {{> components/products/price price=product.price schema_org=schema}}
       </div>
-            
+      
+      <div class="action-btn">
+	      <a href="#" class="button">Add To Cart</a>
+	  </div>      
             	
 	</div> 
-
-  
-</div> 
-
-
+ </div> 
 </div> 

@@ -123,7 +123,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 		// $("#customizer_layer_2").css("left","0");
 		// $("#customizer_layer_2").css("top","0");
 
-		$(".cancel").text("Back");
+		$(".cancel").text("Close");
 		$(".apply-to-gauge").remove();
 
 	}
