@@ -1068,7 +1068,7 @@ body.night-mode {
 .options-overlay .heading-title {border-bottom: 1px solid #ccc; padding: 17px;}
 .options-overlay .heading-title .info {float: right;}
 .options-overlay .heading-title i {float: left;font-size: 16px;height: 25px;line-height: 25px;margin-right: 20px; margin-top: 0;text-align: center;width: 25px;}
-.options-overlay .content {float: left; background: #fff; text-align: left; padding: 18px; min-height: 660px; position: relative; width: 100%; }
+.options-overlay .content {float: left; background: #fff; text-align: left; padding: 18px; min-height: 706px; position: relative; width: 100%; }
 .options-overlay .content h5 {margin: 0; padding: 0;}
 
 .options-overlay .actions {float: left; width: 100%; background: #fafafa; text-align: center; padding: 15px 0 12px; position: absolute; bottom: 0; left: 0; }
@@ -1083,6 +1083,7 @@ body.night-mode {
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	width: 40%;
 }
 .options-overlay .actions a:hover {opacity: .7;}
 
