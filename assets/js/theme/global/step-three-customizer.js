@@ -101,8 +101,11 @@ var CustomizerStepThreeObject = {  //start of step three object
 	},
 	setSettings: function() {
 
-		$("#customizer_layer_2").css("left","0");
-		$("#customizer_layer_2").css("top","0");
+		// $("#customizer_layer_2").css("left","0");
+		// $("#customizer_layer_2").css("top","0");
+
+		$(".cancel").text("Back");
+		$(".apply-to-gauge").remove();
 
 	}
 
@@ -146,24 +149,40 @@ module.exports = function() {
 
 	});
 
+	$("body").on("click", "")
+
 	$("body").on("click", ".apply-to-kit", function() {
 
 		CustomizerStepThreeObject.saveToAllGauges();
 
 		window.customizerObject.updateSelectedGauges();
 
+		CustomizerStepThreeObject.swapGaugePreview(0);
+
+
 
 		// CustomizerStepThreeObject.buildStepThreeGaugePreview();
 	});
 
-	$("body").on("click", ".apply-to-gauge", function() {
+	$("body").on("click", ".customizer_option_value", function() {
+
 		// after this function is run, we need to update the preview of gauges with their mini versions
 		CustomizerStepThreeObject.saveStyleToSelectedGauge();
 
 		window.customizerObject.updateSelectedGauges();
 
 		CustomizerStepThreeObject.swapGaugePreview(0);
+	
 	});
+
+	// $("body").on("click", ".apply-to-gauge", function() {
+	// 	// after this function is run, we need to update the preview of gauges with their mini versions
+	// 	CustomizerStepThreeObject.saveStyleToSelectedGauge();
+
+	// 	window.customizerObject.updateSelectedGauges();
+
+	// 	CustomizerStepThreeObject.swapGaugePreview(0);
+	// });
 
 	$("body").on("click", ".edit-gauge-feature-step3", function() {
 
