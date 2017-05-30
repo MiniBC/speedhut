@@ -962,7 +962,7 @@ body.CustomizerApp .preview-window h1 {font-size: 30px; font-weight: bold; color
 
 .customize-your-gauge {background: #fff; display: inline-block; position: relative;}
 .customize-your-gauge ul {margin: 0; padding: 0;}
-.customize-your-gauge ul li {list-style: none; float: left;  width: 100%; padding: 10px 15px 8px; border: 1px solid #ccc; margin-bottom: -1px; position: relative; cursor: pointer; }
+.customize-your-gauge ul li {list-style: none; float: left;  width: 100%; padding: 10px 15px 8px; margin-bottom: -1px; position: relative; cursor: pointer;border: 1px solid #ccc; }
 .customize-your-gauge ul li:hover {background: #eee;}
 .customize-your-gauge ul li:first-child {border-top: none;}
 .customize-your-gauge ul:after { content:' ';clear:both;width:100%;display:block; }
@@ -978,12 +978,15 @@ body.CustomizerApp .preview-window h1 {font-size: 30px; font-weight: bold; color
 .customizer-suboption .option-note { margin-bottom: 1em; }
 #CustomizerContainer .customizer-suboption .option-note p { text-align: left;margin-bottom: 0.5em; }
 
-.options-overlay {position: absolute; top: 47px; width: 100%; background: #fff; border: 1px solid #cccccc; padding: 0; display: none; }
+.options-overlay {position: absolute; top: 47px; width: 100%; background: #fff; border: 1px solid #cccccc; padding: 0; display: none;z-index:1; }
 .options-overlay .heading-title {border-bottom: 1px solid #ccc; padding: 17px;}
 .options-overlay .heading-title .info {float: right;}
 .options-overlay .heading-title i {float: left;font-size: 16px;height: 25px;line-height: 25px;margin-right: 20px; margin-top: 0;text-align: center;width: 25px;}
 .options-overlay .content {float: left; background: #fafafa; text-align: left; padding: 18px; min-height: 563px; position: relative; width: 100%; }
 .options-overlay .content h5 {margin: 0; padding: 0;}
+
+.customize-your-gauge .options-overlay ul li {margin: 10px 15px 8px;padding: 2px;border: 2px solid transparent;}
+.customize-your-gauge .options-overlay ul li.selected { border-color: #d2232c; }
 
 .options-overlay .actions {float: left; width: 100%; background: #fafafa; text-align: center; padding: 15px 0 12px; position: absolute; bottom: 0; left: 0; }
 .options-overlay .actions a {
