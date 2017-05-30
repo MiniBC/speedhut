@@ -1,10 +1,3 @@
-{{#if banners.top}}
-<div class="banners" data-banner-location="top">
-    <div class="banner">
-        {{{limit banners.top 1}}}
-    </div>
-</div>
-{{/if}}
 <header class="header animated fadeIn" role="banner">
     
     <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
@@ -14,9 +7,9 @@
     {{> components/common/navigation}}
 
     
-    <div class="container">
-     <div class="row">
-    <div class="col-sm-3 col-md-3 col-lg-3 logo-container">
+    <div class="header-middle container-alt">
+     <div>
+    <div class="col-sm-3 col-md-2 col-lg-2 logo-container">
 
     {{#if template_file '===' 'pages/home'}}
         <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
@@ -31,13 +24,19 @@
     
     <div class="mobileSelectedAttributes"><i class="material-icons">shopping_cart</i></div>
     
-    </div>
+    </div> <!-- logo container -->
 
 	
-    <div class="navPages-container col-sm-9 col-md-9 col-lg-9" id="menu" data-menu>
+    <div class="navPages-container col-sm-9 col-md-8 col-lg-8" id="menu" data-menu>
         {{> components/common/navigation-menu}}
     </div>
     
+    
+    <div class="col-md-2 col-lg-2 header-search-section">
+		<div class="navPages-quickSearch header-search">
+	        {{> components/common/quick-search}}
+	    </div>
+    </div>
     
     
 

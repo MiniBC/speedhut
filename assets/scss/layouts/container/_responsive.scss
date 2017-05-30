@@ -25,8 +25,6 @@ body {overflow-x: hidden;}
 	.container {max-width: 1170px;}	
 	.subscription-form h5 {float: none; margin: -15px 15px 7px 0;}
 	.about-section .tabs-section {width: 25%;}
-	.navPages-list {margin-top: 20px !important;}
-	.navPages-quickSearch {margin-top: 13px;}
 	#step-two .card-item {margin: 0 10px 30px;}
  	
 }
@@ -36,12 +34,9 @@ body {overflow-x: hidden;}
 	.container {max-width: 955px;}
 	.store-info {padding: 45px 10px 60px 30px;}
 	.subscription-form .form-prefixPostfix-button--postfix {margin-top: 0; margin-left: 7px;}
-	.header-logo {margin: 1.8rem 0 0;}
+	.header-logo {margin: 1.5rem 0 0;}
 	.navPages-action {padding: 0.78571rem 0.8rem 1.14286rem;}
 	.about-section .tabs-section {width: 28%;}
-	.navPages-list li.Customize {margin-left: 30px;}
-	.navPages-list li.Customize a {padding: 0.58571rem 1.24286rem 0.54571rem;}
-	.navPages-list {margin-top: 18px !important;}
 	.navPages-quickSearch {margin-top: 9px;}
 	.navPages-container {min-height: 75px;}
 	#CustomizerContainer {padding: 0;}
@@ -49,6 +44,7 @@ body {overflow-x: hidden;}
 	body.Customizer .sidebar {width: 40%;}
 	#step-two .card-item {width: 100%;}
 	.productGrid .product {width: 33.33% !important;}
+	.testimonials-section p {padding: 0;}
 	
 }
 
@@ -207,8 +203,10 @@ body {overflow-x: hidden;}
 	
 	body.CustomizerApp .navPages-container {}
 	body.CustomizerApp .navPages ul {display: block;}
-	
 	.lightbox-attributes {padding: 15px;}
+	
+	.navPages {text-align: left;}
+	.container-alt {padding: 0;}
 	
 
 }

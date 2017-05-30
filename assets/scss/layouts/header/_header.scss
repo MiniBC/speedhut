@@ -18,13 +18,12 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: zIndex("low");
+    //z-index: zIndex("high");
+    z-index: 99999;
 
     @include breakpoint("medium") {
         //border-bottom: container("border");
-        border-bottom: 1px solid #eee;
-        overflow: visible;
-        position: relative;
+        border-bottom: 1px solid #e5e5e5;
     }
 
     &.is-open {
@@ -39,7 +38,7 @@
 .header-logo {
     font-size: 0;   // 1
     margin: 0 remCalc($header-toggle-width); // 2
-    text-align: center;
+    text-align: left;
 
     @include breakpoint("small") { // 4
         margin-left: remCalc($header-toggle-width * 1.5);
@@ -48,7 +47,7 @@
 
     @include breakpoint("medium") {
         //margin: (spacing("double") + spacing("base")) auto (spacing("double") + spacing("single"));
-        margin: 1.2rem 0;
+        margin: 1.15rem 0;
         padding: 0;
 
         .header.fixed & {
@@ -93,7 +92,7 @@
     text-align: left;
 
     @include breakpoint("medium") {
-        margin-left: remCalc(40px);
+        //margin-left: remCalc(40px);
     }
 }
 
@@ -151,7 +150,7 @@
 
 .header-search {
 	position: relative;
-	margin-top: 4px;
+	margin: 10px 0 0;
 }
 
 .header-search .form {
