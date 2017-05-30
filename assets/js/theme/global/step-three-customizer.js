@@ -5,6 +5,10 @@ import magnific from './magnific';
 var CustomizerStepThreeObject = {  //start of step three object
 
 	currentEditIndex: 0,
+	// one of the ways to build these objects is save them here on each change?
+	// then whenever the Apply to Kit button is pressed
+	//
+	customizedGauges: [],
 
 	saveStyleToSelectedGauge: function() {
 
@@ -172,14 +176,8 @@ module.exports = function() {
 
 		window.customizerObject.updateSelectedGauges();
 
-<<<<<<< HEAD
-		CustomizerStepThreeObject.swapGaugePreview(0);
-
-
-
-=======
 		CustomizerStepThreeObject.swapGaugeKitPreview();
->>>>>>> origin/master
+
 		// CustomizerStepThreeObject.buildStepThreeGaugePreview();
 
 		// close the the menu
@@ -194,14 +192,10 @@ module.exports = function() {
 		window.customizerObject.updateSelectedGauges();
 
 		CustomizerStepThreeObject.swapGaugePreview(0);
-<<<<<<< HEAD
-	
-=======
 
 		// close the the menu
 		$('.options-overlay').toggle();
 
->>>>>>> origin/master
 	});
 
 	// $("body").on("click", ".apply-to-gauge", function() {
