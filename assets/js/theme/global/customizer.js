@@ -81,15 +81,15 @@ window.customizerObject = {
         return $.ajax({
             method: "GET",
             data: {"filepathrequest": url },
-            url: "http://schurton.com/speedhutcache/crontest.php" 
+            url: "http://schurton.com/speedhutcache/crontest.php"
          }).done(function(response) {
 
             return response;
-        
+
          }).fail(function(e) {
-        
+
             alert( "error" );
-        
+
         });
 
     },
@@ -98,17 +98,17 @@ window.customizerObject = {
         return $.ajax({
             method: "GET",
             data: {"bccurl": requesturl},
-            url: "http://apps.minibc.com/bcmoreinfo.php" 
+            url: "http://apps.minibc.com/bcmoreinfo.php"
          }).done(function(response) {
-            
+
             return response;
-        
+
          }).fail(function(e) {
-        
+
             alert( "error" );
-        
+
         });
-    
+
     },
     setLocalHostKitName: function() {
 
@@ -117,7 +117,7 @@ window.customizerObject = {
     },
     updateSelectedGauges: function() {
 
-        localStorage.setItem( "all-selected-gauges", JSON.stringify( window.customizerObject.selectedGauges ) ); 
+        localStorage.setItem( "all-selected-gauges", JSON.stringify( window.customizerObject.selectedGauges ) );
 
     },
     setSelectGaugesFromLocalStroage: function() {
@@ -134,7 +134,7 @@ window.customizerObject = {
         window.customizerObject.globalEditIndex = index;
 
     },
-    getSelectGaugeIndex: function() { 
+    getSelectGaugeIndex: function() {
 
         return window.customizerObject.globalEditIndex;
 
@@ -142,7 +142,7 @@ window.customizerObject = {
     setSortValues: function( arrayToSetValuesTo ) {
 
         var itemSortOrder = [
-            
+
             [1, "Vehicle"],
             [2, "Gauge Type"],
             [3, "Gauge Size"],
@@ -200,7 +200,7 @@ window.customizerObject = {
     sortGaugeFeatures: function( arrayValuesToSort ) {
 
         var arraywithSortOrderIds = this.setSortValues( arrayValuesToSort );
-        
+
 
         arraywithSortOrderIds.sort( function(a, b) {
 
@@ -220,15 +220,15 @@ window.customizerObject = {
 
         for( var i = 0; i < gaugespecs.gaugeAttribute.length; i++ ) {
 
-            var gaugeSpecName = gaugespecs.gaugeAttribute[i].name; 
+            var gaugeSpecName = gaugespecs.gaugeAttribute[i].name;
 
             if( typeof gaugespecs.gaugeAttribute[i].text === "object" ) {
 
-                var gaugeSpecFeature = gaugespecs.gaugeAttribute[i].text[0]; 
+                var gaugeSpecFeature = gaugespecs.gaugeAttribute[i].text[0];
 
             } else if( typeof gaugespecs.gaugeAttribute[i].text === "string" ) {
 
-                var gaugeSpecFeature = gaugespecs.gaugeAttribute[i].text; 
+                var gaugeSpecFeature = gaugespecs.gaugeAttribute[i].text;
 
             }
 
@@ -240,7 +240,7 @@ window.customizerObject = {
 
 
     }
-     
+
 };
 
 //Step 1 in the header was clicked
@@ -254,9 +254,9 @@ $("body").on("click", "#step-1", function() {
 $("body").on("click", "#step-2", function() {
 
     //if( window.customizerObject.kitname !== "" ) {
-	
+
        customizerObject.loadStepTwo();
-    
+
     //} else {
 
         //alert("select a kit to continue....");
@@ -278,5 +278,5 @@ module.exports = function() {
 	$(function() {
 
 	});
-}; 
+};
 /* eslint-enable */
