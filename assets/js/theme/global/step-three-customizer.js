@@ -37,23 +37,26 @@ var CustomizerStepThreeObject = {  //start of step three object
 		}
 
 		// ALTERNATIVELY WE CAN BUILD THE PREVIEWS RIGHT AWAY USING THIS MODIFICATION CODE
-		/*
-		$(".selectedGaugePreivew").append('<div class="test-container-one"></div>');
-		console.log("########### CUSTOMIZER STEP THREE OBJECT #########");
-		var idEdit = CustomizerStepThreeObject.currentEditIndex;
-		for (var index = 0; index < customizerObject.selectedGauges.length; index++) {
-			var currentClass = 'preview-container-' + index;
-			var $previewContainer = $('<div class="' + currentClass + '"></div>"');
-			$(".test-container-one").append($previewContainer);
-			console.log("YESYESYESYESYES");
-			console.log(window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer);
-			$previewContainer.append('<p>' + (index+1) + '</p>')
-			$previewContainer.append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
-			// $(".test-container-one").append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
-			//window.customizerObject.displayGaugePreviewSpecs( index, $previewContainer );
-		}
-		*/
+/*
+			$(".selectedGaugePreivew").append('<div class="test-container-one"></div>');
+			console.log("########### CUSTOMIZER STEP THREE OBJECT #########");
+			var idEdit = CustomizerStepThreeObject.currentEditIndex;
+			for (var index = 0; index < customizerObject.selectedGauges.length; index++) {
+				var currentClass = 'preview-container-' + index;
+				var $previewContainer = $('<div class="' + currentClass + '"></div>"');
+				$(".test-container-one").append($previewContainer);
+				console.log("YESYESYESYESYES");
+				console.log(window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer);
+				$previewContainer.append('<p>' + (index+1) + '</p>')
+				$previewContainer.append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
+				// $(".test-container-one").append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
+				//window.customizerObject.displayGaugePreviewSpecs( index, $previewContainer );
+			}
+*/
+
+
 		console.log( window.customizerObject.selectedGauges );
+
 
 	},
 	swapGaugePreview: function() {
@@ -71,10 +74,8 @@ var CustomizerStepThreeObject = {  //start of step three object
 		// $('.layer_lcd').remove();
 	},
 	swapGaugeKitPreview: function() {
-		// Currently it takes the main one and updates all the images with it
-
+		// LIMITATION: Currently it takes the main one and updates all the images with it
 		var quantityGauges = window.customizerObject.selectedGauges.length;
-		// console.log(quantityGauges);
 
 		var $currentGaugeClone;
 		// var $gaugeClonesArr = [];
@@ -91,7 +92,6 @@ var CustomizerStepThreeObject = {  //start of step three object
 		}
 
 		// CustomizerStepThreeObject.saveToAllGauges(); // experimental - this is probably saving all the data to the right places when the apply to kit button is clicked
-
 	},
 	setStepThreeGaugePreview: function() {
 		console.log('setStepThreeGaugePreview runs');
@@ -125,7 +125,7 @@ module.exports = function() {
 		console.log( window.customizerObject.priceset );
 
 		window.initstepthree = function() { //called when page loads
-			console.log("999999999999999999999999999");
+			console.log("initstepthree runs");
 			CustomizerStepThreeObject.setSettings();
 			CustomizerStepThreeObject.setStepThreeGaugePreview();
 			// show title of the first gauge loaded
