@@ -8,7 +8,9 @@
 	        <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
         </div>
     </section>
+    <!-- the main gauge gets generated here -->
     <div class="productView-canvas" id="cloneclass"></div>
+    <!-- -->
     <section class="productView-details">
         <div class="productView-options">
             {{#if product.release_date }}
@@ -26,24 +28,24 @@
     <div class="modal-content"></div>
     <div class="loadingOverlay"></div>
   </div>
-  
+
   <div class="selectedGaugePreivew col-lg-12"></div>
-  
+
  </div> <!-- preview window -->
- 
- 
+
+
  <div class="col-sm-12 col-md-4 col-lg-4 sidebar">
 
- 
+
 	 <div class="customize-your-gauge">
-		
+
 		<div class="gauge-title-selected">
 			<div class="productView-title">CJ Jeep Speedometer</div>
 		 	<dt class="productView-info-name">{{lang 'products.sku'}}</dt>
 	        <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-			
-			<span class="edit-gauge-feature-step3">| <a href="#popup-step2" class="popup-step2">Edit Features</a></span> 
-			 
+
+			<span class="edit-gauge-feature-step3">| <a href="#popup-step2" class="popup-step2">Edit Features</a></span>
+
 			<div class="gauge-specs" style="display: none;">
 			   <div class="title">Gauge Specs <i class="material-icons">keyboard_arrow_down</i></div>
 				<div class="gauge-specs-content">
@@ -52,37 +54,37 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		 
+
+
+
          <ul></ul>
 
 		<div class="options-overlay">
 		    <div class="heading-title">
 			    <span> <i class="fa fa-paint-brush"></i> <b>AA</b> <span class="info">Choose</span> </span>
     	    </div>
-			 
+
 			 <div class="content">
 			    <div class="actions">
 				 <a class="cancel">Cancel</a>
 				 <a class="apply-to-kit">Apply to Kit</a>
 				 <a class="apply-to-gauge">Apply to Gauge</a>
 			    </div>
-			 </div> 
-		 </div> 
+			 </div>
+		 </div>
 	 </div>
 
   	  <p class="note">* Current handling time is 10-15 business days.</p>
-  
+
       <div class="productView-price">
         <p class="kit-price-txt">Total Kit Price</p>
         {{> components/products/price price=product.price schema_org=schema}}
       </div>
-      
+
       <div class="action-btn">
 	      <a href="#" class="button">Add To Cart</a>
-	  </div>      
-            	
-	</div> 
- </div> 
-</div> 
+	  </div>
+
+	</div>
+ </div>
+</div>
