@@ -159,6 +159,9 @@ module.exports = function() {
 		// THIS MIGHT BE WHAT WE ARE LOOKING FOR
 		$("#pcCanvas").html( window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer );
 		window.customizerObject.displayGaugeSpecs( CustomizerStepThreeObject.currentEditIndex );
+
+		// close the menu on navigating to another gauge
+		$(".options-overlay").hide();
 	});
 
 	// $("body").on("click", "")
