@@ -239,9 +239,39 @@ window.customizerObject = {
         $(".gauge-spec-preview").append( gaugeHTML );
 
 
+    },
+    displayGaugePreviewSpecs: function(index, element) {
+
+      var gaugespecs = window.customizerObject.selectedGauges[index];
+      var gaugeHTML = "";
+
+      element.html(""); //clear any html in the section
+
+      for( var i = 0; i < gaugespecs.gaugeAttribute.length; i++ ) {
+
+          var gaugeSpecName = gaugespecs.gaugeAttribute[i].name;
+
+          if( typeof gaugespecs.gaugeAttribute[i].text === "object" ) {
+
+              var gaugeSpecFeature = gaugespecs.gaugeAttribute[i].text[0];
+
+          } else if( typeof gaugespecs.gaugeAttribute[i].text === "string" ) {
+
+              var gaugeSpecFeature = gaugespecs.gaugeAttribute[i].text;
+
+          }
+
+          gaugeHTML += "<li><b>" + gaugeSpecName + ": </b>" + gaugeSpecFeature + "</li>";
+
+        }
+
+        element.append( gaugeHTML );
+
     }
 
 };
+
+
 
 //Step 1 in the header was clicked
 $("body").on("click", "#step-1", function() {

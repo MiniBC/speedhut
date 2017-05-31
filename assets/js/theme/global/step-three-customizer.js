@@ -34,7 +34,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 
 	},
 	buildStepThreeGaugePreview: function() {
-
+		console.log('7777777777777777777777777777777');
 		var gaugePreviewSection;
 
 		$(".selectedGaugePreivew").html("");
@@ -47,7 +47,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 			}
 
 			// HERE WE HAVE TO APPEND THE SAME CODE THAT'S INSIDE THE MAIN GAUGE
-			$(".selectedGaugePreivew").append( "<div class='gauge-preview-container' id='gauge-preview-container-"+i+"'><img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.jpg?t=1491341974&_ga=1.163658615.995689909.1490710177'></div>" );
+			$(".selectedGaugePreivew").append( "<div class='gauge-preview-container' id='gauge-preview-container-"+i+"'><img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.png?t=1491341974&_ga=1.163658615.995689909.1490710177'></div>" );
 			// if changes have been made to the gauge, it should update its preview
 			// $(".selectedGaugePreivew").append()
 
@@ -56,6 +56,23 @@ var CustomizerStepThreeObject = {  //start of step three object
 			// $('.layer_lcd').remove();
 		}
 
+		// ALTERNATIVELY WE CAN BUILD THE PREVIEWS RIGHT AWAY USING THIS MODIFICATION CODE
+		/*
+		$(".selectedGaugePreivew").append('<div class="test-container-one"></div>');
+		console.log("########### CUSTOMIZER STEP THREE OBJECT #########");
+		var idEdit = CustomizerStepThreeObject.currentEditIndex;
+		for (var index = 0; index < customizerObject.selectedGauges.length; index++) {
+			var currentClass = 'preview-container-' + index;
+			var $previewContainer = $('<div class="' + currentClass + '"></div>"');
+			$(".test-container-one").append($previewContainer);
+			console.log("YESYESYESYESYES");
+			console.log(window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer);
+			$previewContainer.append('<p>' + (index+1) + '</p>')
+			$previewContainer.append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
+			// $(".test-container-one").append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
+			//window.customizerObject.displayGaugePreviewSpecs( index, $previewContainer );
+		}
+		*/
 		console.log( window.customizerObject.selectedGauges );
 
 	},
@@ -93,9 +110,11 @@ var CustomizerStepThreeObject = {  //start of step three object
 			$('#gauge-preview-container-' + index).append($currentGaugeClone);
 		}
 
+		// CustomizerStepThreeObject.saveToAllGauges(); // experimental - this is probably saving all the data to the right places when the apply to kit button is clicked
+
 	},
 	setStepThreeGaugePreview: function() {
-
+		console.log('888888888888888888888');
 		var gaugeElement;
 
 		var backgroundLayer = $("#pcCanvas").html();
@@ -138,7 +157,7 @@ module.exports = function() {
 		console.log( window.customizerObject.priceset );
 
 		window.initstepthree = function() { //called when page loads
-
+			console.log("999999999999999999999999999");
 			CustomizerStepThreeObject.setSettings();
 			CustomizerStepThreeObject.setStepThreeGaugePreview();
 			// show title of the first gauge loaded
@@ -171,8 +190,8 @@ module.exports = function() {
 
 		window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer;
 
+		// THIS MIGHT BE WHAT WE ARE LOOKING FOR
 		$("#pcCanvas").html( window.customizerObject.selectedGauges[ CustomizerStepThreeObject.currentEditIndex ].dayTimeGaugePreviewLayyer );
-
 		window.customizerObject.displayGaugeSpecs( CustomizerStepThreeObject.currentEditIndex );
 
 	});
