@@ -6,6 +6,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 	// one of the ways to build these objects is save them here on each change?
 	// then whenever the Apply to Kit button is pressed
 	customizedGauges: [],
+	customGaugeText: "",
 	saveStyleToSelectedGauge: function() {
 		var currentGaugeSelection = $("#pcCanvas").html();
 
@@ -164,12 +165,25 @@ module.exports = function() {
 		$(".options-overlay").hide();
 	});
 
-	// $("body").on("click", "")
+	$("body").on("click", "#customizer_option_value_17", function() {
+
+		MINIBC.ProductCustomizer.addTextBoxForCustomText(  MINIBC.ProductCustomizer.customGaugeText );
+
+	});
+
+	$("body").on("keyup", "#customFontText", function() {
+
+		//save text value from input box
+		MINIBC.ProductCustomizer.customGaugeText = $(this).val();
+		MINIBC.ProductCustomizer.addText( MINIBC.ProductCustomizer.customGaugeText, MINIBC.ProductCustomizer.customFontFontStyle );
+
+	});
 
 	$("body").on("click", ".apply-to-kit", function() {
 		CustomizerStepThreeObject.saveToAllGauges();
 		window.customizerObject.updateSelectedGauges();
 		CustomizerStepThreeObject.swapGaugeKitPreview();
+		MINIBC.ProductCustomizer.setTextToBackGround();
 		// CustomizerStepThreeObject.buildStepThreeGaugePreview();
 		// close the the menu
 		$('.options-overlay').toggle();
@@ -197,6 +211,18 @@ module.exports = function() {
 		//window.customizerObject.loadStepTwo();
 		window.customizerObject.editGaugeButtonStep3 = $(".img-preview-select").attr("id");
 	});
+
+	$("body").on("click", ".customizer_option_value", function() {
+
+		MINIBC.ProductCustomizer.optionClickAddtionalHandler( );
+
+	});
+
+	$("body").on("click", ".cancel", function() {
+    	
+		MINIBC.ProductCustomizer.optionClickAddtionalHandler( true );
+    
+    });
 
 	//when day/night is toggled set index to display the correctly selected gauge.
 };
