@@ -1218,6 +1218,7 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 .lightbox-attributes {background: #fff; position: absolute; left: 0; top: 0; width: 100%; z-index: 999; height: 100%; padding: 60px;  display: none; }
 .lightbox-attributes .close {position: absolute; right: 30px; top: 30px; text-transform: uppercase; font-size: 18px; font-weight: 500;}
 .lightbox-attributes .close i {font-size: 24px; float: left; margin: -2px 1px;}
+.lightbox-attributes .subimtGauge.disabled {opacity: .15; pointer-events: none; }
 
 .lightbox-styles h1, .lightbox-attributes h1 {
 	text-align: center;
@@ -1500,6 +1501,24 @@ ul.cards {
 }
 
 .gauges-selected {
+	
+	.nothingSelected {
+		width: 100%;
+		font-weight: 500;
+		text-align: center;
+		padding: 50px 0;
+		opacity: .47;
+	}
+	
+	#gaugetotal {
+		font-weight: 600;
+	}
+	
+	.img {
+		margin-top: 5px;
+	}
+	
+	
 }
 
 body.fixed-items .gauges-selected .wrapper {
@@ -1515,7 +1534,7 @@ body.fixed-items .gauges-selected .wrapper {
 	font-size: 1.5rem;
 	color: #222;
 	font-weight: 500;
-	text-align: left;
+	text-align: center;
 }
 
 .gauges-selected .action-btn {
@@ -1672,6 +1691,7 @@ body.fixed-items .gauges-selected .wrapper {
     text-shadow: none;
     -moz-outline: none;
     cursor: pointer;
+    height: 45px;
 }
 
 .select-style select option {
