@@ -34,6 +34,7 @@
 	vertical-align: top;
 	width: 173px;
 	height: 173px;
+	overflow: hidden;
 	
 	.canvas {
 		transform: scale(0.28);
@@ -1001,9 +1002,9 @@ body.CustomizerApp .header {position: relative; z-index: 99;}
 body.CustomizerApp .header-logo {text-align: center;}
 body.CustomizerApp .header-search-section {display: none;}
 body.CustomizerApp .breadcrumbs {display: none;}
-body.CustomizerApp .productView {margin-top: 50px;}
 body.CustomizerApp .navPages ul {display: none;}
 body.CustomizerApp .navUser {display: none;}
+body.CustomizerApp .productView {margin-top: 50px;}
 body.CustomizerApp .navPages-container {}
 body.CustomizerApp .logo-container {width: 100%; text-align: center;}
 body.CustomizerApp .header-logo-image {max-height: 1.8rem;}
@@ -1146,14 +1147,22 @@ body.night-mode {
 .customize-your-gauge li .info {float: left; width: 200px; color: #777; font-size: 13px; margin-top: -3px;}
 .customize-your-gauge li .fa-angle-right {position: absolute; right: 30px; top: 13px; font-size: 22px; margin-right: 0; width: auto; }
 
-#customizer_values_list li {border: none; width: 33% !important; text-align: center; }
-#customizer_values_list li img {width: auto !important; height: auto !important; margin-bottom: 10px; float: none; }
+#customizer_values_list li {border: none; width: auto !important; text-align: left; margin-bottom: 10px;}
+#customizer_values_list li.selected img {box-shadow: 0px 0px 0px 2px #ff0000;}
+#customizer_values_list li img {width: auto !important; height: auto !important; margin: 5px !important; float: none; padding: 1px; max-width: 94px; }
 .productView-price {margin: 2rem 0 0;}
 
 /** Customizer Overlay Sub-options */
 .customizer-suboption { margin-top: 3em; }
 .customizer-suboption .option-note { margin-bottom: 1em; }
+.customizer-values-list li.selected span {box-shadow: 0px 0px 0px 2px #ff0000;}
 #CustomizerContainer .customizer-suboption .option-note p { text-align: left;margin-bottom: 0.5em; }
+
+/* Customizer Product Tabs */
+.customizer-product-tabs {margin-top: 80px;}
+.customizer-product-tabs ul.tabs li {width: 24.7%; margin: 0 0.1%;}
+.customizer-product-tabs ul.tabs li a {text-align: center; text-transform: uppercase; font-weight: 500;}
+.customizer-product-tabs .tabs-contents p {text-align: left !important;}
 
 .options-overlay {position: absolute; top: 0; width: 100%; background: #fff; padding: 0; display: none; z-index: 9; }
 .options-overlay .heading-title {border-bottom: 1px solid #ccc; padding: 17px;}
@@ -1161,6 +1170,9 @@ body.night-mode {
 .options-overlay .heading-title i {float: left;font-size: 16px;height: 25px;line-height: 25px;margin-right: 20px; margin-top: 0;text-align: center;width: 25px;}
 .options-overlay .content {float: left; background: #fff; text-align: left; padding: 18px; min-height: 706px; position: relative; width: 100%; }
 .options-overlay .content h5 {margin: 0; padding: 0;}
+.options-overlay li {padding: 0 !important; margin: 0 5px; background: none !important; width: 25% !important; }
+.options-overlay .customizer-suboption #customizer_values_list li {width: auto !important;}
+.options-overlay .option-note {font-weight: 400; margin-bottom: 15px;}
 
 .options-overlay .actions {float: left; width: 100%; background: #fafafa; text-align: center; padding: 15px 0 12px; position: absolute; bottom: 0; left: 0; }
 .options-overlay .actions a {
