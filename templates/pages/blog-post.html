@@ -2,7 +2,9 @@
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-{{> components/blog/post post=blog.post show_tags=true}}
+<div class="col-lg-8 col-lg-offset-2">
+	{{> components/blog/post post=blog.post show_tags=true}}	
+</div>
 
 {{/partial}}
 {{> layout/base}}

@@ -22,7 +22,7 @@ product_results:
             {{>components/search/heading}}
         </div>
     {{/if}}
-    <nav class="navBar navBar--sub">
+    <nav class="navBar navBar--sub" style="display: none;">
         <ul class="navBar-section account-navigation">
             <li class="navBar-item">
                 <a id="search-results-product-count" class="navBar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
@@ -65,7 +65,7 @@ product_results:
         <main class="page-content page-content--centered">
     {{/if}}
         {{#if forms.search.has_suggestions}}
-            <div class="panel panel--large">
+            <div class="panel panel--large" style="display: none;">
                 <div class="panel-body">
                     {{#if forms.search.suggested_query}}
                         <div class="search-suggestion">
