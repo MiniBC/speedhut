@@ -374,6 +374,7 @@ var CustomizerStepTwoObject = {
         var customfieldsGaugeAttributes = "";
 
         var gaugedropdownindex = 0;
+        var hasdropdown = false;
 
         var orderedAttributes = window.customizerObject.sortGaugeFeatures( attributes ); // sort user selected saved values.
 
