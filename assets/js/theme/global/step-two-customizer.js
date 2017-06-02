@@ -517,7 +517,7 @@ var CustomizerStepTwoObject = {
             selectedGaugeSideBar += '<li class="animated fadeIn">';
             selectedGaugeSideBar += "<div class='col-xs-2 col-lg-2 img'></div>";
             selectedGaugeSideBar += '<div class="col-xs-6 col-lg-7">';
-            selectedGaugeSideBar += ' <div class="title">You Have Not Selected Any Gauges</div> ';
+            selectedGaugeSideBar += ' <div class="nothingSelected">You Have Not Selected Any Gauges</div> ';
             selectedGaugeSideBar += ' </div> ';
             selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
             selectedGaugeSideBar += ' </div> ';
