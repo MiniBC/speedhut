@@ -114,10 +114,14 @@ var CustomizerStepTwoObject = {
 
         var customfieldsGaugeAttributes = "";
 
+        var hasdropdown = false;
+        var hideSubmitGaugeButton = false;
+        
         // this happens 
         console.log("ordering........");
         console.log(orderedSelectGaugeAttributes);
         console.log("----------------------------------------");
+
 
 
         //now with we rebuild the attributes page
@@ -135,6 +139,8 @@ var CustomizerStepTwoObject = {
                         customfieldsGaugeAttributes += "<p class='defaultAttributeOption' > "+ item.text +" </p>";
 
                     } else if( item.text.length > 1 ) {
+
+                            hasdropdown = true;
 
                             customfieldsGaugeAttributes += "<div class='select-style'>";
 
@@ -164,6 +170,9 @@ var CustomizerStepTwoObject = {
 
                 } else if( item.status == "unset" ) {
 
+                    hideSubmitGaugeButton = true;
+
+
                     customfieldsGaugeAttributes += "<div class='attribute'>";
                     customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'><a class='attributeinfo' href='#openModal' >info_outline</a></i></label>";
 
@@ -172,6 +181,8 @@ var CustomizerStepTwoObject = {
                         customfieldsGaugeAttributes += "<p class='defaultAttributeOption' > "+ item.text +" </p>";
 
                     } else if( item.text.length > 1 ) {
+
+                            hasdropdown = true;
 
                             customfieldsGaugeAttributes += "<div class='select-style'>";
 
@@ -204,14 +215,20 @@ var CustomizerStepTwoObject = {
 
                 } else if( item.status == "locked" ) {
 
+                    hideSubmitGaugeButton = true;
+
+
                     customfieldsGaugeAttributes += "<div class='attribute'>";
                     customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'><a class='attributeinfo' href='#openModal' >info_outline</a></i></label>";
 
                     if(item.text.length == 1) {
 
-                        customfieldsGaugeAttributes += "<p class='defaultAttributeOption' > "+ item.text +" </p>";
+
+                        customfieldsGaugeAttributes += "<p class='default   ' > "+ item.text +" </p>";
 
                     } else if( item.text.length > 1 ) {
+
+                            hasdropdown = true;
 
                             customfieldsGaugeAttributes += "<div class='select-style unselectedFeature'>";
                             
@@ -247,7 +264,9 @@ var CustomizerStepTwoObject = {
             }
 
         });
-
+        
+        this.hideGaugeSubmitButton(hideSubmitGaugeButton, CustomizerStepTwoObject.settingAttributeStatus);
+        this.setGaugeAttributePageDescription(hasdropdown);
         $("#customFieldAttribute").html(customfieldsGaugeAttributes);        
 
     },
@@ -375,6 +394,7 @@ var CustomizerStepTwoObject = {
 
         var gaugedropdownindex = 0;
         var hasdropdown = false;
+        var hideSubmitGaugeButton = false;
 
         var orderedAttributes = window.customizerObject.sortGaugeFeatures( attributes ); // sort user selected saved values.
 
@@ -386,11 +406,15 @@ var CustomizerStepTwoObject = {
                     customfieldsGaugeAttributes += "<div class='attribute'>";
                     customfieldsGaugeAttributes += "<label><span class="+ item.name +" >" + item.name + "</span><i class='material-icons infoIcon'><a class='attributeinfo' href='#openModal' >info_outline</a></i></label>";
 
-                    if(item.text.length == 1) {
+                    if(item.text.length == 1) { //just display as text
 
                         customfieldsGaugeAttributes += "<p class='defaultAttributeOption' > "+ item.text +" </p>";
 
+
                     } else if( item.text.length > 1 ) {
+
+                        hasdropdown = true;
+                        hideSubmitGaugeButton = true;
 
                         gaugedropdownindex++;
 
@@ -437,7 +461,9 @@ var CustomizerStepTwoObject = {
 
             });
 
-        $("#customFieldAttribute").prepend(customfieldsGaugeAttributes);        
+        this.hideGaugeSubmitButton(hideSubmitGaugeButton, "add");
+        this.setGaugeAttributePageDescription( hasdropdown );
+        $("#customFieldAttribute").prepend(customfieldsGaugeAttributes); 
 
     },
     getGaugeTypeCategories: function( categories ) {
@@ -487,6 +513,19 @@ var CustomizerStepTwoObject = {
         if( window.customizerObject.selectedGauges.length == 0 ) {
 
             $("#gaugetotal").html( gaugetotal.toFixed(2) );
+
+            selectedGaugeSideBar += '<li class="animated fadeIn">';
+            selectedGaugeSideBar += "<div class='col-xs-2 col-lg-2 img'></div>";
+            selectedGaugeSideBar += '<div class="col-xs-6 col-lg-7">';
+            selectedGaugeSideBar += ' <div class="title">You Have Not Selected Any Gauges</div> ';
+            selectedGaugeSideBar += ' </div> ';
+            selectedGaugeSideBar += '<div class="col-xs-3 col-lg-3">';
+            selectedGaugeSideBar += ' </div> ';
+            
+            selectedGaugeSideBar += '</li>';
+
+            $("#gaugeSelected").html(selectedGaugeSideBar);
+
             
         }
 
@@ -702,6 +741,40 @@ var CustomizerStepTwoObject = {
     	}
 
     },
+    setGaugeAttributePageDescription: function(flag) {
+
+        var featuredescription = "Please review your gauge specifics below";
+
+        if(flag) {
+
+            featuredescription = "Please select your gauge specifics below";
+
+        }
+
+        $(".description").text(featuredescription);
+
+    },
+    hideGaugeSubmitButton: function(flag, type) {
+
+        if(flag) {
+
+            $(".subimtGauge").removeClass("addGauge");
+            $(".submitEditGauge").removeClass("editGauge");
+
+            $(".subimtGauge").addClass("disabled");
+            $(".submitEditGauge").addClass("disabled");
+        
+        } else {
+
+            $(".subimtGauge").addClass("addGauge");
+            $(".submitEditGauge").addClass("editGauge");
+
+            $(".subimtGauge").removeClass("disabled");
+            $(".submitEditGauge").removeClass("disabled");
+
+        }
+
+    },
     buildEditAttributePage: function( editAttributeObject ) {
 
 
@@ -709,6 +782,9 @@ var CustomizerStepTwoObject = {
         $("#customFieldAttribute").html("");
 
         var customfieldsGaugeAttributes = "";
+
+        var hasdropdown = false;
+        var hideSubmitGaugeButton = false;
 
         editAttributeObject.gaugeAttribute.forEach(function(item, index, array) {
 
@@ -720,8 +796,13 @@ var CustomizerStepTwoObject = {
                 if( typeof item.text == 'string' ) {
 
                     customfieldsGaugeAttributes += "<p class='defaultAttributeOption' > "+ item.text +" </p>";
+                    var disableButtons = true;
 
                 } else if( item.text.length > 1 ) {
+
+                    hasdropdown = true;
+                    hideSubmitGaugeButton = true;
+
 
                     customfieldsGaugeAttributes += "<div class='select-style'>";
                     customfieldsGaugeAttributes += "<select class='attributeOption1' >";
@@ -744,6 +825,8 @@ var CustomizerStepTwoObject = {
 
         });
 
+        this.hideGaugeSubmitButton(hideSubmitGaugeButton, "edit");
+        this.setGaugeAttributePageDescription(hasdropdown);
         $("#customFieldAttribute").html(customfieldsGaugeAttributes);        
 
     },
@@ -894,6 +977,23 @@ var CustomizerStepTwoObject = {
 
         }
 
+    },
+    checkSelectedGagues: function() {
+
+        // //you have not selected any gauges
+        // console.log(" inside check selectedGauges ");
+        // console.log( window.customizerObject.selectedGauges.length );
+
+        // if ( window.customizerObject.selectedGauges.length == 0 ) {
+
+        //     $("#gauge-sidebar-text").text("You have not selected any gauges");
+
+        // } else {
+
+        //     $("#gauge-sidebar-text").text("GAUGES YOU SELECTED");
+
+        // }
+
     }
 
 }  //End of CustomizerStepTwoObject Object
@@ -909,6 +1009,9 @@ module.exports = function() {
 
 		//this step needs to pull all produ
 		window.initsteptwo = function() { //called when page loads
+
+            CustomizerStepTwoObject.checkSelectedGagues();
+
 
             $(".selectedGaugePreivew").html("");
 
@@ -954,8 +1057,8 @@ module.exports = function() {
 		    CustomizerStepTwoObject.findSelectedAttributes( productTitle );
 		    
 		    $("#attribute-title").html(productTitle); //Set Attributes Title
-		    $(".addGauge").show();
-		    $(".editGauge").hide();
+		    $(".subimtGauge").show();
+		    $(".submitEditGauge").hide();
 		    $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
 			
 
@@ -979,7 +1082,8 @@ module.exports = function() {
 
             window.customizerObject.updateSelectedGauges(); //save selection to localStroage
 
-            
+            CustomizerStepTwoObject.checkSelectedGagues();
+
 
             //$('.lightbox-attributes').fadeOut(200);
 
@@ -997,6 +1101,8 @@ module.exports = function() {
             CustomizerStepTwoObject.displaySelectedGauges(); //redraw all gauges
 
             window.customizerObject.updateSelectedGauges();
+
+            CustomizerStepTwoObject.checkSelectedGagues();
 
 
         });
@@ -1026,8 +1132,8 @@ module.exports = function() {
             CustomizerStepTwoObject.buildEditAttributePage( window.customizerObject.selectedGauges[gaugeEditIndex] );
 
             //hide add Gauge button
-            $(".addGauge").hide();
-            $(".editGauge").show();
+            $(".subimtGauge").hide();
+            $(".submitEditGauge").show();
 
 
             $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
@@ -1261,8 +1367,8 @@ module.exports = function() {
             CustomizerStepTwoObject.buildEditAttributePage( window.customizerObject.selectedGauges[gaugeEditIndex] );
 
             //hide add Gauge button
-            $(".addGauge").hide();
-            $(".editGauge").show();
+            $(".subimtGauge").hide();
+            $(".submitEditGauge").show();
 
 
             $('.lightbox-attributes').fadeIn(300);  //after appending is down we will fade in content
