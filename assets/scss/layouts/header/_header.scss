@@ -23,7 +23,7 @@
 
     @include breakpoint("medium") {
         //border-bottom: container("border");
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 2px solid #fff;
     }
 
     &.is-open {

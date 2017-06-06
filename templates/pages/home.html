@@ -26,7 +26,7 @@ blog:
     
     </div> <!-- container ends -->
 
-<div class="homepage-mini-banners">
+<div class="homepage-mini-banners" style="display: none;">
 <div class="container">
 <div class="row">
 
@@ -53,13 +53,62 @@ blog:
 </div>
 
 
+<div class="featured-stories">
+ <div class="container">
+	  <div class="row">
+		  
+		  <h2>Featured Stories</h2>
+		  
+		  <div class="story col-md-6 col-lg-6">
+			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story1.jpg'}}" /></div>
+			  <div class="category">Car Feature</div>
+			  <div class="title">Resurrection: The Pikes Peak 20B 4WD RX-7</div>
+			  <div class="date">May 30, 2017</div>
+		  </div>
+
+		  <div class="story col-md-6 col-lg-6">
+			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story2.jpg'}}" /></div>
+			  <div class="category">Car Spotlight</div>
+			  <div class="title">This Is Stance Done Right</div>
+			  <div class="date">May 29, 2017</div>
+		  </div>		  
+
+		  <div class="story col-md-6 col-lg-6">
+			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story3.jpg'}}" /></div>
+			  <div class="category">Car Feature</div>
+			  <div class="title">The Collection Expands: Kato’s Mazda RX-3</div>
+			  <div class="date">May 28, 2017</div>
+		  </div>
+
+		  <div class="story col-md-6 col-lg-6">
+			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story4.jpg'}}" /></div>
+			  <div class="category">Special Feature</div>
+			  <div class="title">Return Of The Civic Si</div>
+			  <div class="date">May 25, 2017</div>
+		  </div>
+		  
+		  
+	  </div>
+ </div>
+</div>
+
+
+
+
+<div class="instagram-section">
+ <div class="container">
+ 	<h2>The Latest</h2>
+ 	<div class="instagram-feed">
+	 	<div id="instafeed"></div>
+ 	</div>
+ </div> <!-- container -->
+</div> <!-- instagram section -->
+
+
     
 <div class="about-section">
 <div class="container">
 <div class="row">
-
- <div class="small-heading">About Us</div>
- <h2>Speedhut 101</h2>
  
   <div class="col-md-6 col-lg-3 box-info">
   	<div class="inner">
@@ -104,13 +153,12 @@ blog:
 
 
 </div> <!-- row -->
-</div> <!-- container -->
-
-	   
-</div>
+</div> <!-- container -->   
+</div> <!-- about section -->
 
 
-<div class="testimonials-section">
+
+<div class="testimonials-section" style="display: none;">
 <div class="container">
    <div class="row">
     	    
@@ -155,46 +203,7 @@ blog:
 </div>
 
     
-    
-<div class="homepage-blog-posts" style="display: none;">
-	<ul>
-     {{#each blog.recent_posts}}
-      <li><a href="{{url}}">{{title}}</a></li>
-	 {{/each}}
-	</ul>
-</div>
-   
-
-
- <div class="homepage-bottom-slider" style="float: left; width: 100%;">
-	<section class="heroCarousel_"
-    data-slick='{
-        "dots": true,
-        "mobileFirst": true,
-        "slidesToShow": 1,
-        "slidesToScroll": 1,
-	    "infinite": true,
-		"fade": true,
-		"arrows": false,
-        "autoplay": false
-    }'
->
-
-    <div class="heroCarousel-slide" style="background-image: url('{{cdn '/assets/img/banner1.jpg'}}')">
-        <a href="#">
-            <img class="heroCarousel-image" src="{{cdn '/assets/img/banner1.jpg'}}"/>
-                    </a>
-    </div>
-    
-    
-    <div class="heroCarousel-slide" style="background-image: url('{{cdn '/assets/img/banner3.jpg'}}')">
-        <a href="#">
-            <img class="heroCarousel-image" src="{{cdn '/assets/img/banner3.jpg'}}"/>
-                    </a>
-    </div>
-</section>
-</div>
-
+  
 
 
 

@@ -81,13 +81,13 @@
 
 
 .header-search .form-field i {
-    background: #ffffff none repeat scroll 0 0;
     font-size: 23px;
     position: absolute;
-    right: 11px;
-    top: 11px;
+    right: 15px;
+    top: 10px;
     width: 25px;
     text-align: center;
+    color: #eee;
 }
 
 .header-search .form-field {
@@ -210,7 +210,7 @@ a:hover.forgot-password {
 }
 
 .navPages-list {
-	margin-top: 9px !important;
+	margin-top: 6px !important;
 }
 
 .mobile-cart-menu {
@@ -271,7 +271,7 @@ article.blog .blog-post-body {
     margin: 0 0 2rem;
 }
 .blog-thumbnail {
-    height: 300px;
+    height: auto;
     margin-bottom: 1rem;
     overflow: hidden;
 }
@@ -326,7 +326,7 @@ a.blog-item-read-more {
 .homepage-banners a:hover {opacity: .7;}
 .homepage-banners a img {width: 100%; height: auto;}
 
-.about-section {padding: 80px 0 20px; display: inline-block; width: 100%; background: #f9f9f9;}
+.about-section {padding: 120px 0 0; display: inline-block; width: 100%; background: #f9f9f9;}
 .about-section a {text-decoration: none; color: #17689c;}
 .about-section a:hover {text-decoration: underline;}
 
@@ -423,6 +423,10 @@ a.blog-item-read-more {
 		&:hover {
 			box-shadow: 0 0 12px #ccc;
 		}
+		
+		img {
+			max-width: 70px;
+		}
 
 		.img {
 			background: #999;
@@ -451,6 +455,50 @@ a.blog-item-read-more {
 .about-section a:hover {
 	text-decoration: none;
 }
+
+
+.featured-stories {
+	float: none;
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+	
+	h2 {
+		color: #222222;
+	    font-size: 1.6rem;
+	    margin-bottom: 30px;
+	    text-transform: uppercase;
+	    text-align: center;
+	}
+	
+	.story {
+		margin-bottom: 30px;
+	}
+	
+	img {
+		box-shadow: 0 0 2px #444;
+	}
+	
+	.category {
+		margin: 10px 0 -3px;
+		color: #dc1b29;
+		text-transform: uppercase;
+	}
+	
+	.title {
+		font-size: 1.5rem;
+		font-weight: 400;
+		color: #222;
+		margin-bottom: -2px;
+	}
+	
+}
+
+
+
+
+
+
 
 
 @keyframes hvr-ripple-out {
@@ -529,6 +577,11 @@ a.blog-item-read-more {
 	float: none;
 	display: inline-block;
 	width: 100%;
+	
+	img {
+		opacity: .5;
+	}
+	
 }
 
 .oem-partners h3 {
@@ -537,7 +590,7 @@ a.blog-item-read-more {
 	font-size: 1.4rem;
 	font-weight: 400;
 	opacity: 0.4;
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 
 .navPages-quickSearch {
@@ -547,6 +600,8 @@ a.blog-item-read-more {
 
 .navPages-quickSearch .form-input {
 	color: #222;
+	background: none;
+	border-color: #ccc;
 }
 
 a.navUser-action--quickSearch {
@@ -591,12 +646,15 @@ a.navUser-action--quickSearch i {
 	color: #8d8d8d;
 	font-weight: 400;
 	padding: 0.6rem 0.78571rem;
+	font-size: .9rem;
 }
 
 .navPages-action {
-	color: #111;
+	color: #fff;
 	outline: none !important;
 	text-decoration: none !important;
+	font-size: 1.3rem;
+	letter-spacing: -1px;
 }
 
 .navUser-item--cart {
@@ -708,6 +766,7 @@ a.navUser-action--quickSearch i {
 	float: left;
 	width: 100%;
 	height: 61px;
+	background: #111;
 	
 	.container {
 		position: inherit;
@@ -724,11 +783,11 @@ a.navUser-action--quickSearch i {
 }
 
 .navPage-subMenu {
-	background: #fff;
+	background: #111;
 }
 
 .navPages-action.is-open {
-	background: #fff;
+	background: #111;
 }
 
 .navPage-subMenu {
@@ -977,7 +1036,67 @@ a.navUser-action--quickSearch i {
 
 .unselectedFeature, .unselectedFeature:hover {
 	border: none;
-	background: #eee;
+	background: #eee !important;
+}
+
+.instagram-section {
+	text-align: center;
+	padding: 20px 0;
+	
+	.instagram-feed {
+		margin: 0 -16px;
+	}
+	
+	h2 {
+		font-size: 1.6rem;
+		color: #222;
+		text-transform: uppercase;
+		margin-bottom: 30px;
+	}
+	
+	.instagram-tile {
+		margin-bottom: 20px !important;
+		
+		
+		a {
+			transition: all 200ms ease-in 0s;
+		    -moz-transition: all 200ms ease-in 0s;
+		    -webkit-transition: all 200ms ease-in 0s;
+		    -o-transition: all 200ms ease-in 0s;
+    
+    		&:hover {
+	    		opacity: .9;
+    		}
+		}
+
+		
+	}
+	
+	.instagram-tile.video:after {
+		content: url('../img/instagram-video-icon.png');
+		position: absolute;
+		right: 17px;
+		top: 6px;
+		opacity: .9;
+	}
+	
+	.video {
+		opacity: 1;
+		margin: 0;
+	}
+	
+	img {
+			transition: all 200ms ease-in 0s;
+    -moz-transition: all 200ms ease-in 0s;
+    -webkit-transition: all 200ms ease-in 0s;
+    -o-transition: all 200ms ease-in 0s;
+	}
+	
+	img:hover {
+		box-shadow: 0 0 10px #777;
+	}
+	
+	
 }
 
 
@@ -1000,16 +1119,17 @@ body.CustomizerApp {
 body.CustomizerApp .body {margin-top: 0;}
 body.CustomizerApp .header {position: relative; z-index: 99;}
 body.CustomizerApp .header-logo {text-align: center;}
-body.CustomizerApp .header-search-section {display: none;}
 body.CustomizerApp .breadcrumbs {display: none;}
-body.CustomizerApp .navPages ul {display: none;}
-body.CustomizerApp .navUser {display: none;}
+//body.CustomizerApp .header-search-section {display: none;}
+//body.CustomizerApp .breadcrumbs {display: none;}
+//body.CustomizerApp .navPages ul {display: none;}
+//body.CustomizerApp .navUser {display: none;}
 body.CustomizerApp .productView {margin-top: 50px;}
 body.CustomizerApp .navPages-container {}
-body.CustomizerApp .logo-container {width: 100%; text-align: center;}
+//body.CustomizerApp .logo-container {width: 100%; text-align: center;}
 body.CustomizerApp .header-logo-image {max-height: 1.8rem;}
-body.CustomizerApp .header-middle {height: 58px; border-bottom: 1px solid #eee;}
-body.CustomizerApp .header-logo {margin: 1.2rem 0;}
+body.CustomizerApp .header-middle {}
+body.CustomizerApp .header-logo {margin: 1.3rem 0;}
 body.CustomizerApp .add-to-cart-sticky {position: fixed; bottom: 0; left: 0; right: 0; width: 100%; height: 90px; line-height: 95px; background: #333; z-index: 999; text-align: center; box-shadow: 0 1px 3px #000; }
 body.CustomizerApp .add-to-cart-sticky .form-field--increments {display: none;}
 body.CustomizerApp .add-to-cart-sticky .productView-price {display: inline-block; float: none; color: #fff; margin: 0 30px; }
@@ -1300,7 +1420,7 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 
 .heroCarousel {
 	margin: -1.2rem auto 0;
-	max-width: 1600px;
+	//max-width: 1600px;
 }
 
 .heroCarousel .slick-next {
@@ -1739,7 +1859,6 @@ body.fixed-items .gauges-selected .wrapper {
 	max-width: 100% !important;
 	margin-top: 5px;
 }
-
 
 
 

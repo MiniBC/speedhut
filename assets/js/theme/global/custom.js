@@ -1,6 +1,17 @@
 import $ from 'jquery';
+import Instafeed from 'instafeed.js';
 
 /* eslint-disable */
+const userFeed = new Instafeed({
+    get: 'user',
+    resolution: 'standard_resolution',
+    limit: '12',
+    userId: '571701192',
+    accessToken: '571701192.1677ed0.c400658007c24d4da32510a1f73dafc0',
+    template:'<div class="col-md-3 col-lg-3 instagram-tile {{type}}"><a href="{{link}}" target="_blank"><img src="{{image}}"></a></div>',
+});
+userFeed.run();
+
 $('.my-account a').click(() => {
  	$('.my-account .dropdown-menu').toggle();
 });
