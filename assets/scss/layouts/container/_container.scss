@@ -1294,19 +1294,20 @@ body.night-mode {
 .options-overlay .customizer-suboption #customizer_values_list li {width: auto !important;}
 .options-overlay .option-note {font-weight: 400; margin-bottom: 15px;}
 
-.options-overlay .actions {float: left; width: 100%; background: #fafafa; text-align: center; padding: 15px 0 12px; position: absolute; bottom: 0; left: 0; }
+.options-overlay .actions {float: left; width: 100%; background: #fafafa; text-align: center; padding: 0; position: absolute; bottom: 0; left: 0; }
 .options-overlay .actions a {
 	text-decoration: none;
 	text-align: center;
-	padding: 7px 15px;
 	display: inline-block;
 	background: #35298e;
 	color: #fff;
 	font-weight: 600;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	width: 40%;
+	width: 50%;
+	float: left;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 1rem;
+	font-size: 1.1rem;
 }
 .options-overlay .actions a:hover {opacity: .7;}
 
@@ -2379,11 +2380,13 @@ img.mfp-img {
 }
 
 #backbutton {
-	background-color:orange;
+	background-color: #eee;
 	border: dashed red;
 	border-radius: 50%;
 	width: 100px;
 	height: 100px;
+	float: none;
+	display: inline-block;
 }
 
 #backbutton span {
