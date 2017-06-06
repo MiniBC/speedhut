@@ -302,6 +302,12 @@ $("body").on("click", "#step-3", function() {
 
 })
 
+$("body").on("click", "#backbutton", function() {
+
+    customizerObject.loadStepTwo();
+
+})
+
 
 module.exports = function() {
 
