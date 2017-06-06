@@ -2377,3 +2377,16 @@ img.mfp-img {
 .img-preview-select {
 	border: 2px solid #ccc;
 }
+
+#backbutton {
+	background-color:orange;
+	border: dashed red;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}
+
+#backbutton span {
+	position: relative;	
+	top: 25px;
+}

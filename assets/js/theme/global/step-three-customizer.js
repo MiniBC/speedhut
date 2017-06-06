@@ -26,6 +26,8 @@ var CustomizerStepThreeObject = {  //start of step three object
 		var gaugePreviewSection;
 		$(".selectedGaugePreivew").html("");
 
+		$(".selectedGaugePreivew").append("<div id='backbutton'><span>Back to Step Two</span></div>");
+
 		for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
 			if(i % 3 == 0) {
 				$(".selectedGaugePreivew").append("<br>");
@@ -116,7 +118,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 	setSettings: function() {
 		// $("#customizer_layer_2").css("left","0");
 		// $("#customizer_layer_2").css("top","0");
-		$(".cancel").text("Close");
+		//$(".cancel").text("Close");
 		$(".apply-to-gauge").remove();
 	}
 } // End of Step Three object
@@ -167,6 +169,8 @@ module.exports = function() {
 
 	$("body").on("click", "#customizer_option_value_17", function() {
 
+
+
 		MINIBC.ProductCustomizer.addTextBoxForCustomText(  MINIBC.ProductCustomizer.customGaugeText );
 
 	});
@@ -175,7 +179,8 @@ module.exports = function() {
 
 		//save text value from input box
 		MINIBC.ProductCustomizer.customGaugeText = $(this).val();
-		MINIBC.ProductCustomizer.addText( MINIBC.ProductCustomizer.customGaugeText, MINIBC.ProductCustomizer.customFontFontStyle );
+		
+		MINIBC.ProductCustomizer.addText( MINIBC.ProductCustomizer.customGaugeText, MINIBC.ProductCustomizer.customFontFontStyle, MINIBC.ProductCustomizer.customGaugeFontColor );
 
 	});
 
@@ -190,6 +195,48 @@ module.exports = function() {
 	});
 
 	$("body").on("click", ".customizer_option_value", function() {
+
+		function RGB2Color(r,g,b)
+		{
+		
+		  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);		
+
+		}
+
+		function byte2Hex (n)
+		{
+			
+			var nybHexString = "0123456789ABCDEF";
+			return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
+		
+		}
+
+		function parseRBGBValues( hex ) {
+			
+			var rgbArray = [];
+			var rgbValuesArray = [];
+			rgbArray = hex.split(", ");
+			
+			rgbValuesArray[0] = rgbArray[0].substring(4, 7);
+			rgbValuesArray[1] = rgbArray[1];
+			rgbValuesArray[2] = rgbArray[2].slice(0, -1);
+			
+			return rgbValuesArray;
+
+		}
+
+		var hex = $(this).children().css("backgroundColor");
+
+		var thisvalue = parseRBGBValues( hex );
+
+		var rgbValAsString = RGB2Color( thisvalue[0], thisvalue[1], thisvalue[2] );
+
+		MINIBC.ProductCustomizer.customGaugeFontColor = rgbValAsString.substring(1,7);
+
+		MINIBC.ProductCustomizer.addText( MINIBC.ProductCustomizer.customGaugeText, MINIBC.ProductCustomizer.customFontFontStyle, MINIBC.ProductCustomizer.customGaugeFontColor );
+
+
+
 		// after this function is run, we need to update the preview of gauges with their mini versions
 		CustomizerStepThreeObject.saveStyleToSelectedGauge();
 		window.customizerObject.updateSelectedGauges();
