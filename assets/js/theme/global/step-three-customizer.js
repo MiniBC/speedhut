@@ -169,17 +169,14 @@ module.exports = function() {
 
 	$("body").on("click", "#customizer_option_value_17", function() {
 
-
-
 		MINIBC.ProductCustomizer.addTextBoxForCustomText(  MINIBC.ProductCustomizer.customGaugeText );
 
 	});
 
 	$("body").on("keyup", "#customFontText", function() {
-
 		//save text value from input box
 		MINIBC.ProductCustomizer.customGaugeText = $(this).val();
-		
+
 		MINIBC.ProductCustomizer.addText( MINIBC.ProductCustomizer.customGaugeText, MINIBC.ProductCustomizer.customFontFontStyle, MINIBC.ProductCustomizer.customGaugeFontColor );
 
 	});
@@ -198,29 +195,29 @@ module.exports = function() {
 
 		function RGB2Color(r,g,b)
 		{
-		
-		  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);		
+
+		  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 
 		}
 
 		function byte2Hex (n)
 		{
-			
+
 			var nybHexString = "0123456789ABCDEF";
 			return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
-		
+
 		}
 
 		function parseRBGBValues( hex ) {
-			
+
 			var rgbArray = [];
 			var rgbValuesArray = [];
 			rgbArray = hex.split(", ");
-			
+
 			rgbValuesArray[0] = rgbArray[0].substring(4, 7);
 			rgbValuesArray[1] = rgbArray[1];
 			rgbValuesArray[2] = rgbArray[2].slice(0, -1);
-			
+
 			return rgbValuesArray;
 
 		}
@@ -266,9 +263,13 @@ module.exports = function() {
 	});
 
 	$("body").on("click", ".cancel", function() {
-    	
+
+
+
 		MINIBC.ProductCustomizer.optionClickAddtionalHandler( true );
-    
+		// new - to save the text on the current gauge (when clicking between the gauges)
+
+		CustomizerStepThreeObject.saveStyleToSelectedGauge();
     });
 
 	//when day/night is toggled set index to display the correctly selected gauge.
