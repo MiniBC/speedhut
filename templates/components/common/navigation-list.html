@@ -8,7 +8,7 @@
             <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
         </li>-->
         {{#each children}}
-            <li class="navPage-subMenu-item">
+            <li class="navPage-subMenu-item {{name}}">
                 {{#if children}}
                     <a
                         class="navPage-subMenu-action navPages-action has-subMenu"

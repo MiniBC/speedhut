@@ -9,7 +9,7 @@ products:
 carousel: {{theme_settings.homepage_show_carousel}}
 blog:
     recent_posts:
-        limit: {{theme_settings.homepage_blog_posts_count}}
+        limit: 4
 ---
 {{#partial "hero"}}
     {{#if carousel}}
@@ -25,69 +25,20 @@ blog:
     {{/each}}
     
     </div> <!-- container ends -->
-
-<div class="homepage-mini-banners" style="display: none;">
-<div class="container">
-<div class="row">
-
-	<div class="homepage-banners">
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<a href="#"><img src="{{cdn '/assets/img/made-in-usa.jpg'}}" /></a>
-		</div>
-
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<a href="#"><img src="{{cdn '/assets/img/custom-gauges.jpg'}}" /></a>
-		</div>
-		
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<a href="#"><img src="{{cdn '/assets/img/last-gauges.jpg'}}" /></a>
-		</div>
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<a href="#"><img src="{{cdn '/assets/img/custom-gauges.jpg'}}" /></a>
-		</div>		
-	</div>
-
-
-</div>
-</div>
-</div>
-
+    
 
 <div class="featured-stories">
  <div class="container">
 	  <div class="row">
-		  
 		  <h2>Featured Stories</h2>
-		  
+		  {{#each blog.recent_posts}}
 		  <div class="story col-md-6 col-lg-6">
-			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story1.jpg'}}" /></div>
-			  <div class="category">Car Feature</div>
-			  <div class="title">Resurrection: The Pikes Peak 20B 4WD RX-7</div>
-			  <div class="date">May 30, 2017</div>
+			  <div class="featured-image"><a href="{{url}}"><img src="{{getImage thumbnail 'gallery_size_homepage'}}" alt="{{thumbnail.alt}}"></a></div>
+			  {{#each tags}}<div class="category">{{name}}</div>{{/each}}
+			  <div class="title"><a href="{{url}}">{{title}}</a></div>
+			  <div class="date">{{date_published}}</div>
 		  </div>
-
-		  <div class="story col-md-6 col-lg-6">
-			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story2.jpg'}}" /></div>
-			  <div class="category">Car Spotlight</div>
-			  <div class="title">This Is Stance Done Right</div>
-			  <div class="date">May 29, 2017</div>
-		  </div>		  
-
-		  <div class="story col-md-6 col-lg-6">
-			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story3.jpg'}}" /></div>
-			  <div class="category">Car Feature</div>
-			  <div class="title">The Collection Expands: Kato’s Mazda RX-3</div>
-			  <div class="date">May 28, 2017</div>
-		  </div>
-
-		  <div class="story col-md-6 col-lg-6">
-			  <div class="featured-image"><img src="{{cdn '/assets/img/featured-story4.jpg'}}" /></div>
-			  <div class="category">Special Feature</div>
-			  <div class="title">Return Of The Civic Si</div>
-			  <div class="date">May 25, 2017</div>
-		  </div>
-		  
-		  
+		  {{/each}}
 	  </div>
  </div>
 </div>
@@ -112,7 +63,7 @@ blog:
  
   <div class="col-md-6 col-lg-3 box-info">
   	<div class="inner">
-	<div class="img hvr-ripple-out"><i class="material-icons">directions_car</i></div>
+	<div class="img hvr-ripple-out"><img src="{{cdn '/assets/img/our-history-icon.png'}}" /></div>
   	<h3>Our History</h3>
   	<p>With over 10 years of success and growth in the extremely competitive international gauge market, we continually strive to stay ahead of the competition with innovative design, solid engineering, while manufacturing all of our products in the USA.</p>
   	<a href="#">Find Out More <i class="material-icons">arrow_forward</i></a>
@@ -121,7 +72,7 @@ blog:
  
   <div class="col-md-6 col-lg-3 box-info">
 	  <div class="inner">
-	<div class="img hvr-ripple-out"><i class="material-icons">directions_car</i></div>
+	<div class="img hvr-ripple-out"><img src="{{cdn '/assets/img/technology-icon.png'}}" /></div>
   	<h3>Our Technology</h3>
   	<p>Packed full of technologies and features you won’t find in any other gauge, and built with the same type of heavy-duty materials in things like race cars - the Speedhut® gauge is perfect for roads and race tracks, dragstrips and rough terrain, or any wild ride you take.</p>
   	<a href="#">Find Out More <i class="material-icons">arrow_forward</i></a>
@@ -133,7 +84,7 @@ blog:
 
   <div class="col-md-6 col-lg-3 box-info">
 	  <div class="inner">
-	<div class="img hvr-ripple-out"><i class="material-icons">directions_car</i></div>
+	<div class="img hvr-ripple-out"><img src="{{cdn '/assets/img/guarantee-icon.png'}}" /></div>
   	<h3>Our Guarantee</h3>
   	<p>With the finest custom-built gauges around—each carefully hand-crafted and made of hardwearing components, built to perform in the harshest conditions and designed to last forever—there is no better solution for your dash than a Speedhut® gauge.</p>
   	<a href="#">Find Out More <i class="material-icons">arrow_forward</i></a>
@@ -142,7 +93,7 @@ blog:
  
   <div class="col-md-6 col-lg-3 box-info">
 	  <div class="inner">
-	<div class="img hvr-ripple-out"><i class="material-icons">directions_car</i></div>
+	<div class="img hvr-ripple-out"><img src="{{cdn '/assets/img/made-in-usa-icon.png'}}" /></div>
   	<h3>Made In USA</h3>
   	<p>With over 10 years of success and growth in the extremely competitive international gauge market, we continually strive to stay ahead of the competition with innovative design, solid engineering, while manufacturing all of our products in the USA.</p>
   	<a href="#">Find Out More <i class="material-icons">arrow_forward</i></a>
