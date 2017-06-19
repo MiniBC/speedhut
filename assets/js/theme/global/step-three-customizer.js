@@ -27,22 +27,18 @@ var CustomizerStepThreeObject = {  //start of step three object
 		$(".selectedGaugePreivew").html("");
 
 
-		/*
+
 			for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
-				if(i % 3 == 0) {
-					$(".selectedGaugePreivew").append("<br>");
-			}
-		*/
+			// generate the gauge preview placeholders
+
+
 
 			// HERE WE HAVE TO APPEND THE SAME CODE THAT'S INSIDE THE MAIN GAUGE
 			$(".selectedGaugePreivew").append( "<div class='gauge-preview-container' id='gauge-preview-container-"+i+"'><img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.png?t=1491341974&_ga=1.163658615.995689909.1490710177'></div>" );
 			// if changes have been made to the gauge, it should update its preview
 			// $(".selectedGaugePreivew").append()
-
-		$("<div id='backbutton'><span>Back to Step Two</span></div>").appendTo(".selectedGaugePreivew");
-
-
 		}
+		$("<div id='backbutton'><span>Back to Step Two</span></div>").appendTo(".selectedGaugePreivew");
 
 		// ALTERNATIVELY WE CAN BUILD THE PREVIEWS RIGHT AWAY USING THIS MODIFICATION CODE
 /*
@@ -53,7 +49,6 @@ var CustomizerStepThreeObject = {  //start of step three object
 				var currentClass = 'preview-container-' + index;
 				var $previewContainer = $('<div class="' + currentClass + '"></div>"');
 				$(".test-container-one").append($previewContainer);
-				console.log("YESYESYESYESYES");
 				console.log(window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer);
 				$previewContainer.append('<p>' + (index+1) + '</p>')
 				$previewContainer.append( window.customizerObject.selectedGauges[ index ].dayTimeGaugePreviewLayyer );
@@ -63,7 +58,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 */
 
 
-		console.log( window.customizerObject.selectedGauges );
+		// console.log( window.customizerObject.selectedGauges );
 
 
 	},
