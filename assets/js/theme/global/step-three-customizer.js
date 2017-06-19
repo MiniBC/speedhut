@@ -26,17 +26,22 @@ var CustomizerStepThreeObject = {  //start of step three object
 		var gaugePreviewSection;
 		$(".selectedGaugePreivew").html("");
 
-		$(".selectedGaugePreivew").append("<div id='backbutton'><span>Back to Step Two</span></div>");
 
-		for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
-			if(i % 3 == 0) {
-				$(".selectedGaugePreivew").append("<br>");
+		/*
+			for(var i = 0; i < window.customizerObject.selectedGauges.length; i++) {
+				if(i % 3 == 0) {
+					$(".selectedGaugePreivew").append("<br>");
 			}
+		*/
 
 			// HERE WE HAVE TO APPEND THE SAME CODE THAT'S INSIDE THE MAIN GAUGE
 			$(".selectedGaugePreivew").append( "<div class='gauge-preview-container' id='gauge-preview-container-"+i+"'><img class='img-preview' id="+i+" src='https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/dummy-placeholder.png?t=1491341974&_ga=1.163658615.995689909.1490710177'></div>" );
 			// if changes have been made to the gauge, it should update its preview
 			// $(".selectedGaugePreivew").append()
+
+		$("<div id='backbutton'><span>Back to Step Two</span></div>").appendTo(".selectedGaugePreivew");
+
+
 		}
 
 		// ALTERNATIVELY WE CAN BUILD THE PREVIEWS RIGHT AWAY USING THIS MODIFICATION CODE
