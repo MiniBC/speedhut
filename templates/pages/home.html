@@ -33,7 +33,7 @@ blog:
 		  <h2>Featured Stories</h2>
 		  {{#each blog.recent_posts}}
 		  <div class="story col-md-6 col-lg-6">
-			  <div class="featured-image"><a href="{{url}}"><img src="{{getImage thumbnail 'gallery_size_homepage'}}" alt="{{thumbnail.alt}}"></a></div>
+			  <div class="featured-image"><a href="{{url}}"><img src="{{getImage thumbnail}}" alt="{{thumbnail.alt}}"></a></div>
 			  {{#each tags}}<div class="category">{{name}}</div>{{/each}}
 			  <div class="title"><a href="{{url}}">{{title}}</a></div>
 			  <div class="date">{{date_published}}</div>
