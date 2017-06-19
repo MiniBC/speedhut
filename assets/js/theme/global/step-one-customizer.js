@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import magnific from './magnific';
 
-//make an ajax call to get all kits 
+//make an ajax call to get all kits
 var CustomizerStepOneObject = {
 
 	buildStepOneCards : function( gaugeKit ) {
@@ -14,7 +14,14 @@ var CustomizerStepOneObject = {
 			var card;
 
 			card = ' <li class="card-item animated fadeIn"><div>';
-			card += ' <div class="img"><img src=https://store-ta980ko58k.mybigcommerce.com/product_images/' + this.parseImg( gaugeKit[i].image_file  ) + ' /></div> ';
+			if (gaugeKit[i].image_file) {
+				card += ' <div class="img"><img src=https://store-ta980ko58k.mybigcommerce.com/product_images/' + this.parseImg( gaugeKit[i].image_file  ) + ' /></div> ';
+
+			} else {
+				// default image
+				card += ' <div class="img"><img class="default-image-step-one" src="https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/1965-chevrolet-chevelle-red-gauges-1-.jpg" /></div> ';
+			}
+
 			card += ' <div class="card-content"> ';
 			card += ' <div class="title"> ' + gaugeKit[i].name + '</div> ';
 			card += ' <div class="description">' + this.parseShortDescription(gaugeKit[i].description) + '</div> ';
@@ -28,7 +35,7 @@ var CustomizerStepOneObject = {
 			$("#customize-started").append(card);
 
 		}
-		
+
 	    $('.popup-step1').magnificPopup({
 		      type:'inline',
 		      removalDelay: 500, //delay removal by X to allow out-animation
@@ -39,7 +46,7 @@ var CustomizerStepOneObject = {
 		  },
 		  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
 		});
-		
+
 
 	},
 	parseImg: function( imgPath ) {
@@ -52,7 +59,7 @@ var CustomizerStepOneObject = {
 		var newimgPath = newtrimmedimgPath + "original.jpg";
 
 		return newimgPath;
-	
+
 	},
 	parseShortDescription: function( shortDescription ) { //limits text to 150 char
 
@@ -71,7 +78,7 @@ var CustomizerStepOneObject = {
 
 			method: "GET",
 	        data: {gaugeKits: true},
-	        url: "http://schurton.com/speedhutcache/styles.php" 
+	        url: "http://schurton.com/speedhutcache/styles.php"
 		}).done(function( response ) {
 
 			//Parse JSON
@@ -85,7 +92,7 @@ var CustomizerStepOneObject = {
 
 
 	}
-	
+
 }
 
 $("body").on("click", ".kitmodal", function() {
@@ -106,7 +113,7 @@ $( "body" ).on( "click", ".startsteptwo", function(  ) {
 	window.customizerObject.selectedGauges.length = 0; //empty array of selected gauges because a new kit has been selected.
 
 	window.customizerObject.kitname = $(this).siblings(".kitname").text();
-	
+
 	window.customizerObject.setLocalHostKitName();
 	//set localstorage for selected kit
 
