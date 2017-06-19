@@ -19,7 +19,7 @@ var CustomizerStepOneObject = {
 
 			} else {
 				// default image
-				card += ' <div class="img"><img class="default-image-step-one" src="https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/1965-chevrolet-chevelle-red-gauges-1-.jpg" /></div> ';
+				card += ' <div class="img"><img class="default-image-step-one" src="https://cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/placeholder-image.jpg" /></div> ';
 			}
 
 			card += ' <div class="card-content"> ';

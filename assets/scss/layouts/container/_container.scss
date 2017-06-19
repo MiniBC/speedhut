@@ -288,7 +288,7 @@ article.blog .blog-post-body {
 .blog-thumbnail {
     height: auto;
     margin-bottom: 1rem;
-    overflow: hidden;
+    float: left;
 }
 
 .blog-title {
@@ -300,6 +300,11 @@ article.blog .blog-post-body {
 .blog-title a {
     color: #222222;
     text-decoration: none;
+    
+    &:hover {
+	    color: #bc2326;
+    }
+    
 }
 
 .blog-post {
@@ -314,6 +319,16 @@ article.blog .blog-post-body {
 .blog-thumbnail > a {
 	width: 100%;
 	float: left;
+	display: inline-block;
+	-webkit-transition: all 200ms ease-in-out 0s;
+	-moz-transition: all 200ms ease-in-out 0s;
+	-o-transition: all 200ms ease-in-out 0s;
+	transition: all 200ms ease-in-out 0s;
+	
+	&:hover {
+		box-shadow: 0 0 10px #999;
+	}
+	
 }
 
 a.blog-item-read-more {
@@ -324,6 +339,11 @@ a.blog-item-read-more {
     margin-top: 20px;
     width: 100%;
     text-decoration: none;
+    
+    &:hover {
+	    color: #bc2326;
+    }
+    
 }
 
 .blog-post-figure {
@@ -734,6 +754,9 @@ a.navUser-action--quickSearch i {
 	color: #fff;
 	outline: none !important;
 	text-decoration: none !important;
+}
+
+#menu .navPages-action {
 	font-size: 1.3rem;
 	letter-spacing: -1px;
 }
@@ -2553,10 +2576,9 @@ img.mfp-img {
 
 #backbutton {
 	background-color: #eee;
-	border: dashed red;
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	width: 125px;
+	height: 125px;
 	float: none;
 	display: inline-block;
 }
