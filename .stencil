@@ -8,7 +8,8 @@
     "category": {},
     "page": {},
     "product": {
-	  	"product-size-chart.html":"/all/customizerapp/"
+	  	"product-size-chart.html":"/all/customizerapp/",
+      "product-customizer.html":"/customizer/",
     }
   }
 }
