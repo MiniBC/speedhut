@@ -1,10 +1,10 @@
 import $ from 'jquery';
-import Instafeed from 'instafeed.js';
+//import Instafeed from 'instafeed.js';
 
 /* eslint-disable */
 module.exports = function () { 
     
-const userFeed = new Instafeed({
+/*const userFeed = new Instafeed({
     get: 'user',
     resolution: 'standard_resolution',
     limit: '12',
@@ -12,7 +12,7 @@ const userFeed = new Instafeed({
     accessToken: '571701192.1677ed0.c400658007c24d4da32510a1f73dafc0',
     template:'<div class="col-md-3 col-lg-3 instagram-tile {{type}}"><a href="{{link}}" target="_blank"><img src="{{image}}"><span>{{caption}}</span></a></div>',
 });
-userFeed.run();
+userFeed.run();*/
 
 $('.my-account a').click(() => {
  	$('.my-account .dropdown-menu').toggle();

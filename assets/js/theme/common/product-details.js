@@ -38,7 +38,12 @@ export default class Product {
 
         const $form = $('form[data-cart-item-add]', $scope);
         const $productOptionsElement = $('[data-product-option-change]', $form);
-        const hasOptions = $productOptionsElement.html().trim().length;
+        if ($productOptionsElement.html()) {
+            let hasOptions = $productOptionsElement.html().trim().length;
+        }
+        else {
+            let hasOptions = 0;
+        }
 
         // Update product attributes. If we're in quick view and the product has options, then also update the initial view in case items are oos
         if (_.isEmpty(productAttributesData) && hasOptions) {

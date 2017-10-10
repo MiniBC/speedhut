@@ -6,10 +6,13 @@
   "customLayouts": {
     "brand": {},
     "category": {},
-    "page": {},
+    "page": {
+      "get-started.html":"/get-started/",
+      "get-started.html":"/select-gauge/",
+      "get-started.html":"/customizer/"
+    },
     "product": {
-	  	"product-size-chart.html":"/all/customizerapp/",
-      "product-customizer.html":"/customizer/",
+	  	"product-size-chart.html":"/all/customizerapp/"
     }
   }
 }
