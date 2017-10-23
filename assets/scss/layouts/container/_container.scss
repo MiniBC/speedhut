@@ -259,6 +259,10 @@ a:hover.forgot-password {
 	margin-top: 50px;
 }
 
+.blog-excerpts #disqus_thread {
+	display: none !important;
+}
+
 .blog-excerpts article.blog {
     border: medium none;
     display: inline-block;
@@ -305,6 +309,15 @@ article.blog .blog-post-body {
 	    color: #bc2326;
     }
     
+}
+
+.blog-post-body .blog-title {
+	font-size: 30px;
+	margin-top: 40px !important;
+}
+
+.blog-excerpts .blog-title {
+	font-size: 21px;
 }
 
 .blog-post {
@@ -739,7 +752,7 @@ a.navUser-action--quickSearch i {
 
 .navUser {
 	background: #151515;
-	border-bottom: 1px solid #222;
+	border-bottom: 2px solid #333;
 	padding: 0;
 }
 
@@ -1615,7 +1628,7 @@ body.CustomizerApp .call-us-at a i {float: left; margin: -1px 10px 0;}
 
 .heroCarousel {
 	margin: -1.2rem auto 0;
-	//max-width: 1600px;
+	max-width: 1600px;
 }
 
 .heroCarousel .slick-next {
@@ -2575,15 +2588,26 @@ img.mfp-img {
 }
 
 #backbutton {
-	background-color: #eee;
+	//background-color: #eee;
 	border-radius: 50%;
 	width: 125px;
 	height: 125px;
 	float: none;
 	display: inline-block;
+	margin-top: 11px;
+	cursor: pointer;
+	margin-left: 25px;
+	
+	&:hover {
+		opacity: .85;
+	}
+	
 }
 
 #backbutton span {
 	position: relative;
-	top: 25px;
+	height: 125px;
+	line-height: 125px;
+	font-weight: 500;
+	font-size: 1rem;
 }

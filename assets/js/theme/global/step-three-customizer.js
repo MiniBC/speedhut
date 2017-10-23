@@ -38,7 +38,7 @@ var CustomizerStepThreeObject = {  //start of step three object
 			// if changes have been made to the gauge, it should update its preview
 			// $(".selectedGaugePreivew").append()
 		}
-		$("<div id='backbutton'><span>Back to Step Two</span></div>").appendTo(".selectedGaugePreivew");
+		$("<img id='backbutton' src='//cdn3.bigcommerce.com/s-ta980ko58k/product_images/uploaded_images/add-another-gauge-icon.jpg' /></img>").appendTo(".selectedGaugePreivew");
 
 		// ALTERNATIVELY WE CAN BUILD THE PREVIEWS RIGHT AWAY USING THIS MODIFICATION CODE
 /*
